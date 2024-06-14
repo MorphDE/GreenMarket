@@ -1,0 +1,13 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --main: rgb(64, 170, 84);
+  --secondary: rgb(216, 238, 220);
+  --font: #2c3066;
+  --grey: #777777;
+  --rating: #ffc107;
+}
