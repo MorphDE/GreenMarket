@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Poppins";
 }
 
 :root {
@@ -11,4 +12,77 @@
   --grey: #777777;
   --rating: #ffc107;
   --bg: #f9faff;
+}
+
+/* BUTTONS */
+
+button {
+  padding: 1rem 5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-light {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--font);
+  background-color: var(--secondary);
+  border-radius: 0.5rem;
+}
+
+.btn-grey {
+  font-size: 1rem;
+  color: white;
+  font-weight: 500;
+  background-color: var(--grey);
+  border-radius: 0.5rem;
+}
+
+.btn-green {
+  font-size: 1rem;
+  color: white;
+  font-weight: 500;
+  background-color: var(--main);
+  border-radius: 3rem;
+}
+
+/* INPUT STYLES */
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  border: none;
+  border-bottom: solid 1px var(--grey);
+  padding-left: 1vw;
+  padding-right: 1vw;
+  min-width: 85vw;
+  padding-bottom: 0.5vh;
+  outline: none;
+  color: black;
+  font-weight: 600;
+}
+
+input[type="number"] {
+  border: none;
+  border-bottom: solid 1px var(--grey);
+  padding-left: 1vw;
+  padding-right: 1vw;
+  max-width: 80vw;
+  padding-bottom: 0.5vh;
+  outline: none;
+  color: black;
+  font-weight: 600;
+}
+
+::placeholder {
+  font-weight: 300;
+}
+
+/* BOTTOM TEXT */
+.bottom-text {
+  position: absolute;
+  bottom: 3%;
+  left: 50%;
+  transform: translate(-50%);
+  cursor: pointer;
 }

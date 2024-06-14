@@ -1,0 +1,48 @@
+.register-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 8vh;
+}
+
+.register-top h1 {
+  color: var(--font);
+  margin-top: 3vh;
+}
+
+.register-top p {
+  color: var(--grey);
+}
+
+.register-inputs {
+  margin-bottom: 8vh;
+}
+
+.register-inputs form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5vh;
+}
+
+.register-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.register-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
