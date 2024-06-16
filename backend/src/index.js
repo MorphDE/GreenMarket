@@ -4,6 +4,7 @@ import cors from "cors";
 import { connectToDatabase } from "./models/index.js";
 import cookieSession from "cookie-session";
 import dotenv from "dotenv";
+import { userRouter } from "./routes/userRouter.js";
 
 dotenv.config();
 const app = express();
@@ -31,7 +32,7 @@ app.use(cookieSession(cookieSessionOptions));
 app.use(morgan("dev"));
 app.use(express.json()); // body parser
 
-// app.use("/api/v1/users", userRouter);
+app.use("/api/v1/users", userRouter);
 
 try {
   await connectToDatabase();
