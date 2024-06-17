@@ -1,0 +1,17 @@
+.location-container {
+  display: flex;
+  align-items: center;
+  gap: 3vw;
+  margin-left: 5vw;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+
+.fa-location-dot {
+  font-size: 1.5rem;
+  color: var(--font);
+}
+
+.location-container {
+  font-weight: 600;
+}

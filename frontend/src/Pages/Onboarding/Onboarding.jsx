@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./OnBoarding.css";
 
 const Onboarding = () => {
@@ -12,8 +13,8 @@ const Onboarding = () => {
                 <p>We offer a wide range of vegetables and other foods. We have a very high inventory and can deliver very large quantities to our customers. That's what defines us.</p>
             </div>
             <div className="onboarding-buttons">
-                <button className="btn-light">Create New Account</button>
-                <button className="btn-grey">Sign In Your Account</button>
+                <Link to={"/register"}><button className="btn-light">Create New Account</button></Link>
+                <Link to={"/login"}><button className="btn-grey">Sign In Your Account</button></Link>
             </div>
         </section>
     );

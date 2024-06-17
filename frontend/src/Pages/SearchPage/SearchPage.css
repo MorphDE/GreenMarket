@@ -1,0 +1,21 @@
+.search-products {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  position: relative;
+  row-gap: 0;
+  margin-bottom: 10vh;
+  margin-top: 3vh;
+}
+
+.search-top {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  margin-top: 3vh;
+}
+
+.thumbnail img {
+  margin-top: 3vh;
+  max-height: 150px;
+  min-width: 100vw;
+}

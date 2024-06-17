@@ -1,6 +1,7 @@
 .register-container {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 .register-top {
@@ -33,10 +34,7 @@
 }
 
 .register-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  margin: auto;
   flex-grow: 1;
 }
 
@@ -45,4 +43,5 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-bottom: 3vh;
 }

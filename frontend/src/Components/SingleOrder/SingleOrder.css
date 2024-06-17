@@ -1,0 +1,63 @@
+.singleorder-container {
+  font-size: 0.9rem;
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
+
+.singleorder-card {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 1rem 1.5rem;
+}
+
+.singleorder-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: start;
+}
+
+.singleorder-left h1 {
+  font-size: 1rem;
+  color: var(--font);
+  margin-bottom: 1vh;
+}
+
+.singleorder-left p {
+  color: var(--main);
+}
+
+.singleorder-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  align-items: end;
+}
+
+.singleorder-right-top {
+  color: white;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1vh;
+}
+
+.singleorder-status {
+  color: var(--font);
+  padding: 0.3rem 0.5rem;
+  background-color: lightblue;
+  margin-right: 2vw;
+  border-radius: 0.3rem;
+}
+
+.singleorder-pay {
+  color: white;
+  padding: 0.3rem 0.5rem;
+  background-color: var(--main);
+  border-radius: 0.3rem;
+}
+
+.order-date {
+  color: var(--grey);
+}

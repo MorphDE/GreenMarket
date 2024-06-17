@@ -1,0 +1,32 @@
+.filterbuttons-container {
+  display: flex;
+  overflow-x: auto;
+  padding: 0 15px;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.single-filterbutton {
+  flex: 0 0 auto;
+  text-align: center;
+  margin: 15px;
+}
+
+.single-filterbutton img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.single-filterbutton p {
+  font-weight: 600;
+  color: var(--font);
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+.filterbuttons-container::-webkit-scrollbar {
+  display: none;
+}

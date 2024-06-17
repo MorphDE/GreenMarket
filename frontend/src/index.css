@@ -11,7 +11,7 @@
   --font: #2c3066;
   --grey: #777777;
   --rating: #ffc107;
-  --bg: #f9faff;
+  --bg: #f2f3f9;
 }
 
 /* BUTTONS */
@@ -74,15 +74,24 @@ input[type="number"] {
   font-weight: 600;
 }
 
+input[type="search"] {
+  border: none;
+  border: solid 1px var(--grey);
+  border-radius: 0.5rem;
+  padding: 1vw 1vw 1vw 1vw;
+  min-width: 70vw;
+  padding-bottom: 0.5vh;
+  outline: none;
+  color: black;
+  font-weight: 600;
+  padding-left: 8vw;
+}
+
 ::placeholder {
   font-weight: 300;
 }
 
-/* BOTTOM TEXT */
-.bottom-text {
-  position: absolute;
-  bottom: 3%;
-  left: 50%;
-  transform: translate(-50%);
-  cursor: pointer;
+a {
+  color: var(--font);
+  text-decoration: none;
 }

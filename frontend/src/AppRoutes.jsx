@@ -10,13 +10,13 @@ import Favourites from './Pages/Favourites/Favourites';
 import Verify from './Pages/Verify/Verify';
 import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
+import SearchPage from "./Pages/SearchPage/SearchPage";
 
 const AppRoutes = () => {
 
     return (
         <BrowserRouter>
             <Routes>
-                
                 <>
                     <Route path='/login' element={<Login />} />
                     <Route path='/register' element={<Register />} />
@@ -25,6 +25,7 @@ const AppRoutes = () => {
                     <Route path='/product/:id' element={<ProductDetails />} />
                     <Route path='/onboarding' element={<Onboarding />} />
                     <Route path='/cart' element={<Cart />} />
+                    <Route path='/search' element={<SearchPage />} />
                     <Route path='/orders' element={<Orders />} />
                     <Route path='/favourites' element={<Favourites />} />
                     <Route path='/verify' element={<Verify />} />

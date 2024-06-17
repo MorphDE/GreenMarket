@@ -1,9 +1,15 @@
 .go-back {
-  padding-left: 5vw;
-  padding-top: 5vw;
-  padding-bottom: 5vw;
+  display: flex;
+  padding: 5vw;
+  gap: 2vw;
 }
 
 .go-back img {
   padding: 0.5rem;
+}
+
+.go-back-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--font);
 }
