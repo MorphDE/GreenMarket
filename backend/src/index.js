@@ -5,6 +5,7 @@ import { connectToDatabase } from "./models/index.js";
 import cookieSession from "cookie-session";
 import dotenv from "dotenv";
 import { userRouter } from "./routes/userRouter.js";
+import { categoryRouter } from "./routes/categoryRouter.js";
 
 dotenv.config();
 const app = express();
@@ -33,6 +34,7 @@ app.use(morgan("dev"));
 app.use(express.json()); // body parser
 
 app.use("/api/v1/users", userRouter);
+app.use("/api/v1/categories", categoryRouter);
 
 try {
   await connectToDatabase();
