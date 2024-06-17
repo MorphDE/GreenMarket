@@ -1,0 +1,86 @@
+.filterpage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: white;
+  z-index: 10;
+}
+
+.btn-apply {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15vh;
+}
+
+.btn-apply button {
+  font-weight: 600;
+}
+
+.filter-top-text h1 {
+  font-size: 1.4rem;
+  color: var(--font);
+}
+
+.filter-top-text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  margin-bottom: 2vh;
+}
+
+.filter-top {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8vh;
+  margin-top: 2vh;
+}
+
+.filter-top-buttons button {
+  padding: 0.5rem 1rem;
+}
+
+.filter-top-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4vw;
+}
+
+.filter-center {
+  padding-left: 5vw;
+  margin-bottom: 8vh;
+}
+
+.filter-center h2 {
+  font-size: 1.4rem;
+  color: var(--font);
+  margin-bottom: 1vh;
+}
+
+.filter-bottom {
+  padding-left: 5vw;
+}
+
+.filter-bottom h3 {
+  font-size: 1.4rem;
+  color: var(--font);
+  margin-bottom: 2vh;
+}
+
+.filter-bottom-buttons {
+}
+
+.filter-bottom-buttons button {
+  margin-right: 4vw;
+  margin-bottom: 2vh;
+  padding: 0.5rem 1rem;
+}
+
+.apply-button {
+  flex-grow: 1;
+}

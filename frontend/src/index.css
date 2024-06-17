@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Poppins";
 }
 
 :root {
@@ -10,5 +11,87 @@
   --font: #2c3066;
   --grey: #777777;
   --rating: #ffc107;
-  --bg: #f9faff;
+  --bg: #f2f3f9;
+}
+
+/* BUTTONS */
+
+button {
+  padding: 1rem 5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-light {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--font);
+  background-color: var(--secondary);
+  border-radius: 0.5rem;
+}
+
+.btn-grey {
+  font-size: 1rem;
+  color: white;
+  font-weight: 500;
+  background-color: var(--grey);
+  border-radius: 0.5rem;
+}
+
+.btn-green {
+  font-size: 1rem;
+  color: white;
+  font-weight: 500;
+  background-color: var(--main);
+  border-radius: 3rem;
+}
+
+/* INPUT STYLES */
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  border: none;
+  border-bottom: solid 1px var(--grey);
+  padding-left: 1vw;
+  padding-right: 1vw;
+  min-width: 85vw;
+  padding-bottom: 0.5vh;
+  outline: none;
+  color: black;
+  font-weight: 600;
+}
+
+input[type="number"] {
+  border: none;
+  border-bottom: solid 1px var(--grey);
+  padding-left: 1vw;
+  padding-right: 1vw;
+  max-width: 80vw;
+  padding-bottom: 0.5vh;
+  outline: none;
+  color: black;
+  font-weight: 600;
+}
+
+input[type="search"] {
+  border: none;
+  border: solid 1px var(--grey);
+  border-radius: 0.5rem;
+  padding: 1vw 1vw 1vw 1vw;
+  min-width: 70vw;
+  padding-bottom: 0.5vh;
+  outline: none;
+  color: black;
+  font-weight: 600;
+  padding-left: 8vw;
+}
+
+::placeholder {
+  font-weight: 300;
+}
+
+a {
+  color: var(--font);
+  text-decoration: none;
 }
