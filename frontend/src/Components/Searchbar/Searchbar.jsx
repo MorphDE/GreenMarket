@@ -1,10 +1,11 @@
 import "./Searchbar.css";
+import FilterImage from "../../../public/Document.png"
 
 const Searchbar = ({ onFilterButtonClick }) => {
     return (
         <section className="searchbar-container">
             <div className="filter-button" onClick={onFilterButtonClick}>
-                <img src="./Document.png" alt="Filter Icon" />
+                <img src={FilterImage} alt="Filter Icon" />
             </div>
             <div className="searchbar">
                 <i className="fa-solid fa-magnifying-glass"></i>

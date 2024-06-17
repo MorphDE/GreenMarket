@@ -1,0 +1,25 @@
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--bg);
+}
+
+.cart-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 6vw;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 2vw;
+  margin-left: 3vw;
+  margin-right: 3vw;
+}
+
+.cart-container button {
+  margin: auto;
+}

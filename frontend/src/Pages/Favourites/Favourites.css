@@ -1,0 +1,29 @@
+.favourites-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--bg);
+}
+
+.favourites-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 6vw;
+}
+
+.fa-trash-can {
+  color: var(--main);
+}
+
+.favourite-items {
+  display: flex;
+  flex-direction: column;
+  gap: 2vw;
+  margin-left: 3vw;
+  margin-right: 3vw;
+}
+
+.favourites-container button {
+  margin: auto;
+}

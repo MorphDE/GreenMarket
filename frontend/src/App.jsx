@@ -7,11 +7,11 @@ import "@fontsource/poppins";
 
 function App() {
 
-  const [isLoading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   return (
-    <LoadingContext.Provider value={{ isLoading, setLoading }}>
-            {isLoading ? (
+    <LoadingContext.Provider value={{ loading, setLoading }}>
+            {loading ? (
               <AppRoutes/>
             ) : (
               <Loadingscreen />

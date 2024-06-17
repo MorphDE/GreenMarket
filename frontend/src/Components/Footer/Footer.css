@@ -36,11 +36,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  bottom: 60%;
   background-color: var(--main);
   border-radius: 100%;
   padding: 20px;
+}
+
+.cartlink {
+  position: absolute;
+  bottom: 60%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .single-content-left {
