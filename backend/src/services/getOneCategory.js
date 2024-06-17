@@ -1,4 +1,4 @@
-import { Category } from "../models/category.js";
+import Category from "../models/category.js";
 
 export async function getOneCategory(categoryId) {
   const category = await Category.findById(categoryId);

@@ -1,5 +1,6 @@
 import "./Footer.css";
 import { Link, NavLink } from 'react-router-dom';
+import FooterImage from "../../../public/cart.png"
 
 const Footer = () => {
     return (
@@ -16,9 +17,11 @@ const Footer = () => {
                     <p>Orders</p>
                 </div>
             </Link>
-            <div className="footer-circle">
-                <img src="./cart.png" alt="Cart Image" />
-            </div>
+            <Link to={"/cart"} className="cartlink">
+                <div className="footer-circle">
+                    <img src={FooterImage} alt="Cart Image" />
+                </div>
+            </Link>
             <Link to={"/favourites"}>
                 <div className="single-content single-content-right">
                     <i className="fa-solid fa-heart"></i>
