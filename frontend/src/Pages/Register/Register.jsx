@@ -17,7 +17,6 @@ const Register = () => {
   const navigate = useNavigate();
 
   const registerUser = async (e) => {
-    console.log("dummy registration");
     e.preventDefault();
 
     const res = await fetch(`${backendUrl}/api/v1/users/register`, {
@@ -43,7 +42,7 @@ const Register = () => {
     }
     const userInfo = data.result;
 
-    navigate("/login"); // weiterleitung zur login page
+    navigate("/verify"); // weiterleitung zur login page
   };
 
   return (
