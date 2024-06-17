@@ -1,7 +1,7 @@
-import { Category } from "../models/category";
+import Category from "../models/category.js";
 
 export async function addCategory(categoryInfo) {
-  const foundCategory = await Category.findOne({ name: category.name });
+  const foundCategory = await Category.findOne({ name: categoryInfo.name });
   if (foundCategory) throw new Error("Category with this name already exists");
   return Category.create(categoryInfo);
 }
