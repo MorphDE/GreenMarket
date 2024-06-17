@@ -13,4 +13,4 @@ GreenMarket is a full stack online shop with many different features. Among othe
 
 ## Design
 
-![Smartbuy]([https://images-ext-1.discordapp.net/external/3V2X8HgOdigynuPZYbkc0fTbK5mHWP-kXkN5z9-rNK0/https/i.ibb.co/wwXS6cm/smartbuy.png?format=webp&quality=lossless&width=400&height=240](https://i.ibb.co/KxMMh9Q/Thumbnail-Portfolio.png))
+![Smartbuy](https://i.ibb.co/KxMMh9Q/Thumbnail-Portfolio.png)
