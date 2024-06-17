@@ -1,16 +1,22 @@
 import express from "express";
 import { UserController } from "../controllers/userController.js";
-import { doJwtAuth } from "../../middlewares/doJwtAuth.js";
+import {
+  doJwtAuth,
+  validateRefreshTokenInCookieSession,
+} from "../../middlewares/doJwtAuth.js";
 
 export const userRouter = express
   .Router()
   //   .delete("/", doJwtAuth, UserController.deleteUserCtrl)
   //   .get("/userById/:userId", doJwtAuth, UserController.getUserByIdCtrl)
   .post("/register", UserController.postRegisterUserCtrl)
-    .post("/login", UserController.postLoginUserCtrl)
-  .post("/verifyEmail", UserController.postVerifyEmailCtrl);
-//   .post(
-//     "/refresh-token",
-//     validateRefreshTokenInCookieSession,
-//     UserController.postRefreshToken
-//   );
+  .post("/login", UserController.postLoginUserCtrl)
+  .post("/verifyEmail", UserController.postVerifyEmailCtrl)
+  .patch("/updateUser", doJwtAuth, UserController.patchUpdateUserCtrl)
+  .get("/userById", doJwtAuth, UserController.getUserByIdCtrl)
+  .delete("/deleteUser", doJwtAuth, UserController.deleteUserCtrl)
+  .post(
+    "/refresh-token",
+    validateRefreshTokenInCookieSession,
+    UserController.postRefreshToken
+  );

@@ -29,15 +29,15 @@ export async function postLoginUserCtrl(req, res) {
   }
 }
 
-// async function postRefreshToken(req, res) {
-//   try {
-//     const result = await UserService.refreshToken(req.authenticatedUserId);
-//     res.json({ result });
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json({ err, message: err.message || "Could not register" });
-//   }
-// }
+async function postRefreshToken(req, res) {
+  try {
+    const result = await UserService.refreshToken(req.authenticatedUserId);
+    res.json({ result });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ err, message: err.message || "Could not register" });
+  }
+}
 
 export async function postVerifyEmailCtrl(req, res) {
   try {
@@ -53,97 +53,56 @@ export async function postVerifyEmailCtrl(req, res) {
     res.status(500).json({ err, message: err.message });
   }
 }
-// export async function searchUsersByNameCtrl(req, res) {
-//   try {
-//     const { name } = req.query;
 
-//     if (!name) {
-//       return res
-//         .status(400)
-//         .json({ error: "Name query parameter is required" });
-//     }
+async function deleteUserCtrl(req, res) {
+  try {
+    const authenticatedUserId = req.authenticatedUserId;
+    const result = await UserService.deleteUser({
+      userId: authenticatedUserId,
+    });
+    res.json({ result });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ err, message: err.message || "Could not register" });
+  }
+}
 
-//     const result = await UserService.searchUsersByName({ name });
-//     res.status(200).json({ result });
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json({ err, message: err.message });
-//   }
-// }
-// async function deleteUserCtrl(req, res) {
-//   try {
-//     const authenticatedUserId = req.authenticatedUserId;
-//     const result = await UserService.deleteUser({ authenticatedUserId });
-//     res.json({ result });
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json({ err, message: err.message || "Could not register" });
-//   }
-// }
+export async function getUserByIdCtrl(req, res) {
+  try {
+    const authenticatedUserId = req.authenticatedUserId;
+    const user = await UserService.getUserById({
+      userId: authenticatedUserId,
+    });
+    res.json({ user });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ err, message: err.message || "Could not get user" });
+  }
+}
 
-// export async function followUserCtrl(req, res) {
-//   try {
-//     const userId = req.body.userId;
-//     const authenticatedUserId = req.authenticatedUserId;
-//     console.log(userId);
-//     const result = await UserService.followUser({
-//       authenticatedUserId,
-//       userId,
-//     });
-//     res.status(200).json({ message: "User followed successfully", result });
-//   } catch (error) {
-//     res.status(400).json({ error: error.message });
-//   }
-// }
+export async function patchUpdateUserCtrl(req, res) {
+  try {
+    const authenticatedUserId = req.authenticatedUserId;
+    const updateData = req.body;
 
-// export async function unfollowUserCtrl(req, res) {
-//   try {
-//     const userId = req.body.userId;
-//     const authenticatedUserId = req.authenticatedUserId;
-//     const result = await UserService.unfollowUser({
-//       authenticatedUserId,
-//       userId,
-//     });
-//     res.status(200).json({ message: "User unfollowed successfully", result });
-//   } catch (error) {
-//     res.status(400).json({ error: error.message });
-//   }
-// }
-// export async function getFeedsForUserCtrl(req, res) {
-//   try {
-//     const authenticatedUserId = req.authenticatedUserId;
-//     if (!authenticatedUserId) {
-//       return res.status(400).json({ error: "UserId is required" });
-//     }
-//     const result = await UserService.getFeedForUser(authenticatedUserId);
-//     res.status(200).json({ result });
-//   } catch (error) {
-//     res.status(500).json({ error: error.message });
-//   }
-// }
-// export async function getUserByIdCtrl(req, res) {
-//   try {
-//     const userId = req.params.userId;
+    const updatedUser = await UserService.updateUser({
+      userId: authenticatedUserId,
+      updateData,
+    });
 
-//     if (!userId) {
-//       return res.status(400).json({ error: "UserId is required" });
-//     }
-//     const result = await UserService.getUserById(userId);
-//     res.status(200).json({ result });
-//   } catch (error) {
-//     res.status(500).json({ error: error.message });
-//   }
-// }
+    res.json({ user: updatedUser });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: err.message });
+  }
+}
 
 export const UserController = {
   postRegisterUserCtrl,
   postLoginUserCtrl,
-  //   postRefreshToken,
+  postRefreshToken,
   postVerifyEmailCtrl,
-  //   searchUsersByNameCtrl,
-  //   deleteUserCtrl,
-  //   followUserCtrl,
-  //   unfollowUserCtrl,
-  //   getFeedsForUserCtrl,
-  //   getUserByIdCtrl,
+  deleteUserCtrl,
+  getUserByIdCtrl,
+  patchUpdateUserCtrl,
 };
