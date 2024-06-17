@@ -46,6 +46,14 @@ button {
   border-radius: 3rem;
 }
 
+.btn-green-two {
+  font-size: 1rem;
+  color: white;
+  font-weight: 500;
+  background-color: var(--main);
+  border-radius: 0.5rem;
+}
+
 /* INPUT STYLES */
 
 input[type="text"],

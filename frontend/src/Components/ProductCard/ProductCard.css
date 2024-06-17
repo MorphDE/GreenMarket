@@ -28,6 +28,7 @@
 }
 
 .product-card .fa-heart {
+  color: var(--grey);
   font-size: 1.2rem;
   top: 0;
   right: 0;
