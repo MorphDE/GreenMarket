@@ -7,8 +7,7 @@ import {
 
 export const userRouter = express
   .Router()
-  //   .delete("/", doJwtAuth, UserController.deleteUserCtrl)
-  //   .get("/userById/:userId", doJwtAuth, UserController.getUserByIdCtrl)
+
   .post("/register", UserController.postRegisterUserCtrl)
   .post("/login", UserController.postLoginUserCtrl)
   .post("/verifyEmail", UserController.postVerifyEmailCtrl)
