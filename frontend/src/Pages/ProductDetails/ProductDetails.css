@@ -77,8 +77,8 @@
 }
 
 .balken {
-  height: 2px;
-  width: 75vw;
+  height: 1px;
+  max-width: 85vw;
   background-color: rgba(122, 122, 122, 0.3);
   margin: auto;
   margin-top: 3vh;
