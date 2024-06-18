@@ -2,24 +2,27 @@ import { useContext, useState } from "react";
 import "./Verify.css";
 import { useNavigate } from "react-router-dom";
 import { backendUrl } from "../../api/api";
-import { UserContext } from "../../Context/Contexts";
+import { TokenContext, UserContext } from "../../Context/Contexts";
 
 const Verify = () => {
   const [sixDigitCode, setSixDigitCode] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [email, setEmail] = useState("");
 
   const { user, setUser } = useContext(UserContext);
-  console.log(user);
+  const { token, setToken } = useContext(TokenContext);
   const navigate = useNavigate();
 
   const verifyEmail = async (e) => {
-    console.log("dummy verify");
+    setUser(email);
 
     const res = await fetch(`${backendUrl}/api/v1/users/verifyEmail`, {
       headers: { "Content-Type": "application/json" },
       method: "POST",
-      body: JSON.stringify({ userId: user.user._id, sixDigitCode }),
+      body: JSON.stringify({ email, sixDigitCode }),
     });
+    console.log(email);
+
     /* mit bearer token?
 const res = await fetch(`${backendUrl}/api/v1/users/verifyEmail`, {
       headers: { "Content-Type": "application/json", authorization: `Bearer ${token}` },
@@ -34,6 +37,8 @@ const res = await fetch(`${backendUrl}/api/v1/users/verifyEmail`, {
 
     setErrorMessage("");
     console.log(data);
+
+    //navigate("/");
   };
 
   return (
@@ -46,6 +51,7 @@ const res = await fetch(`${backendUrl}/api/v1/users/verifyEmail`, {
         </div>
         <div className="verify-input">
           <form className="verify-form">
+            <input type="text" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} />
             <input type="text" placeholder="Six digit code" value={sixDigitCode} onChange={(e) => setSixDigitCode(e.target.value)} />
           </form>
         </div>

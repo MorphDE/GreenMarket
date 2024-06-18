@@ -1,8 +1,9 @@
 import "./Login.css";
 import GoBack from "./../../Components/GoBack/GoBack";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { backendUrl } from "../../api/api";
+import { RefreshContext, TokenContext, UserContext } from "../../Context/Contexts";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -11,6 +12,9 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
+
+  const { user, setUser } = useContext(UserContext);
+  const { token, setToken } = useContext(TokenContext);
 
   const loginUser = async (e) => {
     e.preventDefault();
@@ -27,11 +31,12 @@ const Login = () => {
 
     if (!data.result) return setErrorMessage(data.message || "Failed to verify email");
     console.log(errorMessage);
+    console.log("login successful");
     navigate("/");
 
     //! save token --> "logged in"
-    //setToken(data.result.tokens.accessToken);
-    //setUser(data.result.user);
+    setUser({ user: data.result.user });
+    setToken(data.result.tokens.accessToken);
   };
 
   return (
