@@ -1,4 +1,4 @@
-import Category from "../models/category.js";
+import Category from "../models/Category.js";
 
 export async function deleteCategory(categoryId) {
   const category = await Category.findById(categoryId);

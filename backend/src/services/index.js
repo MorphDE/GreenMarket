@@ -1,4 +1,3 @@
-
 import { addProduct } from "./addProduct.js";
 import { deleteUser } from "./deleteUser.js";
 import { getAllProducts } from "./getAllProducts.js";
@@ -33,12 +32,11 @@ export const ProductService = {
   updateProduct,
   getAllProducts,
   getProductById,
-
+};
 
 export const CategoriesService = {
   getAllCategories,
   getOneCategory,
   addCategory,
   deleteCategory,
-
 };
