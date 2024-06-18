@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import "./Verify.css";
 import { useNavigate } from "react-router-dom";
 import { backendUrl } from "../../api/api";
-import { UserContext } from "../../Context/Contexts";
+import { TokenContext, UserContext } from "../../Context/Contexts";
 
 const Verify = () => {
   const [sixDigitCode, setSixDigitCode] = useState("");
@@ -10,20 +10,19 @@ const Verify = () => {
   const [email, setEmail] = useState("");
 
   const { user, setUser } = useContext(UserContext);
+  const { token, setToken } = useContext(TokenContext);
   const navigate = useNavigate();
 
   const verifyEmail = async (e) => {
-    console.log("dummy verify");
-    console.log(user);
+    setUser(email);
 
     const res = await fetch(`${backendUrl}/api/v1/users/verifyEmail`, {
       headers: { "Content-Type": "application/json" },
       method: "POST",
-      body: JSON.stringify({ userId: user.user._id, sixDigitCode }),
+      body: JSON.stringify({ email, sixDigitCode }),
     });
+    console.log(email);
 
-    //! TODO statt userId  soll ich email nutzen!!!
-    console.log(user.user._id);
     /* mit bearer token?
 const res = await fetch(`${backendUrl}/api/v1/users/verifyEmail`, {
       headers: { "Content-Type": "application/json", authorization: `Bearer ${token}` },
@@ -38,6 +37,8 @@ const res = await fetch(`${backendUrl}/api/v1/users/verifyEmail`, {
 
     setErrorMessage("");
     console.log(data);
+
+    //navigate("/");
   };
 
   return (

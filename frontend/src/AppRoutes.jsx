@@ -12,13 +12,13 @@ import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
 import SearchPage from "./Pages/SearchPage/SearchPage";
 import { useContext, useState } from "react";
-import { RefreshContext, TokenContext, UserContext } from "./Context/Contexts";
+import { ProductContext, RefreshContext, TokenContext, UserContext } from "./Context/Contexts";
 
 const AppRoutes = () => {
   const { refreshToken, setRefreshToken } = useContext(RefreshContext);
   const { user, setUser } = useContext(UserContext);
   const { token, setToken } = useContext(TokenContext);
-
+  const { products, setProducts } = useContext(ProductContext);
 
   return (
     <BrowserRouter>
