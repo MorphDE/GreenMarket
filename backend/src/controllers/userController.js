@@ -41,10 +41,10 @@ async function postRefreshToken(req, res) {
 
 export async function postVerifyEmailCtrl(req, res) {
   try {
-    const userId = req.body.userId;
+    const email = req.body.email;
     const sixDigitCode = req.body.sixDigitCode;
     const result = await UserService.verifyUserEmail({
-      userId,
+      email,
       sixDigitCode,
     });
     res.json({ result });
