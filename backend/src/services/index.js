@@ -17,6 +17,9 @@ import { updateUser } from "./updateUser.js";
 import { verifyUserEmail } from "./verifyUserEmail.js";
 import { searchProductsByName } from "./searchProductsByName.js";
 import { getFilteredAndSortedProducts } from "./getFilteredAndSortedProducts.js";
+import { addToCart } from "./addToCart.js";
+import { removeItemFromCart } from "./removeItemFromCart.js";
+import { getCart } from "./getCart.js";
 
 export const UserService = {
   registerUser,
@@ -42,4 +45,10 @@ export const CategoriesService = {
   getOneCategory,
   addCategory,
   deleteCategory,
+};
+
+export const CartService = {
+  addToCart,
+  removeItemFromCart,
+  getCart,
 };

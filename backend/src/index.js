@@ -7,7 +7,7 @@ import dotenv from "dotenv";
 import { userRouter } from "./routes/userRouter.js";
 import { productRouter } from "./routes/productRouter.js";
 import { categoryRouter } from "./routes/categoryRouter.js";
-
+import { cartRouter } from "./routes/cartRouter.js";
 
 dotenv.config();
 const app = express();
@@ -41,6 +41,7 @@ app.use("/api/v1/products", productRouter);
 
 app.use("/api/v1/categories", categoryRouter);
 
+app.use("/api/v1/cart", cartRouter);
 
 try {
   await connectToDatabase();
