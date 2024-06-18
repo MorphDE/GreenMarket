@@ -15,6 +15,8 @@ import { registerUser } from "./registerUser.js";
 import { updateProduct } from "./updateProduct.js";
 import { updateUser } from "./updateUser.js";
 import { verifyUserEmail } from "./verifyUserEmail.js";
+import { searchProductsByName } from "./searchProductsByName.js";
+import { getFilteredAndSortedProducts } from "./getFilteredAndSortedProducts.js";
 
 export const UserService = {
   registerUser,
@@ -31,6 +33,8 @@ export const ProductService = {
   updateProduct,
   getAllProducts,
   getProductById,
+  searchProductsByName,
+  getFilteredAndSortedProducts,
 };
 
 export const CategoriesService = {
