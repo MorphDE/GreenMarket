@@ -33,12 +33,13 @@ const res = await fetch(`${backendUrl}/api/v1/users/verifyEmail`, {
 
     const data = await res.json();
 
-    if (!data.result) return setErrorMessage(data.message || "Failed to verify email");
+    if (!data.result)
+      return setErrorMessage(data.message || "Failed to verify email");
 
     setErrorMessage("");
     console.log(data);
 
-    //navigate("/");
+    navigate("/login");
   };
 
   return (
@@ -47,12 +48,25 @@ const res = await fetch(`${backendUrl}/api/v1/users/verifyEmail`, {
         <div className="verify-top">
           <img src="./success.png" alt="Success Image" />
           <h1>Welcome to GreenMarket</h1>
-          <p>You have successfully registered and created a new account. Please verify your account with the 6-digit code we emailed you.</p>
+          <p>
+            You have successfully registered and created a new account. Please
+            verify your account with the 6-digit code we emailed you.
+          </p>
         </div>
         <div className="verify-input">
           <form className="verify-form">
-            <input type="text" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-            <input type="text" placeholder="Six digit code" value={sixDigitCode} onChange={(e) => setSixDigitCode(e.target.value)} />
+            <input
+              type="text"
+              placeholder="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Six digit code"
+              value={sixDigitCode}
+              onChange={(e) => setSixDigitCode(e.target.value)}
+            />
           </form>
         </div>
         <div className="verify-button">
