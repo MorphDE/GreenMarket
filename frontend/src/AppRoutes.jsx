@@ -19,9 +19,6 @@ const AppRoutes = () => {
   const { user, setUser } = useContext(UserContext);
   const { token, setToken } = useContext(TokenContext);
 
-  console.log(user);
-  console.log(token);
-  console.log(refreshToken);
 
   return (
     <BrowserRouter>

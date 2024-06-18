@@ -1,8 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import GoBack from "../../Components/GoBack/GoBack";
 import "./Register.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { backendUrl } from "../../api/api";
+import { UserContext } from "../../Context/Contexts";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -13,6 +14,8 @@ const Register = () => {
   const [houseNumber, setHouseNumber] = useState("");
   const [city, setCity] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+
+  const { user, setUser } = useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -42,6 +45,8 @@ const Register = () => {
     }
     const userInfo = data.result;
 
+    setUser(userInfo);
+    console.log({ userInfo });
     navigate("/verify"); // weiterleitung zur login page
   };
 

@@ -7,19 +7,23 @@ import { UserContext } from "../../Context/Contexts";
 const Verify = () => {
   const [sixDigitCode, setSixDigitCode] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [email, setEmail] = useState("");
 
   const { user, setUser } = useContext(UserContext);
-  console.log(user);
   const navigate = useNavigate();
 
   const verifyEmail = async (e) => {
     console.log("dummy verify");
+    console.log(user);
 
     const res = await fetch(`${backendUrl}/api/v1/users/verifyEmail`, {
       headers: { "Content-Type": "application/json" },
       method: "POST",
       body: JSON.stringify({ userId: user.user._id, sixDigitCode }),
     });
+
+    //! TODO statt userId  soll ich email nutzen!!!
+    console.log(user.user._id);
     /* mit bearer token?
 const res = await fetch(`${backendUrl}/api/v1/users/verifyEmail`, {
       headers: { "Content-Type": "application/json", authorization: `Bearer ${token}` },
@@ -46,6 +50,7 @@ const res = await fetch(`${backendUrl}/api/v1/users/verifyEmail`, {
         </div>
         <div className="verify-input">
           <form className="verify-form">
+            <input type="text" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} />
             <input type="text" placeholder="Six digit code" value={sixDigitCode} onChange={(e) => setSixDigitCode(e.target.value)} />
           </form>
         </div>

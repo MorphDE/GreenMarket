@@ -8,9 +8,9 @@ import { TokenContext } from "./Context/Contexts";
 
 function App() {
   const [loading, setLoading] = useState(false);
-  const [user, setUser] = useState("user1");
-  const [token, setToken] = useState("sdasdadwwadsasdds");
-  const [refreshToken, setRefreshToken] = useState("jkgkzughzkukkzgt");
+  const [user, setUser] = useState();
+  const [token, setToken] = useState();
+  const [refreshToken, setRefreshToken] = useState();
 
   return (
     <>
