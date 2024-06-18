@@ -6,7 +6,7 @@ export async function verifyUserEmail({ userId, sixDigitCode }) {
   if (!user) throw new Error("User not found");
 
   const codeMatched = user.sixDigitCode === sixDigitCode;
-  if (!codeMatched) throw new Error("Ivalid six digit code, please try again");
+  if (!codeMatched) throw new Error("Invalid six digit code, please try again");
 
   user.isEmailVerified = true;
   await user.save();
