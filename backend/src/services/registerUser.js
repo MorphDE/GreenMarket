@@ -49,8 +49,9 @@ async function sendEmailVerification(user) {
     subject: "Welcome to GreenMarket",
     text: `Hi ${user.firstName},
       welcome to GreenMarket 🎉!!!
-      Please enter the below six-digit-code in your profile. 
+      Please enter the below six-digit-code and your email. 
       ${user.sixDigitCode}
+      ${user.email}
       See you on the green side :)
       - Adrian from GreenMarket
       `,

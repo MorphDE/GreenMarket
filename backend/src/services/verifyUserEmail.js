@@ -1,8 +1,7 @@
 import User from "../models/User.js";
 
-export async function verifyUserEmail({ userId, sixDigitCode }) {
-  console.log(userId);
-  const user = await User.findById(userId);
+export async function verifyUserEmail({ email, sixDigitCode }) {
+  const user = await User.findOne({ email });
   if (!user) throw new Error("User not found");
 
   const codeMatched = user.sixDigitCode === sixDigitCode;
