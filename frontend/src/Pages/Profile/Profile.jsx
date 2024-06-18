@@ -1,7 +1,10 @@
 import "./Profile.css";
 import GoBack from "./../../Components/GoBack/GoBack";
+import React, { useContext } from "react";
+import { UserContext } from "../../Context/Contexts";
 
 const Profile = () => {
+  const { user, setUser } = useContext(UserContext);
   return (
     <section className="profile-container">
       <GoBack title={"My Profile"} />
@@ -19,7 +22,7 @@ const Profile = () => {
             type="text"
             name="user-firstname"
             id="userfirstname"
-            defaultValue={"Max"}
+            defaultValue={user?.firstName}
           />
         </div>
         <div className="profile-info">
@@ -29,7 +32,7 @@ const Profile = () => {
             type="text"
             name="user-lastname"
             id="userlastname"
-            defaultValue={"Mustermann"}
+            defaultValue={user?.lastName}
           />
         </div>
         <div className="profile-info">
@@ -38,7 +41,7 @@ const Profile = () => {
             type="text"
             name="user-email"
             id="useremail"
-            defaultValue={"max.mustermann@email.com"}
+            defaultValue={user?.email}
           />
         </div>
         <div className="profile-info">
@@ -47,7 +50,7 @@ const Profile = () => {
             type="text"
             name="user-adress"
             id="useradress"
-            defaultValue={"Musterstr. 78, 54987 Musterstadt"}
+            defaultValue={"Test"}
           />
         </div>
       </div>
