@@ -1,10 +1,9 @@
-
 import Category from "../models/Category.js";
 import Product from "../models/Product.js";
 
 export async function addProduct({
   name,
-  description,
+  ratingAmount,
   image,
   categoryId,
   price,
@@ -22,7 +21,7 @@ export async function addProduct({
 
   const product = await Product.create({
     name,
-    description,
+    ratingAmount,
     image,
     categoryId,
     price,

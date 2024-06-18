@@ -2,12 +2,12 @@ import { ProductService } from "../services/index.js";
 
 export async function postCreateProductCtrl(req, res) {
   try {
-    const { name, description, image, categoryId, price, rating, unit } =
+    const { name, ratingAmount, image, categoryId, price, rating, unit } =
       req.body;
 
     const result = await ProductService.addProduct({
       name,
-      description,
+      ratingAmount,
       image,
       categoryId,
       price,
