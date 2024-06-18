@@ -21,9 +21,9 @@ const ProductDetails = () => {
             <div className="details-bottom">
                 <p>Quantity</p>
                 <div className="details-amount">
-                    <i class="fa-solid fa-square-minus"></i>
+                    <i className="fa-solid fa-square-minus"></i>
                     <p className="item-amount">01</p>
-                    <i class="fa-solid fa-square-plus"></i>
+                    <i className="fa-solid fa-square-plus"></i>
                 </div>
                 <img src={CartIcon} alt="Cart Icon" />
             </div>

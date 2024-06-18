@@ -60,6 +60,10 @@ input[type="checkbox"] {
   gap: 2vw;
 }
 
+.plus-minus .item-amount {
+  font-size: 1rem;
+}
+
 .item-rate {
   margin-right: 3vw;
 }
