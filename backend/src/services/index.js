@@ -5,7 +5,6 @@ import { getProductById } from "./getProductById.js";
 
 import { addCategory } from "./addCategory.js";
 import { deleteCategory } from "./deleteCategory.js";
-import { deleteUser } from "./deleteUser.js";
 import { getAllCategories } from "./getAllCategories.js";
 import { getOneCategory } from "./getOneCategory.js";
 

@@ -1,4 +1,5 @@
-import { Category } from "../models/Category.js";
+
+import Category from "../models/Category.js";
 import Product from "../models/Product.js";
 
 export async function addProduct({
