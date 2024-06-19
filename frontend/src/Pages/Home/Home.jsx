@@ -5,8 +5,8 @@ import Footer from "./../../Components/Footer/Footer";
 import FilterButtons from "../../Components/FilterButtons/FilterButtons";
 import TopDeals from "./../../Components/TopDeals/TopDeals";
 import { useState } from "react";
-import Filters from "./../../Components/Filters/Filter";
 import AllOffers from "../../Components/AllOffers/AllOffers";
+import Filters from './../../Components/Filters/Filters';
 
 const Home = () => {
   const [isFilterPageOpen, setIsFilterPageOpen] = useState(false);

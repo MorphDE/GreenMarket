@@ -5,6 +5,7 @@ import { backendUrl } from "../../api/api";
 import { ProductContext } from "../../Context/Contexts";
 
 const TopDeals = () => {
+
   const { products, setProducts } = useContext(ProductContext);
 
   useEffect(() => {
@@ -38,3 +39,4 @@ const TopDeals = () => {
 };
 
 export default TopDeals;
+

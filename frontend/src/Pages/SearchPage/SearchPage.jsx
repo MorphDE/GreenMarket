@@ -1,6 +1,7 @@
 import FilterButtonsSmall from "../../Components/FilterButtonsSmall/FilterButtonsSmall";
 import Searchbar from "../../Components/Searchbar/Searchbar";
 import "./SearchPage.css";
+
 import ProductCard from "./../../Components/ProductCard/ProductCard";
 import Footer from "./../../Components/Footer/Footer";
 import { useEffect, useState } from "react";

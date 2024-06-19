@@ -72,7 +72,9 @@
   margin-bottom: 2vh;
 }
 
-.filter-bottom-buttons {
+.btn-light.selected {
+  color: white;
+  background-color: var(--main);
 }
 
 .filter-bottom-buttons button {
