@@ -4,7 +4,7 @@ import "./SearchPage.css";
 import ProductCard from './../../Components/ProductCard/ProductCard';
 import Footer from './../../Components/Footer/Footer';
 import { useState } from "react";
-import Filters from "../../Components/Filters/Filter";
+import Filters from './../../Components/Filters/Filters';
 
 const SearchPage = () => {
 

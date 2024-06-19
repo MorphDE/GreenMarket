@@ -7,12 +7,6 @@ const TopDeals = () => {
         <h1>Today's Deals</h1>
         <div className="product-cards">
             <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-
         </div>
         </section>
     );
