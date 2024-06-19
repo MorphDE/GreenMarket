@@ -1,6 +1,3 @@
-import FilterButtonsSmall from "../../Components/FilterButtonsSmall/FilterButtonsSmall";
-import Searchbar from "../../Components/Searchbar/Searchbar";
-import "./SearchPage.css";
 import ProductCard from './../../Components/ProductCard/ProductCard';
 import Footer from './../../Components/Footer/Footer';
 import { useState, useEffect, useContext } from "react";
@@ -16,13 +13,27 @@ const SearchPage = () => {
 
     const { filters, setFilters } = useContext(FilterContext);
 
-    const openFilterPage = () => {
-        setIsFilterPageOpen(true);
-    };
+  const closeFilterPage = () => {
+    setIsFilterPageOpen(false);
+  };
 
-    const closeFilterPage = () => {
-        setIsFilterPageOpen(false);
-    };
+  return (
+    <section className="search-page">
+      <div className="search-top">
+        <Searchbar onFilterButtonClick={openFilterPage} />
+        <FilterButtonsSmall />
+      </div>
+      <div className="thumbnail">
+        <img src="./bread.jpg" alt="Thumbnail" />
+      </div>
+      <div className="search-products">
+        <ProductCard />
+      </div>
+      {isFilterPageOpen && <Filters onClose={closeFilterPage} />}
+      <Footer />
+    </section>
+  );
+};
 
      useEffect(() => {
         if(search && search.length > 0) {
