@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./FilterButtons.css";
 import { backendUrl } from "../../api/api";
+import { Link } from "react-router-dom";
 
 const FilterButtons = () => {
   const [categories, setCategories] = useState([]);
@@ -18,10 +19,12 @@ const FilterButtons = () => {
   return (
     <article className="filterbuttons-container">
       {categories?.map((item, index) => (
-        <div key={index} className="single-filterbutton">
-          <img src={item.icon} alt="" />
-          <p>{item.name}</p>
-        </div>
+        <Link to={`/search/${item._id}`}>
+          <div key={index} className="single-filterbutton">
+            <img src={item.icon} alt="" />
+            <p>{item.name}</p>
+          </div>
+        </Link>
       ))}
     </article>
   );
