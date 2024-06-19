@@ -1,6 +1,6 @@
 import Category from "../models/Category.js";
 import Product from "../models/Product.js";
-
+import mongoose from "mongoose";
 export async function addProduct({
   name,
   ratingAmount,
@@ -19,11 +19,13 @@ export async function addProduct({
     throw new Error("Category not found.");
   }
 
+  const id = new mongoose.Types.ObjectId(categoryId);
+
   const product = await Product.create({
     name,
     ratingAmount,
     image,
-    categoryId,
+    categoryId: id,
     price,
     rating,
     unit,

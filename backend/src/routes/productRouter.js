@@ -11,4 +11,8 @@ export const productRouter = express
     ProductController.getFilteredAndSortedProductsCtrl
   )
   .patch("/updateProduct/:productId", ProductController.updateProductCtrl)
+  .get(
+    "/getProductByCategory/:categoryId",
+    ProductController.getProductsByCategoryCtrl
+  )
   .get("/getProductById/:productId", ProductController.getProductByIdCtrl);
