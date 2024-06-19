@@ -18,8 +18,6 @@ const TopDeals = () => {
       });
   }, []);
 
-  console.log(products);
-
   return (
     <section className="topdeals-container">
       <h1>All Products</h1>
