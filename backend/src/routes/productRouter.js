@@ -5,7 +5,6 @@ export const productRouter = express
   .Router()
   .post("/newProduct", ProductController.postCreateProductCtrl)
   .get("/getAllProducts", ProductController.getAllProductsCtrl)
-  .get("/getProductsByName", ProductController.getProductsByNameCtrl)
   .get(
     "/getFilteredAndSortedProducts",
     ProductController.getFilteredAndSortedProductsCtrl
@@ -15,4 +14,5 @@ export const productRouter = express
     "/getProductByCategory/:categoryId",
     ProductController.getProductsByCategoryCtrl
   )
+  .get("/getProductsByName/:name", ProductController.getProductsByNameCtrl)
   .get("/getProductById/:productId", ProductController.getProductByIdCtrl);

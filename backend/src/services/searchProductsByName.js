@@ -1,9 +1,9 @@
 import Product from "../models/Product.js";
 
-export async function searchProductsByName(query) {
+export async function searchProductsByName(name) {
   try {
     const searchCriteria = {
-      name: { $regex: query, $options: "i" },
+      name: { $regex: name, $options: "i" },
     };
     const products = await Product.find(searchCriteria).populate("categoryId");
     return products;
