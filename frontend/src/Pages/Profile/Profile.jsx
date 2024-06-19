@@ -40,10 +40,10 @@ const Profile = () => {
 
     const data = await res.json();
 
-    if (!data.result) return setErrorMessage(data.message || "Failed to verify email");
+    if (!data.result) return setErrorMessage(data.message || "Failed to verify update Profile");
 
     console.log(errorMessage);
-    console.log("login successful");
+    console.log("Profile Update successful");
     console.log(data.result);
   };
 

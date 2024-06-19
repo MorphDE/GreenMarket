@@ -7,7 +7,7 @@ const AuthRequired = ({ setUser, token, setToken, children }) => {
   const [loading, setLoading] = useState(token ? false : true);
   const timeoutRef = useRef(null); // aktuellen timeout für silent refresh
 
-  console.log({ token, loading });
+  //console.log({ token, loading });
 
   const navigate = useNavigate();
 
@@ -43,18 +43,15 @@ const AuthRequired = ({ setUser, token, setToken, children }) => {
       timeoutRef.current = setTimeout(async () => {
         try {
           console.log("fetching backend for silent refresh");
-          const response = await fetch(
-            `${backendUrl}/api/v1/users/refresh-token`,
-            {
-              method: "POST",
-              credentials: "include",
-            }
-          );
+          const response = await fetch(`${backendUrl}/api/v1/users/refresh-token`, {
+            method: "POST",
+            credentials: "include",
+          });
 
           const data = await response.json();
 
           if (!data.result) navigate("/login");
-          console.log({ data });
+          //console.log({ data });
           setUser(data.result.user);
           setToken(data.result.newAccessToken);
 
