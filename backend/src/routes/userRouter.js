@@ -10,7 +10,7 @@ export const userRouter = express
 
   .post("/register", UserController.postRegisterUserCtrl)
   .post("/login", UserController.postLoginUserCtrl)
-  .post("/verifyEmail", UserController.postVerifyEmailCtrl)
+  .post("/verifyEmail/:userId", UserController.postVerifyEmailCtrl)
   .patch("/updateUser", doJwtAuth, UserController.patchUpdateUserCtrl)
   .get("/userById", doJwtAuth, UserController.getUserByIdCtrl)
   .delete("/deleteUser", doJwtAuth, UserController.deleteUserCtrl)

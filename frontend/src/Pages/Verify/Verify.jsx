@@ -7,29 +7,20 @@ import { TokenContext, UserContext } from "../../Context/Contexts";
 const Verify = () => {
   const [sixDigitCode, setSixDigitCode] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [email, setEmail] = useState("");
 
   const { user, setUser } = useContext(UserContext);
   const { token, setToken } = useContext(TokenContext);
   const navigate = useNavigate();
 
   const verifyEmail = async (e) => {
-    setUser(email);
-
-    const res = await fetch(`${backendUrl}/api/v1/users/verifyEmail`, {
-      headers: { "Content-Type": "application/json" },
-      method: "POST",
-      body: JSON.stringify({ email, sixDigitCode }),
-    });
-    console.log(email);
-
-    /* mit bearer token?
-const res = await fetch(`${backendUrl}/api/v1/users/verifyEmail`, {
-      headers: { "Content-Type": "application/json", authorization: `Bearer ${token}` },
-      method: "POST",
-      body: JSON.stringify({ sixDigitCode }),
-    });
-    */
+    const res = await fetch(
+      `${backendUrl}/api/v1/users/verifyEmail/${user._id}`,
+      {
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+        body: JSON.stringify({ sixDigitCode }),
+      }
+    );
 
     const data = await res.json();
 
@@ -55,12 +46,6 @@ const res = await fetch(`${backendUrl}/api/v1/users/verifyEmail`, {
         </div>
         <div className="verify-input">
           <form className="verify-form">
-            <input
-              type="text"
-              placeholder="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
             <input
               type="text"
               placeholder="Six digit code"
