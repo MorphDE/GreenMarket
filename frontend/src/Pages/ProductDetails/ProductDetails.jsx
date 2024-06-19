@@ -26,7 +26,10 @@ const ProductDetails = () => {
     <section className="productdetails-container">
       <GoBack title={"Back"} />
       <div className="details-top">
-        <img src={products?.image} alt="Product Image" />
+        <img
+          src={`${backendUrl}/api/v1/uploads/product-images/${products?.image}`}
+          alt="Product Image"
+        />
         <p className="product-weight-btn">{products?.unit}</p>
         <p className="product-price">{products?.price}</p>
         <h1 className="product-name">{products?.name}</h1>
