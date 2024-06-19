@@ -43,6 +43,8 @@ app.use("/api/v1/categories", categoryRouter);
 
 app.use("/api/v1/cart", cartRouter);
 
+app.use("/api/v1/uploads", express.static("uploads"));
+
 try {
   await connectToDatabase();
   const PORT = process.env.PORT || 3009;

@@ -1,5 +1,8 @@
+import { useContext, useEffect } from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import "./TopDeals.css";
+import { backendUrl } from "../../api/api";
+import { ProductContext } from "../../Context/Contexts";
 
 const TopDeals = () => {
   const { products, setProducts } = useContext(ProductContext);
@@ -18,21 +21,17 @@ const TopDeals = () => {
   return (
     <section className="topdeals-container">
       <h1>All Products</h1>
-      {products.map((item, index) => (
-        <div key={index} className="product-cards">
+      <div className="product-cards">
+        {products?.map((item, index) => (
           <ProductCard
-            image={item.image}
-            name={item.name}
+            key={index}
+            imageUrl={item.image}
+            productName={item.name}
             price={item.price}
             rating={item.rating}
           />
-          {/* <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard /> */}
-        </div>
-      ))}
+        ))}
+      </div>
     </section>
   );
 };
