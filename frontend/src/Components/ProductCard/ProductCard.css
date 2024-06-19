@@ -15,7 +15,7 @@
 }
 
 .product-card img {
-  max-height: 70px;
+  height: 70px;
   max-width: 100px;
   border-radius: 1rem;
   margin-top: 3vh;

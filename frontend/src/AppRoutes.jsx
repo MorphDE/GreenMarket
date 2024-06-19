@@ -44,6 +44,7 @@ const AppRoutes = () => {
           <Route path="/onboarding" element={<Onboarding />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/search/:search" element={<SearchPage />} />
+          <Route path="/search" element={<SearchPage />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/favourites" element={<Favourites />} />
           <Route path="/verify" element={<Verify />} />
