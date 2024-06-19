@@ -1,14 +1,17 @@
 import "./Filters.css";
 import GoBack from './../GoBack/GoBack';
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { backendUrl } from './../../api/api';
-
+import { FilterContext } from "../../Context/Contexts.jsx"
+ 
 const Filters = ({ onClose }) => {
-    const [filterOptions, setfilterOptions] = useState([]);
+    const [categoryOptions, setCategoryOptions] = useState([]);
     const [selectedSort, setSelectedSort] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('');
     const [priceRange, setPriceRange] = useState(0);
+
+    const { filters, setFilters } = useContext(FilterContext);
 
     const navigate = useNavigate();
 
@@ -16,7 +19,7 @@ const Filters = ({ onClose }) => {
         fetch(`${backendUrl}/api/v1/categories/`)
           .then((res) => res.json())
           .then((data) => {
-            setfilterOptions(data);
+            setCategoryOptions(data);
           })
           .catch((err) => {
             console.log(err);
@@ -45,15 +48,35 @@ const Filters = ({ onClose }) => {
         return params.toString();
     };
 
+    useEffect(() => {
+        if(filters) {
+            if(filters.maxPrice) {
+                setPriceRange(filters.maxPrice)
+            }
+            if(filters.categoryName) {
+                setSelectedCategory(filters.categoryName)
+            }
+            if(filters.sortBy) {
+                setSelectedSort(filters.sortBy)
+            }
+        }
+    }, [])
+
     const handleApplyFilters = () => {
         const queryString = buildQuery();
-        navigate(`/search?${queryString}`);
+        navigate(`/search`);
+        setFilters({
+            maxPrice: priceRange,
+            categoryName: selectedCategory,
+            sortBy: selectedSort,
+        })
     };
 
     const handleClearFilters = () => {
         setSelectedSort('');
         setSelectedCategory('');
         setPriceRange(0);
+        setFilters({});
     };
 
     return (
@@ -83,7 +106,7 @@ const Filters = ({ onClose }) => {
                     name="priceslider"
                     id="slider"
                     min={0}
-                    max={250}
+                    max={500}
                     value={priceRange}
                     onChange={handleRangeChange}
                 />
@@ -94,7 +117,7 @@ const Filters = ({ onClose }) => {
                     <h3>Category</h3>
                 </div>
                 <div className="filter-bottom-buttons">
-                    {filterOptions.map((item) => (
+                    {categoryOptions.map((item) => (
                         <button
                             className={`btn-light ${selectedCategory === item.name ? 'selected' : ''}`}
                             key={item.name}

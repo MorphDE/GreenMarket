@@ -10,15 +10,15 @@ export async function getFilteredAndSortedProducts({
   try {
     const filterCriteria = {};
 
-    if (minPrice !== undefined || maxPrice !== undefined) {
-      filterCriteria.price = {};
-      if (minPrice !== undefined) {
-        filterCriteria.price.$gte = minPrice;
-      }
-      if (maxPrice !== undefined) {
-        filterCriteria.price.$lte = maxPrice;
-      }
-    }
+     if (minPrice !== undefined || maxPrice !== undefined) {
+       filterCriteria.price = {};
+       if (minPrice !== undefined) {
+         filterCriteria.price.$gte = minPrice;
+       }
+       if (maxPrice !== undefined) {
+         filterCriteria.price.$lte = maxPrice;
+       }
+     }
 
     if (categoryName) {
       const category = await Category.findOne({ name: categoryName });
@@ -30,13 +30,14 @@ export async function getFilteredAndSortedProducts({
     }
 
     let sortCriteria = {};
-    if (sortBy === "lowestPrice") {
+    if (sortBy === "Lowest") {
       sortCriteria.price = 1;
-    } else if (sortBy === "highestPrice") {
+    } else if (sortBy === "Highest") {
       sortCriteria.price = -1;
-    } else if (sortBy === "bestRating") {
+    } else if (sortBy === "Best") {
       sortCriteria.rating = -1;
     }
+
 
     const products = await Product.find(filterCriteria)
       .sort(sortCriteria)

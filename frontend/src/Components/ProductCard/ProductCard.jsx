@@ -16,11 +16,11 @@ const ProductCard = ({ imageUrl, productName, price, rating, id }) => {
           <p className="item-name">{productName}</p>
           <div className="product-bottom">
             <div>
-              <p>{price}€</p>
+              <p>${price.toFixed(2)}</p>
             </div>
             <div className="product-rating">
               <i className="fa-solid fa-star"></i>
-              <p>{rating}</p>
+              <p>{rating.toFixed(1)}</p>
             </div>
           </div>
         </div>

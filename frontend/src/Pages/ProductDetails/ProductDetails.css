@@ -72,6 +72,11 @@
   font-size: 2rem;
 }
 
+.details-amount .fa-square-minus.disabled {
+  color: gray;
+  cursor: not-allowed;
+}
+
 .details-amount .fa-square-plus {
   font-size: 2rem;
 }
