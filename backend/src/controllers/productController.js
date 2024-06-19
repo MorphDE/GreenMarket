@@ -66,9 +66,9 @@ export async function getProductByIdCtrl(req, res) {
 }
 
 export async function getProductsByNameCtrl(req, res) {
-  const { query } = req.query;
+  const { name } = req.params;
   try {
-    const products = await ProductService.searchProductsByName(query);
+    const products = await ProductService.searchProductsByName(name);
     res.status(200).json(products);
   } catch (error) {
     console.error("Error searching for products:", error.message);
@@ -101,6 +101,22 @@ export async function getFilteredAndSortedProductsCtrl(req, res) {
   }
 }
 
+export async function getProductsByCategoryCtrl(req, res) {
+  try {
+    const categoryId = req.params.categoryId;
+
+    if (!categoryId) {
+      return res.status(400).json({ message: "categoryId is required" });
+    }
+
+    const products = await ProductService.getProductsByCategory(categoryId);
+    res.json({ products });
+  } catch (err) {
+    console.log("Error fetching products by category:", err);
+    res.status(500).json({ err, message: err.message });
+  }
+}
+
 export const ProductController = {
   postCreateProductCtrl,
   updateProductCtrl,
@@ -108,4 +124,5 @@ export const ProductController = {
   getProductByIdCtrl,
   getProductsByNameCtrl,
   getFilteredAndSortedProductsCtrl,
+  getProductsByCategoryCtrl,
 };

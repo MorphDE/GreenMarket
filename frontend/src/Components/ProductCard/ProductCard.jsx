@@ -1,24 +1,30 @@
 import { useEffect, useState } from "react";
 import "./ProductCard.css";
 import { backendUrl } from "../../api/api";
+import { Link } from "react-router-dom";
 
-const ProductCard = () => {
+const ProductCard = ({ imageUrl, productName, price, rating, id }) => {
   return (
     <section className="productcard-container">
-      <div className="product-card">
-        <i className="fa-solid fa-heart"></i>
-        <img src="./bread.jpg" alt="Product Image" />
-        <p className="item-name">ITEM NAME</p>
-        <div className="product-bottom">
-          <div>
-            <p>100€</p>
-          </div>
-          <div className="product-rating">
-            <i className="fa-solid fa-star"></i>
-            <p>5.0</p>
+      <Link to={`/product/${id}`}>
+        <div className="product-card">
+          <i className="fa-solid fa-heart"></i>
+          <img
+            src={`${backendUrl}/api/v1/uploads/product-images/${imageUrl}`}
+            alt={productName}
+          />
+          <p className="item-name">{productName}</p>
+          <div className="product-bottom">
+            <div>
+              <p>{price}€</p>
+            </div>
+            <div className="product-rating">
+              <i className="fa-solid fa-star"></i>
+              <p>{rating}</p>
+            </div>
           </div>
         </div>
-      </div>
+      </Link>
     </section>
   );
 };
