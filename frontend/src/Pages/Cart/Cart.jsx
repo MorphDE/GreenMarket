@@ -14,56 +14,39 @@ const Cart = () => {
 
   const [errorMessage, setErrorMessage] = useState("");
 
-  const fetchCart = async () => {
-    console.log("fetch Cart launched");
+  const calculateTotalPrice = (allProducts) => {
+    let totalPrice = 0;
 
-    const res = await fetch(`${backendUrl}/api/v1/cart/getCart`, {
-      headers: { "Content-Type": "application/json", authorization: `Bearer ${token}` },
-      method: "GET",
-        body: JSON.stringify({
-            
-        }),
-      credentials: "include",
+    allProducts.forEach((item) => {
+      const result = item.productId.price * item.quantity;
+      totalPrice += result;
     });
 
-    const data = await res.json();
-    console.log(data);
-    if (!data.result) return setErrorMessage(data.message || "Failed to verify fetch Cart");
-
-    console.log(errorMessage);
-    console.log("Cart fetch successful");
-    console.log(data.result);
+    return totalPrice;
   };
 
-  fetchCart();
-
-  /*
   useEffect(() => {
+    console.log("fetch Cart launched");
     async function fetchCart() {
-      try {
-        console.log(user);
-        console.log(token);
-        const res = await fetch(`${backendUrl}/api/v1/cart/getCart`, {
-          headers: { authorization: `Bearer ${token}` },
-          method: "GET",
-        });
+      //! der user wird aus dem userToken ausgelesen
+      const res = await fetch(`${backendUrl}/api/v1/cart/getCart`, {
+        headers: { "Content-Type": "application/json", authorization: `Bearer ${token}` },
+        method: "GET",
+        credentials: "include",
+      });
 
-        const data = await res.json();
+      const data = await res.json();
+      console.log(data);
+      if (!data.cart) return setErrorMessage(data.message || "Failed to verify fetch Cart");
+      setCart(data.cart);
+      console.log(cart);
 
-        if (!data) {
-          setErrorMessage(data.message || "Could not load cart");
-          return;
-        }
-
-        setCart(data.result);
-        setErrorMessage("");
-      } catch (error) {
-        setErrorMessage("An error occurred while fetching cart.");
-      }
+      console.log(errorMessage);
+      console.log("Cart fetch successful");
     }
     fetchCart();
   }, [token, refresh]);
-*/
+
   return (
     <section className="cart-container">
       <div className="cart-head">
@@ -71,12 +54,23 @@ const Cart = () => {
         <i className="fa-solid fa-trash-can"></i>
       </div>
       <div className="cart-items">
-        <CartItem />
-        <CartItem />
-        <CartItem />
-        <CartItem />
+        {cart ? (
+          cart?.items?.map((item, index) => (
+            <CartItem
+              key={index}
+              imageUrl={item.productId.image}
+              productName={item.productId.name}
+              unit={item.productId.unit}
+              rating={item.productId.rating}
+              price={item.productId.price}
+              amount={item.quantity}
+            />
+          ))
+        ) : (
+          <p>Loading...</p>
+        )}
       </div>
-      <button className="btn-green-two">Check Out - Total 500€</button>
+      <button className="btn-green-two"> Check Out - Total: {calculateTotalPrice(cart.items)}€</button> //! TODO: calculate total price of shopping cart
     </section>
   );
 };
