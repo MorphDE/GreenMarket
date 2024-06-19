@@ -5,6 +5,8 @@ import Filters from './../../Components/Filters/Filters';
 import { useParams } from 'react-router-dom';
 import { backendUrl } from "../../api/api";
 import { FilterContext } from "../../Context/Contexts";
+import Searchbar from './../../Components/Searchbar/Searchbar';
+import FilterButtonsSmall from './../../Components/FilterButtonsSmall/FilterButtonsSmall';
 
 const SearchPage = () => {
     const { search } = useParams();
@@ -13,27 +15,13 @@ const SearchPage = () => {
 
     const { filters, setFilters } = useContext(FilterContext);
 
-  const closeFilterPage = () => {
-    setIsFilterPageOpen(false);
+    const openFilterPage = () => {
+      setIsFilterPageOpen(true);
   };
-
-  return (
-    <section className="search-page">
-      <div className="search-top">
-        <Searchbar onFilterButtonClick={openFilterPage} />
-        <FilterButtonsSmall />
-      </div>
-      <div className="thumbnail">
-        <img src="./bread.jpg" alt="Thumbnail" />
-      </div>
-      <div className="search-products">
-        <ProductCard />
-      </div>
-      {isFilterPageOpen && <Filters onClose={closeFilterPage} />}
-      <Footer />
-    </section>
-  );
-};
+  
+  const closeFilterPage = () => {
+      setIsFilterPageOpen(false);
+  };
 
      useEffect(() => {
         if(search && search.length > 0) {
@@ -89,6 +77,5 @@ const SearchPage = () => {
             <Footer />
         </section>
     );
-}
-
+  }
 export default SearchPage;
