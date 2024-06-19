@@ -20,6 +20,7 @@ import { getFilteredAndSortedProducts } from "./getFilteredAndSortedProducts.js"
 import { addToCart } from "./addToCart.js";
 import { removeItemFromCart } from "./removeItemFromCart.js";
 import { getCart } from "./getCart.js";
+import { getProductsByCategory } from "./getProductsByCategory.js";
 
 export const UserService = {
   registerUser,
@@ -38,6 +39,7 @@ export const ProductService = {
   getProductById,
   searchProductsByName,
   getFilteredAndSortedProducts,
+  getProductsByCategory,
 };
 
 export const CategoriesService = {
