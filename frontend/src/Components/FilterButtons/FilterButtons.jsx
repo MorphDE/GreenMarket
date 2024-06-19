@@ -1,30 +1,30 @@
+import { useEffect, useState } from "react";
 import "./FilterButtons.css";
+import { backendUrl } from "../../api/api";
 
 const FilterButtons = () => {
-    return (
-        <section className="filterbuttons-container">
-            <div className="single-filterbutton">
-                <img src="./vegetables.jpeg" alt="Vegetables Image" />
-                <p>Veggies</p>
-            </div>
-            <div className="single-filterbutton">
-                <img src="./fruits.jpg" alt="Fruits Image" />
-                <p>Fruits</p>
-            </div>
-            <div className="single-filterbutton">
-                <img src="./meat.jpeg" alt="Meat Image" />
-                <p>Meat</p>
-            </div>
-            <div className="single-filterbutton">
-                <img src="./drinks.jpg" alt="Drinks Image" />
-                <p>Drinks</p>
-            </div>
-            <div className="single-filterbutton">
-                <img src="./bread.jpg" alt="Bread Image" />
-                <p>Bread</p>
-            </div>
-        </section>
-    );
-}
- 
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    fetch(`${backendUrl}/api/v1/categories/`)
+      .then((res) => res.json())
+      .then((data) => {
+        setCategories(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+  return (
+    <article className="filterbuttons-container">
+      {categories.map((item, index) => (
+        <div key={index} className="single-filterbutton">
+          <img src={item.icon} alt="" />
+          <p>{item.name}</p>
+        </div>
+      ))}
+    </article>
+  );
+};
+
 export default FilterButtons;
