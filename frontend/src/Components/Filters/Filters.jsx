@@ -38,16 +38,6 @@ const Filters = ({ onClose }) => {
         setPriceRange(e.target.value);
     };
 
-    const buildQuery = () => {
-        const params = new URLSearchParams();
-
-        if (priceRange) params.append('maxPrice', priceRange);
-        if (selectedCategory) params.append('categoryName', selectedCategory);
-        if (selectedSort) params.append('sortBy', selectedSort);
-
-        return params.toString();
-    };
-
     useEffect(() => {
         if(filters) {
             if(filters.maxPrice) {
@@ -63,7 +53,6 @@ const Filters = ({ onClose }) => {
     }, [])
 
     const handleApplyFilters = () => {
-        const queryString = buildQuery();
         navigate(`/search`);
         setFilters({
             maxPrice: priceRange,

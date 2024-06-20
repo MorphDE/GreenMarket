@@ -7,6 +7,7 @@ import { backendUrl } from "../../api/api";
 import { FilterContext } from "../../Context/Contexts";
 import Searchbar from './../../Components/Searchbar/Searchbar';
 import FilterButtonsSmall from './../../Components/FilterButtonsSmall/FilterButtonsSmall';
+import "./SearchPage.css";
 
 const SearchPage = () => {
     const { search } = useParams();
@@ -45,10 +46,11 @@ const SearchPage = () => {
     const buildQuery = () => {
         const params = new URLSearchParams();
 
-        if (filters.maxPrice & filters.maxPrice > 0) params.append('maxPrice', filters.maxPrice);
-        if (filters.categoryName) params.append('categoryName', filters.categoryName);
-        if (filters.sortBy) params.append('sortBy', filters.sortBy);
-
+        if(filters) {
+            if (filters.maxPrice & filters.maxPrice > 0) params.append('maxPrice', filters.maxPrice);
+            if (filters.categoryName) params.append('categoryName', filters.categoryName);
+            if (filters.sortBy) params.append('sortBy', filters.sortBy); 
+        }
         return params.toString();
     };
 
@@ -56,7 +58,7 @@ const SearchPage = () => {
         <section className="search-page">
             <div className="search-top">
                 <Searchbar onFilterButtonClick={openFilterPage} />
-                <FilterButtonsSmall />
+                <FilterButtonsSmall filters={filters} setFilters={setFilters}/>
             </div>
             <div className="thumbnail">
                 <img src="./bread.jpg" alt="Thumbnail" />

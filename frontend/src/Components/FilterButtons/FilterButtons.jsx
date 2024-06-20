@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import "./FilterButtons.css";
 import { backendUrl } from "../../api/api";
-import { Link } from "react-router-dom";
 
-const FilterButtons = () => {
+const FilterButtons = ({ activeCategory, setActiveCategory }) => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -16,15 +15,22 @@ const FilterButtons = () => {
         console.log(err);
       });
   }, []);
+
+  const selectCategory = (category) => {
+    if (category === activeCategory) {
+      setActiveCategory(null) 
+    } else {
+      setActiveCategory(category)
+    }
+  }
+
   return (
     <article className="filterbuttons-container">
       {categories?.map((item, index) => (
-        <Link to={`/search/${item._id}`} key={index}>
-          <div className="single-filterbutton">
-            <img src={item.icon} alt="" />
-            <p>{item.name}</p>
+          <div className="single-filterbutton" key={index} onClick={() => selectCategory(item)}>
+            <img src={item.icon} alt="" className={activeCategory === item ? `active-category` : ``}/>
+            <p className={activeCategory === item ? `active-categoryfont` : ``}>{item.name}</p>
           </div>
-        </Link>
       ))}
     </article>
   );

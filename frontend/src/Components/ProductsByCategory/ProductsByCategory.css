@@ -1,0 +1,14 @@
+.product-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  position: relative;
+  row-gap: 0;
+  margin-bottom: 10vh;
+}
+.topdeals-container h1 {
+  font-size: 1.2rem;
+  color: var(--font);
+  margin-top: 2vh;
+  margin-left: 4vw;
+  margin-bottom: 2vh;
+}
