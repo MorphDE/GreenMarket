@@ -11,12 +11,7 @@ import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
 import SearchPage from "./Pages/SearchPage/SearchPage";
 import { useContext, useState } from "react";
-import {
-  ProductContext,
-  RefreshContext,
-  TokenContext,
-  UserContext,
-} from "./Context/Contexts";
+import { ProductContext, RefreshContext, TokenContext, UserContext } from "./Context/Contexts";
 import AuthRequired from "./Components/AuthRequired";
 
 const AppRoutes = () => {
@@ -42,7 +37,14 @@ const AppRoutes = () => {
           />
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/onboarding" element={<Onboarding />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route
+            path="/cart"
+            element={
+              <AuthRequired setUser={setUser} token={token} setToken={setToken}>
+                <Cart />
+              </AuthRequired>
+            }
+          />
           <Route path="/search/:search" element={<SearchPage />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/orders" element={<Orders />} />
