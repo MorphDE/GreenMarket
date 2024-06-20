@@ -11,12 +11,7 @@ import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
 import SearchPage from "./Pages/SearchPage/SearchPage";
 import { useContext, useState } from "react";
-import {
-  ProductContext,
-  RefreshContext,
-  TokenContext,
-  UserContext,
-} from "./Context/Contexts";
+import { ProductContext, RefreshContext, TokenContext, UserContext } from "./Context/Contexts";
 import AuthRequired from "./Components/AuthRequired";
 import SilentRefresh from "./Components/SilentRefresh";
 
