@@ -6,14 +6,15 @@ import { Link } from "react-router-dom";
 const ProductCard = ({ imageUrl, productName, price, rating, id }) => {
   return (
     <section className="productcard-container">
-      <Link to={`/product/${id}`}>
+      
         <div className="product-card">
           <i className="fa-solid fa-heart"></i>
-          <img
-            src={`${backendUrl}/api/v1/uploads/product-images/${imageUrl}`}
+          <Link to={`/product/${id}`}>
+          <img src={`${backendUrl}/api/v1/uploads/product-images/${imageUrl}`}
             alt={productName}
           />
           <p className="item-name">{productName}</p>
+          </Link>
           <div className="product-bottom">
             <div>
               <p>${price.toFixed(2)}</p>
@@ -24,7 +25,7 @@ const ProductCard = ({ imageUrl, productName, price, rating, id }) => {
             </div>
           </div>
         </div>
-      </Link>
+      
     </section>
   );
 };
