@@ -2,7 +2,7 @@ import "./Cart.css";
 import GoBack from "./../../Components/GoBack/GoBack";
 import CartItem from "../../Components/CartItem/CartItem";
 
-import { CartContext, RefreshContext, TokenContext } from "../../Context/Contexts";
+import { CartContext, ProductContext } from "../../Context/Contexts";
 
 import { useContext, useEffect, useState } from "react";
 import { backendUrl } from "../../api/api";
@@ -43,7 +43,6 @@ const Cart = () => {
     fetchCart();
   }, [token]);
 
-
   return (
     <section className="cart-container">
       <div className="cart-head">
@@ -68,7 +67,9 @@ const Cart = () => {
           <p>Loading...</p>
         )}
       </div>
-      <button className="btn-green-two">Check Out - Total: {calculateTotalPrice(cart?.items)}€</button>
+      <button className="btn-green-two">
+        Check Out - Total: {calculateTotalPrice(cart?.items)}€
+      </button>
     </section>
   );
 };
