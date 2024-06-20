@@ -6,4 +6,9 @@ export const cartRouter = express
   .Router()
   .post("/addToCart", doJwtAuth, CartController.postAddToCartCtrl)
   .post("/removeItem", doJwtAuth, CartController.postRemoveItemFromCartCtrl)
+  .patch(
+    "/updateQuantity/:productId",
+    doJwtAuth,
+    CartController.updateCartItemQuantityCtrl
+  )
   .get("/getCart", doJwtAuth, CartController.getCartCtrl);

@@ -54,8 +54,28 @@ export async function getCartCtrl(req, res) {
   }
 }
 
+export async function updateCartItemQuantityCtrl(req, res) {
+  const productId = req.params.productId;
+  const quantity = req.body.quantity;
+  const userId = req.authenticatedUserId;
+  try {
+    const result = await CartService.updateCartItemQuantity(
+      userId,
+      productId,
+      quantity
+    );
+    res.status(200).json({ result });
+  } catch (error) {
+    console.error("Error updating cart item quantity:", error.message);
+    res.status(500).json({
+      error: "Internal server error while updating cart item quantity.",
+    });
+  }
+}
+
 export const CartController = {
   postAddToCartCtrl,
   postRemoveItemFromCartCtrl,
   getCartCtrl,
+  updateCartItemQuantityCtrl,
 };
