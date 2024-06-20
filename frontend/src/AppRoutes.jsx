@@ -46,7 +46,16 @@ const AppRoutes = () => {
           <Route path="/search/:search" element={<SearchPage />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/orders" element={<Orders />} />
-          <Route path="/favourites" element={<Favourites />} />
+
+          <Route
+            path="/favourites"
+            element={
+              <AuthRequired setUser={setUser} token={token} setToken={setToken}>
+                <Favourites />{" "}
+              </AuthRequired>
+            }
+          />
+
           <Route path="/verify" element={<Verify />} />
         </Routes>{" "}
       </SilentRefresh>

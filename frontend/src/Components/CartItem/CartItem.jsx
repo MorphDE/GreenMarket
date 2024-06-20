@@ -1,4 +1,8 @@
+
+import { useState } from "react";
+
 import { CartContext, RefreshContext, TokenContext } from "../../Context/Contexts";
+
 import { backendUrl } from "../../api/api";
 import "./CartItem.css";
 import { useContext, useEffect, useState } from "react";
@@ -85,6 +89,7 @@ const CartItem = ({ imageUrl, productName, unit, rating, price, amount, productI
 
   return (
     <section className="single-item">
+      <i className="fa-solid fa-heart"></i>
       {/* <div> <input type="checkbox" name="check" id="checkbox" /> </div> */}
       <div className="item-img">
         <img src={fullImageUrl} alt={productName} />

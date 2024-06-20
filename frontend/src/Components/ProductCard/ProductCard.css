@@ -38,6 +38,16 @@
   margin-right: 4vw;
 }
 
+.product-card .fa-heart-true {
+  color: var(--main);
+  font-size: 1.2rem;
+  top: 0;
+  right: 0;
+  position: absolute;
+  margin-top: 2vh;
+  margin-right: 4vw;
+}
+
 .product-bottom {
   color: var(--font);
   display: flex;
