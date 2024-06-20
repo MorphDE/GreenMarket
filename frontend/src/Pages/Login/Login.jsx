@@ -3,9 +3,11 @@ import GoBack from "./../../Components/GoBack/GoBack";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { backendUrl } from "../../api/api";
-import { RefreshContext, TokenContext, UserContext } from "../../Context/Contexts";
+import { useAuth } from "../../Context/AuthProvider";
 
 const Login = () => {
+  const { setUser, setToken } = useAuth();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -13,8 +15,8 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const { user, setUser } = useContext(UserContext);
-  const { token, setToken } = useContext(TokenContext);
+  // const { user, setUser } = useContext(UserContext);
+  // const { token, setToken } = useContext(TokenContext);
 
   const loginUser = async (e) => {
     e.preventDefault();

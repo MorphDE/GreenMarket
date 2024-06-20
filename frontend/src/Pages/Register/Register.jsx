@@ -3,7 +3,7 @@ import GoBack from "../../Components/GoBack/GoBack";
 import "./Register.css";
 import { useContext, useState } from "react";
 import { backendUrl } from "../../api/api";
-import { UserContext } from "../../Context/Contexts";
+import { useAuth } from "../../Context/AuthProvider";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -15,7 +15,7 @@ const Register = () => {
   const [city, setCity] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUser } = useAuth();
 
   const navigate = useNavigate();
 
@@ -59,13 +59,48 @@ const Register = () => {
       </div>
       <div className="register-inputs">
         <form>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="E-Mail" />
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-          <input type="text" value={firstName} onChange={(e) => setFirstname(e.target.value)} placeholder="Firstname" />
-          <input type="text" value={lastName} onChange={(e) => setLastname(e.target.value)} placeholder="Lastname" />
-          <input type="text" value={street} onChange={(e) => setStreet(e.target.value)} placeholder="Street" />
-          <input type="text" value={houseNumber} onChange={(e) => setHouseNumber(e.target.value)} placeholder="House Number" />
-          <input type="text" value={city} onChange={(e) => setCity(e.target.value)} placeholder="City" />
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="E-Mail"
+          />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+          />
+          <input
+            type="text"
+            value={firstName}
+            onChange={(e) => setFirstname(e.target.value)}
+            placeholder="Firstname"
+          />
+          <input
+            type="text"
+            value={lastName}
+            onChange={(e) => setLastname(e.target.value)}
+            placeholder="Lastname"
+          />
+          <input
+            type="text"
+            value={street}
+            onChange={(e) => setStreet(e.target.value)}
+            placeholder="Street"
+          />
+          <input
+            type="text"
+            value={houseNumber}
+            onChange={(e) => setHouseNumber(e.target.value)}
+            placeholder="House Number"
+          />
+          <input
+            type="text"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            placeholder="City"
+          />
         </form>
       </div>
       <div className="register-button">

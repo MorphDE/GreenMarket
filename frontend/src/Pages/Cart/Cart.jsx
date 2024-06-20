@@ -1,13 +1,16 @@
 import "./Cart.css";
 import GoBack from "./../../Components/GoBack/GoBack";
 import CartItem from "../../Components/CartItem/CartItem";
+
 import { CartContext, RefreshContext, TokenContext } from "../../Context/Contexts";
+
 import { useContext, useEffect, useState } from "react";
 import { backendUrl } from "../../api/api";
+import { useAuth } from "../../Context/AuthProvider";
 
 const Cart = () => {
-  const { token, setToken } = useContext(TokenContext);
-  const { refresh, setRefresh } = useContext(RefreshContext);
+  const { user, token } = useAuth();
+  const { products, setProducts } = useContext(ProductContext);
   const { cart, setCart } = useContext(CartContext);
 
   const calculateTotalPrice = (allProducts) => {
@@ -38,7 +41,8 @@ const Cart = () => {
 
   useEffect(() => {
     fetchCart();
-  }, []);
+  }, [token]);
+
 
   return (
     <section className="cart-container">
