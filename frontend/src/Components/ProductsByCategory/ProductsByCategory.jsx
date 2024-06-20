@@ -1,14 +1,14 @@
 import { useContext, useEffect } from "react";
 import ProductCard from "../ProductCard/ProductCard";
-import "./TopDeals.css";
+import "./ProductsByCategory.css";
 import { ProductContext } from "../../Context/Contexts";
-import { backendUrl } from './../../api/api';
+import { backendUrl } from '../../api/api';
 
-const TopDeals = () => {
+const ProductsByCategory = ({ activeCategory }) => {
   const { products, setProducts } = useContext(ProductContext);
 
   useEffect(() => {
-    fetch(`${backendUrl}/api/v1/products/getAllProducts`)
+    fetch(`${backendUrl}/api/v1/products/getProductByCategory/${activeCategory._id}`)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
@@ -16,13 +16,13 @@ const TopDeals = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [activeCategory]);
 
   if (!products) return "Loading...";
 
   return (
     <section className="topdeals-container">
-      <h1>All Products</h1>
+      <h1>{activeCategory.name}</h1>
       <div className="product-cards">
         {products?.map((item, index) => (
           <ProductCard
@@ -39,4 +39,4 @@ const TopDeals = () => {
   );
 };
 
-export default TopDeals;
+export default ProductsByCategory;

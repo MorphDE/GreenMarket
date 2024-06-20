@@ -110,7 +110,7 @@ export async function getProductsByCategoryCtrl(req, res) {
     }
 
     const products = await ProductService.getProductsByCategory(categoryId);
-    res.json({ products });
+    res.json(products);
   } catch (err) {
     console.log("Error fetching products by category:", err);
     res.status(500).json({ err, message: err.message });

@@ -2,11 +2,13 @@ import { useContext, useEffect, useState } from "react";
 import "./FilterButtonsSmall.css";
 import { backendUrl } from "../../api/api";
 import { FilterContext } from "../../Context/Contexts";
+import { useNavigate } from "react-router-dom";
 
-const FilterButtonsSmall = () => {
+const FilterButtonsSmall = ({ filters, setFilters }) => {
 
     const [categories, setCategories] = useState();
-    const { filters, setFilters } = useContext(FilterContext);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch(`${backendUrl}/api/v1/categories/`)
@@ -16,9 +18,11 @@ const FilterButtonsSmall = () => {
     }, []);
 
     const updateCategory = (value) => {
-        let newFilters = filters;
+        let newFilters = Object.assign({}, filters)
         newFilters.categoryName = value;
-        setFilters(newFilters);
+        navigate("/search")
+        setFilters(() => newFilters);
+        
     }
 
     return (
@@ -28,7 +32,6 @@ const FilterButtonsSmall = () => {
                     <p onClick={() => updateCategory(category.name)}>{category.name}</p>
                 </div> 
             ))}
-            
         </section>
     );
 }
