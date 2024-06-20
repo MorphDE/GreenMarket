@@ -1,9 +1,10 @@
-import { UserContext } from "../../Context/Contexts";
+import { useAuth } from "../../Context/AuthProvider";
 import "./Location.css";
-import React, { useContext } from "react";
+import React from "react";
 
 const Location = () => {
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useAuth();
+  console.log(user);
   return (
     <section className="location-container">
       <div>

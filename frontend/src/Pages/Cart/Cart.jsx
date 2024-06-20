@@ -5,17 +5,16 @@ import {
   CartContext,
   ProductContext,
   RefreshContext,
-  TokenContext,
-  UserContext,
 } from "../../Context/Contexts";
 import { useContext, useEffect, useState } from "react";
 import { backendUrl } from "../../api/api";
+import { useAuth } from "../../Context/AuthProvider";
 
 const Cart = () => {
-  const { user, setUser } = useContext(UserContext);
-  const { token, setToken } = useContext(TokenContext);
+  const { user, token } = useAuth();
+
   const { products, setProducts } = useContext(ProductContext);
-  const { refresh, setRefresh } = useContext(RefreshContext);
+  // const { refresh, setRefresh } = useContext(RefreshContext);
   const { cart, setCart } = useContext(CartContext);
 
   const [errorMessage, setErrorMessage] = useState("");
@@ -55,7 +54,7 @@ const Cart = () => {
       console.log("Cart fetch successful");
     }
     fetchCart();
-  }, [token, refresh]);
+  }, [token]);
 
   return (
     <section className="cart-container">
