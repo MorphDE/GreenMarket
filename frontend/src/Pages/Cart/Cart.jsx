@@ -10,8 +10,6 @@ const Cart = () => {
   const { refresh, setRefresh } = useContext(RefreshContext);
   const { cart, setCart } = useContext(CartContext);
 
-  const [errorMessage, setErrorMessage] = useState("");
-
   const calculateTotalPrice = (allProducts) => {
     let totalPrice = 0;
 
@@ -34,10 +32,8 @@ const Cart = () => {
     });
 
     const data = await res.json();
-    if (!data.cart) return setErrorMessage(data.message || "Failed to verify fetch Cart");
+    if (!data.cart) return console.log("error   " + data.message);
     setCart(data.cart);
-
-    console.log(errorMessage);
   }
 
   useEffect(() => {
