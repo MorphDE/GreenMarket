@@ -4,11 +4,12 @@ import GoBack from "./../../Components/GoBack/GoBack";
 import { backendUrl } from "../../api/api";
 import { useContext, useEffect, useState } from "react";
 import { TokenContext } from "../../Context/Contexts";
+import { useAuth } from "../../Context/AuthProvider";
 
 const Favourites = () => {
   const [favourites, setFavourites] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
-  const { token, setToken } = useContext(TokenContext);
+  const { token } = useAuth();
 
   useEffect(() => {
     console.log("fetch Favourites launched");
