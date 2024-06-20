@@ -5,6 +5,7 @@ import { backendUrl } from "../../api/api";
 import { useContext, useEffect, useState } from "react";
 import { TokenContext } from "../../Context/Contexts";
 import { useAuth } from "../../Context/AuthProvider";
+import FavouritesItem from "../../Components/FavouritesItem/FavouritesItem";
 
 const Favourites = () => {
   const [favourites, setFavourites] = useState([]);
@@ -59,16 +60,20 @@ const Favourites = () => {
         <i className="fa-solid fa-trash-can"></i>
       </div>
       <div className="favourite-items">
-        {favourites.map((item, index) => (
-          <CartItem
-            key={index}
-            imageUrl={item?.image}
-            productName={item?.name}
-            unit={item?.unit}
-            rating={item?.rating}
-            price={item?.price}
-          />
-        ))}
+        {favourites.length > 0 ? (
+          favourites?.map((item, index) => (
+            <FavouritesItem
+              key={index}
+              imageUrl={item?.image}
+              productName={item?.name}
+              unit={item?.unit}
+              rating={item?.rating}
+              price={item?.price}
+            />
+          ))
+        ) : (
+          <p> You haven't added anything to your favourites yet. </p>
+        )}
       </div>
       <button className="btn-green-two">Add To Cart</button>
     </section>

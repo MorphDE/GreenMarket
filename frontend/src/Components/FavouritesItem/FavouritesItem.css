@@ -1,0 +1,88 @@
+.single-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6vw;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.single-item .fa-heart {
+  color: var(--grey);
+  top: 0;
+  right: 0;
+  padding-top: 4vw;
+  padding-right: 4vw;
+  position: absolute;
+}
+
+.item-img img {
+  display: flex;
+  align-items: center;
+  max-height: 70px;
+  border-radius: 1rem;
+}
+
+.item-weight {
+  margin-right: 3vw;
+}
+
+.product-bottom {
+  display: flex;
+  gap: 2vw;
+}
+
+.product-rating .fa-heart {
+  font-size: 0.9rem;
+  margin-left: 5vw;
+}
+
+.item-bottom {
+  display: flex;
+  align-items: center;
+  gap: 5vw;
+}
+
+input[type="checkbox"] {
+  width: 1em;
+  height: 1rem;
+  accent-color: var(--main);
+}
+
+.item-content h1 {
+  font-size: 1rem;
+}
+
+.plus-minus {
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+}
+
+.plus-minus .item-amount {
+  font-size: 1rem;
+}
+
+.item-rate {
+  margin-right: 3vw;
+}
+
+.item-amount {
+  color: var(--font);
+}
+
+.fa-square-minus {
+  color: var(--main);
+}
+
+.fa-square-plus {
+  color: var(--main);
+}
+
+.fa-square-minus,
+.fa-star,
+.fa-square-plus,
+.fa-trash-can {
+  font-size: 1.75rem;
+}
