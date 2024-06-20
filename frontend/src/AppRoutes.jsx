@@ -11,38 +11,38 @@ import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
 import SearchPage from "./Pages/SearchPage/SearchPage";
 import { useContext, useState } from "react";
-import {
-  ProductContext,
-  RefreshContext,
-  TokenContext,
-  UserContext,
-} from "./Context/Contexts";
+import { ProductContext, RefreshContext, TokenContext, UserContext } from "./Context/Contexts";
 import AuthRequired from "./Components/AuthRequired";
+import SilentRefresh from "./Components/SilentRefresh";
 
 const AppRoutes = () => {
-  const { refreshToken, setRefreshToken } = useContext(RefreshContext);
-  const { user, setUser } = useContext(UserContext);
-  const { token, setToken } = useContext(TokenContext);
   const { products, setProducts } = useContext(ProductContext);
 
   return (
     <BrowserRouter>
-      <Routes>
-        <>
+      <SilentRefresh>
+        <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/" element={<Home user={user} />} />
+          <Route path="/" element={<Home />} />
           <Route
             path="/profile"
             element={
-              <AuthRequired setUser={setUser} token={token} setToken={setToken}>
+              <AuthRequired>
                 <Profile />
               </AuthRequired>
             }
           />
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/onboarding" element={<Onboarding />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route
+            path="/cart"
+            element={
+              <AuthRequired>
+                <Cart />
+              </AuthRequired>
+            }
+          />
           <Route path="/search/:search" element={<SearchPage />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/orders" element={<Orders />} />
@@ -57,8 +57,8 @@ const AppRoutes = () => {
           />
 
           <Route path="/verify" element={<Verify />} />
-        </>
-      </Routes>
+        </Routes>{" "}
+      </SilentRefresh>
     </BrowserRouter>
   );
 };

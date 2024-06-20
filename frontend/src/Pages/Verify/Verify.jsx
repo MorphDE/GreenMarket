@@ -3,18 +3,19 @@ import "./Verify.css";
 import { useNavigate } from "react-router-dom";
 import { backendUrl } from "../../api/api";
 import { TokenContext, UserContext } from "../../Context/Contexts";
+import { useAuth } from "../../Context/AuthProvider";
 
 const Verify = () => {
   const [sixDigitCode, setSixDigitCode] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const { user, setUser } = useContext(UserContext);
-  const { token, setToken } = useContext(TokenContext);
+  const { user, setUser } = useAuth();
+
   const navigate = useNavigate();
 
   const verifyEmail = async (e) => {
     const res = await fetch(
-      `${backendUrl}/api/v1/users/verifyEmail/${user._id}`,
+      `${backendUrl}/api/v1/users/verifyEmail/${user?._id}`,
       {
         headers: { "Content-Type": "application/json" },
         method: "POST",
