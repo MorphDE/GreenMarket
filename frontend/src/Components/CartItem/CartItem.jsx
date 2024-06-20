@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { backendUrl } from "../../api/api";
 import "./CartItem.css";
 
@@ -7,6 +8,7 @@ const CartItem = ({ imageUrl, productName, unit, rating, price, amount }) => {
   return (
     <section className="single-item">
       <i className="fa-solid fa-heart"></i>
+
       <div>
         <input type="checkbox" name="check" id="checkbox" />
       </div>

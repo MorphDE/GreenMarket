@@ -5,7 +5,6 @@ import { backendUrl } from "../../api/api";
 import { ProductContext } from "../../Context/Contexts";
 
 const TopDeals = () => {
-
   const { products, setProducts } = useContext(ProductContext);
 
   useEffect(() => {
@@ -19,9 +18,7 @@ const TopDeals = () => {
       });
   }, []);
 
-  if(!products) return "Loading..."
-  console.log(products);
-
+  if (!products) return "Loading...";
 
   return (
     <section className="topdeals-container">
@@ -43,4 +40,3 @@ const TopDeals = () => {
 };
 
 export default TopDeals;
-
