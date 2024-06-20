@@ -19,8 +19,8 @@ const FilterButtons = () => {
   return (
     <article className="filterbuttons-container">
       {categories?.map((item, index) => (
-        <Link to={`/search/${item._id}`}>
-          <div key={index} className="single-filterbutton">
+        <Link to={`/search/${item._id}`} key={index}>
+          <div className="single-filterbutton">
             <img src={item.icon} alt="" />
             <p>{item.name}</p>
           </div>

@@ -79,3 +79,10 @@ input[type="checkbox"] {
 .fa-square-plus {
   color: var(--main);
 }
+
+.fa-square-minus,
+.fa-star,
+.fa-square-plus,
+.fa-trash-can {
+  font-size: var(--icon-size);
+}
