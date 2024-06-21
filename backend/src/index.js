@@ -9,6 +9,7 @@ import { productRouter } from "./routes/productRouter.js";
 import { categoryRouter } from "./routes/categoryRouter.js";
 import { cartRouter } from "./routes/cartRouter.js";
 import { favoriteRouter } from "./routes/favoriteRoutes.js";
+import { orderRouter } from "./routes/orderRouter.js";
 
 dotenv.config();
 const app = express();
@@ -45,6 +46,8 @@ app.use("/api/v1/categories", categoryRouter);
 app.use("/api/v1/favorites", favoriteRouter);
 
 app.use("/api/v1/cart", cartRouter);
+
+app.use("/api/v1/order", orderRouter);
 
 app.use("/api/v1/uploads", express.static("uploads"));
 
