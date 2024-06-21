@@ -1,24 +1,11 @@
 import { useAuth } from "../../Context/AuthProvider";
-import {
-  CartContext,
-  RefreshContext,
-  TokenContext,
-} from "../../Context/Contexts";
+import { CartContext, RefreshContext, TokenContext } from "../../Context/Contexts";
 
 import { backendUrl } from "../../api/api";
 import "./CartItem.css";
 import { useContext, useEffect, useState } from "react";
 
-const CartItem = ({
-  imageUrl,
-  productName,
-  unit,
-  rating,
-  price,
-  amount,
-  productId,
-  fetchCart,
-}) => {
+const CartItem = ({ imageUrl, productName, unit, rating, price, amount, productId, fetchCart }) => {
   const fullImageUrl = `${backendUrl}/api/v1/uploads/product-images/${imageUrl}`;
 
   const { cart, setCart } = useContext(CartContext);
@@ -35,9 +22,7 @@ const CartItem = ({
 
   const decreaseQuantity = () => {
     if (amountProduct <= 1) {
-      console.log(
-        `Error. current quantity: ${amountProduct}. Can't decrease from 1, otherwise quantity will reach 0`
-      );
+      console.log(`Error. current quantity: ${amountProduct}. Can't decrease from 1, otherwise quantity will reach 0`);
     } else {
       const newQuantity = amountProduct - 1;
       setAmountProduct(newQuantity);
@@ -46,18 +31,15 @@ const CartItem = ({
 
   useEffect(() => {
     async function updateQuantity() {
-      const res = await fetch(
-        `${backendUrl}/api/v1/cart/updateQuantity/${productId}`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            authorization: `Bearer ${token}`,
-          },
-          method: "PATCH",
-          body: JSON.stringify({ quantity: amountProduct }),
-          credentials: "include",
-        }
-      );
+      const res = await fetch(`${backendUrl}/api/v1/cart/updateQuantity/${productId}`, {
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
+        method: "PATCH",
+        body: JSON.stringify({ quantity: amountProduct }),
+        credentials: "include",
+      });
 
       const data = await res.json();
       console.log(data);
@@ -76,9 +58,6 @@ const CartItem = ({
     updateQuantity();
   }, [token, amountProduct]);
 
-  console.log("userId:  " + cart?.userId);
-  console.log("productId:  " + cart?.items?.productID);
-
   async function removeItemFromCart() {
     const res = await fetch(`${backendUrl}/api/v1/cart/removeItem`, {
       headers: {
@@ -86,10 +65,9 @@ const CartItem = ({
         authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        userId: cart?.userId,
-        productId: cart?.items?.productId,
+        productId: productId,
       }),
-      method: "POST",
+      method: "DELETE",
       credentials: "include",
     });
 
@@ -97,10 +75,6 @@ const CartItem = ({
     if (!data.result) return console.log("error   " + data.message);
     setCart(data.result);
   }
-
-  useEffect(() => {
-    removeItemFromCart();
-  }, []);
 
   return (
     <section className="single-item">
@@ -118,10 +92,7 @@ const CartItem = ({
         <div className="item-bottom">
           <p>{price}€ </p>
           <div className="plus-minus">
-            <i
-              className="fa-solid fa-square-minus"
-              onClick={decreaseQuantity}
-            ></i>
+            <i className="fa-solid fa-square-minus" onClick={decreaseQuantity}></i>
             <p className="item-amount">
               {amountProduct}
               {unit}
