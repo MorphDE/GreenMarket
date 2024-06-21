@@ -67,9 +67,7 @@ const Cart = () => {
           <p>Loading...</p>
         )}
       </div>
-      <button className="btn-green-two">
-        Check Out - Total: {calculateTotalPrice(cart?.items)}€
-      </button>
+      <button className="btn-green-two">Check Out - Total: {calculateTotalPrice(cart?.items)}€</button>
     </section>
   );
 };
