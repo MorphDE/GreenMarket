@@ -78,30 +78,32 @@ const CartItem = ({ imageUrl, productName, unit, rating, price, amount, productI
 
   return (
     <section className="single-item">
-      <i className="fa-solid fa-heart"></i>
       {/* <div> <input type="checkbox" name="check" id="checkbox" /> </div> */}
-      <div className="item-img">
-        <img src={fullImageUrl} alt={productName} />
-      </div>
-      <div className="item-content">
-        <h1>{productName}</h1>
-        <div className="product-rating">
-          <i className="fa-solid fa-star"></i>
-          <p className="item-rate">{rating}</p>
+      <div className="item-container">
+        <div className="item-img">
+          <img src={fullImageUrl} alt={productName} />
         </div>
-        <div className="item-bottom">
-          <p>{price}€ </p>
-          <div className="plus-minus">
-            <i className="fa-solid fa-square-minus" onClick={decreaseQuantity}></i>
-            <p className="item-amount">
-              {amountProduct}
-              {unit}
-            </p>
-            {/* //! optimistic update:  muss nicht unbedingt übereinstimen mit Backend */}
-            <i className="fa-solid fa-square-plus" onClick={addQuantity}></i>
+        <div className="item-content">
+          <h1>{productName}</h1>
+          <div className="product-rating">
+            <i className="fa-solid fa-star"></i>
+            <p className="item-rate">{rating}</p>
+          </div>
+          <div className="item-bottom">
+            <p>{price}€ </p>
+            <div className="plus-minus">
+              <i className="fa-solid fa-square-minus" onClick={decreaseQuantity}></i>
+              <p className="item-amount">
+                {amountProduct}
+                {unit}
+              </p>
+              {/* //! optimistic update:  muss nicht unbedingt übereinstimen mit Backend */}
+              <i className="fa-solid fa-square-plus" onClick={addQuantity}></i>
+            </div>
           </div>
         </div>
       </div>
+
       <i className="fa-solid fa-trash-can" onClick={removeItemFromCart}></i>
     </section>
   );
