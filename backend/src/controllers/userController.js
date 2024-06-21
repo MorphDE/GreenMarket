@@ -97,6 +97,11 @@ export async function patchUpdateUserCtrl(req, res) {
   }
 }
 
+async function handleLogout(req, res) {
+  res.clearCookie("token");
+  res.status(200).json({ message: "Logout successful" });
+}
+
 export const UserController = {
   postRegisterUserCtrl,
   postLoginUserCtrl,
@@ -105,4 +110,5 @@ export const UserController = {
   deleteUserCtrl,
   getUserByIdCtrl,
   patchUpdateUserCtrl,
+  handleLogout,
 };
