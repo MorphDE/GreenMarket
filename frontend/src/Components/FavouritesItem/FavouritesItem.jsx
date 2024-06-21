@@ -1,10 +1,5 @@
 import { useAuth } from "../../Context/AuthProvider";
-import {
-  CartContext,
-  RefreshContext,
-  TokenContext,
-} from "../../Context/Contexts";
-
+import { FavouritesContext } from "../../Context/Contexts";
 import { backendUrl } from "../../api/api";
 import "./FavouritesItem.css";
 import { useContext, useEffect, useState } from "react";
@@ -12,13 +7,16 @@ import { useContext, useEffect, useState } from "react";
 const FavouritesItem = ({ imageUrl, productName, unit, rating, price }) => {
   const fullImageUrl = `${backendUrl}/api/v1/uploads/product-images/${imageUrl}`;
 
-  const [favourites, setFavourites] = useState([]);
+  const { favourites, setFavourites } = useContext(FavouritesContext);
   const { token } = useAuth();
 
   return (
     <section className="single-item">
       <i className="fa-solid fa-heart"></i>
-      {/* <div> <input type="checkbox" name="check" id="checkbox" /> </div> */}
+      <div>
+        {" "}
+        <input type="checkbox" name="check" id="checkbox" />{" "}
+      </div>
       <div className="item-img">
         <img src={fullImageUrl} alt={productName} />
       </div>

@@ -1,14 +1,13 @@
 import "./Favourites.css";
-import CartItem from "./../../Components/CartItem/CartItem";
 import GoBack from "./../../Components/GoBack/GoBack";
 import { backendUrl } from "../../api/api";
 import { useContext, useEffect, useState } from "react";
-import { TokenContext } from "../../Context/Contexts";
+import { FavouritesContext } from "../../Context/Contexts";
 import { useAuth } from "../../Context/AuthProvider";
 import FavouritesItem from "../../Components/FavouritesItem/FavouritesItem";
 
 const Favourites = () => {
-  const [favourites, setFavourites] = useState([]);
+  const { favourites, setFavourites } = useContext(FavouritesContext);
   const [errorMessage, setErrorMessage] = useState("");
   const { token } = useAuth();
 
@@ -40,17 +39,6 @@ const Favourites = () => {
     fetchFavourites();
   }, []);
 
-  // useEffect(() => {
-  //   fetch(`${backendUrl}/api/v1/favorites/userFavorite`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setFavourites(data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, []);
-
   console.log(favourites);
   console.log(token);
   return (
@@ -60,7 +48,7 @@ const Favourites = () => {
         <i className="fa-solid fa-trash-can"></i>
       </div>
       <div className="favourite-items">
-        {favourites.length > 0 ? (
+        {favourites?.length > 0 ? (
           favourites?.map((item, index) => (
             <FavouritesItem
               key={index}
