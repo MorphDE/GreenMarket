@@ -4,11 +4,13 @@ import CartIcon from "../../../public/cart.png";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { backendUrl } from "../../api/api";
+import { useAuth } from "../../Context/AuthProvider";
 
 const ProductDetails = () => {
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
 
+  const { token } = useAuth();
   const { id } = useParams();
 
   useEffect(() => {
@@ -32,16 +34,30 @@ const ProductDetails = () => {
     }
   };
 
+  async function addToCart() {
+    const res = await fetch(`${backendUrl}/api/v1/cart/addToCart`, {
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${token}`,
+      },
+      method: "POST",
+      body: JSON.stringify({ quantity: quantity, productId: id }),
+      credentials: "include",
+    });
+
+    const data = await res.json();
+    console.log(data);
+    if (!data.result) return console.log("error   " + data.message);
+  }
+
   return (
     <section className="productdetails-container">
       <GoBack title={"Back"} />
       <div className="details-top">
-        <img
-          src={`${backendUrl}/api/v1/uploads/product-images/${product?.image}`}
-          alt="Product Image"
-        />
+        <img src={`${backendUrl}/api/v1/uploads/product-images/${product?.image}`} alt="Product Image" />
         <p className="product-weight-btn">
-          {quantity}{product?.unit}
+          {quantity}
+          {product?.unit}
         </p>
         <p className="product-price">${(product?.price * quantity).toFixed(2)}</p>
         <h1 className="product-name">{product?.name}</h1>
@@ -55,16 +71,15 @@ const ProductDetails = () => {
       <div className="details-bottom">
         <p>Quantity</p>
         <div className="details-amount">
-          <i
-            className={`fa-solid fa-square-minus ${quantity === 1 ? 'disabled' : ''}`}
-            onClick={handleDecrement}
-          ></i>
-          <p className="item-amount">{String(quantity).padStart(2, '0')}</p>
+          <i className={`fa-solid fa-square-minus ${quantity === 1 ? "disabled" : ""}`} onClick={handleDecrement}></i>
+          <p className="item-amount">{String(quantity).padStart(2, "0")}</p>
           <i className="fa-solid fa-square-plus" onClick={handleIncrement}></i>
         </div>
         <img src={CartIcon} alt="Cart Icon" />
       </div>
-      <button className="btn-light">Add to Cart</button>
+      <button className="btn-light" onClick={addToCart}>
+        Add to Cart
+      </button>
     </section>
   );
 };
