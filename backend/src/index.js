@@ -10,6 +10,17 @@ import { categoryRouter } from "./routes/categoryRouter.js";
 import { cartRouter } from "./routes/cartRouter.js";
 import { favoriteRouter } from "./routes/favoriteRoutes.js";
 
+// DEPLOY
+
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const path = require('path');
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 dotenv.config();
 const app = express();
 
@@ -21,7 +32,7 @@ const isFrontendLocalhost =
 const cookieSessionSecret = process.env.COOKIE_SESSION_SECRET;
 
 // re-configure cors middleware
-app.use(cors({ origin: [process.env.FRONTEND_URL], credentials: true }));
+app.use(cors({ origin: [process.env.FRONTEND_URL, "https://greenmarket.tobias-tischer.de"], credentials: true }));
 /////////// add parser for cookies
 app.set("trust proxy", 1); // trust first proxy
 const cookieSessionOptions = {
@@ -47,6 +58,19 @@ app.use("/api/v1/favorites", favoriteRouter);
 app.use("/api/v1/cart", cartRouter);
 
 app.use("/api/v1/uploads", express.static("uploads"));
+
+app.use((req, res, next) => {
+  if (/(.ico|.js|.css|.jpg|.jpeg|.png|.svg|.map|.woff|.woff2)$/i.test(req.path)) {
+      next();
+  } else {
+      res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+      res.header('Expires', '-1');
+      res.header('Pragma', 'no-cache');
+      res.sendFile(path.join(__dirname, '../', 'frontend', 'index.html'));
+  }
+});
+
+app.use(express.static('frontend'));
 
 try {
   await connectToDatabase();
