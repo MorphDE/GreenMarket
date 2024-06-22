@@ -15,9 +15,7 @@ export async function addToCart({ userId, productId, quantity }) {
       items: [{ productId, quantity }],
     });
   } else {
-    const existingItemIndex = cart.items.findIndex(
-      (item) => item.productId.toString() === productId
-    );
+    const existingItemIndex = cart.items.findIndex((item) => item.productId.toString() === productId);
 
     if (existingItemIndex > -1) {
       cart.items[existingItemIndex].quantity += quantity;

@@ -12,4 +12,5 @@ export async function removeFavorite(userId, productId) {
   );
 
   await favorite.save();
+  return favorite;
 }

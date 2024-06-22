@@ -10,18 +10,34 @@ import Verify from "./Pages/Verify/Verify";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
 import SearchPage from "./Pages/SearchPage/SearchPage";
-import { useContext, useState } from "react";
-import {
-  ProductContext,
-  RefreshContext,
-  TokenContext,
-  UserContext,
-} from "./Context/Contexts";
+import { useContext, useEffect } from "react";
+import { FavouriteContext } from "./Context/Contexts";
 import AuthRequired from "./Components/AuthRequired";
 import SilentRefresh from "./Components/SilentRefresh";
+import { useAuth } from "./Context/AuthProvider";
+import { backendUrl } from "./api/api";
 
 const AppRoutes = () => {
-  const { products, setProducts } = useContext(ProductContext);
+
+  const { favourites, setFavourites } = useContext(FavouriteContext);
+  const { token } = useAuth();
+
+  useEffect(() => {
+    if (!favourites) {
+      fetch(`${backendUrl}/api/v1/favorites/userFavorite`, {
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
+        method: "GET",
+        credentials: "include",
+      })
+        .then(res => res.json())
+        .then(data => {
+          setFavourites(data.map(item => item._id));
+        });
+    }
+  }, [])
 
   return (
     <BrowserRouter>
