@@ -54,7 +54,7 @@ const Cart = () => {
 
   useEffect(() => {
     fetchCart();
-  }, [token]);
+  }, []);
 
   return (
     <section className="cart-container">
@@ -81,6 +81,7 @@ const Cart = () => {
         )}
       </div>
       <button onClick={addToOrder} className="btn-green-two">
+      <button className="btn-green-two">
         Check Out - Total: {calculateTotalPrice(cart?.items)}€
       </button>
     </section>

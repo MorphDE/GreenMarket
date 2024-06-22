@@ -1,15 +1,18 @@
 import "./Favourites.css";
 import GoBack from "./../../Components/GoBack/GoBack";
 import { backendUrl } from "../../api/api";
-import { useContext, useEffect, useState } from "react";
-import { FavouritesContext } from "../../Context/Contexts";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../Context/AuthProvider";
 import FavouritesItem from "../../Components/FavouritesItem/FavouritesItem";
+import { FavouriteContext } from "../../Context/Contexts";
+import { useContext } from "react";
 
 const Favourites = () => {
-  const { favourites, setFavourites } = useContext(FavouritesContext);
+  const [backendFavourites, setBackendFavourites] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const { token } = useAuth();
+
+  const { favourites, setFavourites } = useContext(FavouriteContext);
 
   useEffect(() => {
     console.log("fetch Favourites launched");
@@ -30,7 +33,8 @@ const Favourites = () => {
         return setErrorMessage(
           data.message || "Failed to verify fetch Favourites"
         );
-      setFavourites(data);
+      setBackendFavourites(data);
+      setFavourites(data.map(item => item._id));
       // console.log(cart);
 
       console.log(errorMessage);
@@ -39,7 +43,7 @@ const Favourites = () => {
     fetchFavourites();
   }, []);
 
-  console.log(favourites);
+  console.log(backendFavourites);
   console.log(token);
   return (
     <section className="favourites-container">
@@ -48,8 +52,8 @@ const Favourites = () => {
         <i className="fa-solid fa-trash-can"></i>
       </div>
       <div className="favourite-items">
-        {favourites?.length > 0 ? (
-          favourites?.map((item, index) => (
+        {backendFavourites.length > 0 ? (
+          backendFavourites?.map((item, index) => (
             <FavouritesItem
               key={index}
               imageUrl={item?.image}

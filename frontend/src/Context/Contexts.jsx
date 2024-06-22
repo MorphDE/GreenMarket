@@ -8,5 +8,4 @@ export const TokenContext = createContext();
 export const ProductContext = createContext();
 export const FilterContext = createContext();
 export const CartContext = createContext();
-export const FavouritesContext = createContext();
-export const ToggleFavouritesContext = createContext();
+export const FavouriteContext = createContext();
