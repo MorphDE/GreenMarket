@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { backendUrl } from "../../api/api";
 import { useAuth } from "../../Context/AuthProvider";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProductDetails = () => {
   const [product, setProduct] = useState(null);
@@ -43,14 +45,27 @@ const ProductDetails = () => {
       },
       body: JSON.stringify({
         productId: id,
-        quantity: quantity
+        quantity: quantity,
       }),
       method: "POST",
       credentials: "include",
     })
       .then((res) => res.json())
-      .catch((error) => console.log("Error adding item ", error))
-  }
+      .then(
+        toast.success("You successfully added this item to your cart!", {
+          position: "top-right",
+          autoClose: 4000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          // transition: Bounce,
+        })
+      )
+      .catch((error) => console.log("Error adding item ", error));
+  };
 
   return (
     <section className="productdetails-container">
@@ -61,9 +76,12 @@ const ProductDetails = () => {
           alt="Product Image"
         />
         <p className="product-weight-btn">
-          {quantity}{product?.unit}
+          {quantity}
+          {product?.unit}
         </p>
-        <p className="product-price">${(product?.price * quantity).toFixed(2)}</p>
+        <p className="product-price">
+          ${(product?.price * quantity).toFixed(2)}
+        </p>
         <h1 className="product-name">{product?.name}</h1>
         <div className="product-rating">
           <i className="fa-solid fa-star"></i>
@@ -76,15 +94,19 @@ const ProductDetails = () => {
         <p>Quantity</p>
         <div className="details-amount">
           <i
-            className={`fa-solid fa-square-minus ${quantity === 1 ? 'disabled' : ''}`}
+            className={`fa-solid fa-square-minus ${
+              quantity === 1 ? "disabled" : ""
+            }`}
             onClick={handleDecrement}
           ></i>
-          <p className="item-amount">{String(quantity).padStart(2, '0')}</p>
+          <p className="item-amount">{String(quantity).padStart(2, "0")}</p>
           <i className="fa-solid fa-square-plus" onClick={handleIncrement}></i>
         </div>
         <img src={CartIcon} alt="Cart Icon" />
       </div>
-      <button className="btn-light" onClick={() => addToCart()}>Add to Cart</button>
+      <button className="btn-light" onClick={() => addToCart()}>
+        Add to Cart
+      </button>
     </section>
   );
 };

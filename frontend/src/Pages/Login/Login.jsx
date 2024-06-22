@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { backendUrl } from "../../api/api";
 import { useAuth } from "../../Context/AuthProvider";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const { setUser, setToken } = useAuth();
@@ -31,9 +33,34 @@ const Login = () => {
     const data = await res.json();
     console.log(data);
 
-    if (!data.result) return setErrorMessage(data.message || "Failed to verify email");
+    if (!data.result)
+      return (
+        setErrorMessage(data.message || "Failed to verify email"),
+        toast.error("Please enter a correct email and password.", {
+          position: "top-right",
+          autoClose: 4000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          // transition: Bounce,
+        })
+      );
     console.log(errorMessage);
     console.log("login successful");
+    toast.success("You have successfully logged in!", {
+      position: "top-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      // transition: Bounce,
+    });
     navigate("/");
 
     //! save token --> "logged in"
@@ -53,8 +80,22 @@ const Login = () => {
       </div>
       <div className="login-inputs">
         <form>
-          <input type="email" name="email" id="mail" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="E-Mail" />
-          <input type="password" name="password" id="pw" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+          <input
+            type="email"
+            name="email"
+            id="mail"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="E-Mail"
+          />
+          <input
+            type="password"
+            name="password"
+            id="pw"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+          />
         </form>
       </div>
       <div className="login-button">

@@ -5,6 +5,8 @@ import { TokenContext, UserContext } from "../../Context/Contexts";
 import { backendUrl } from "../../api/api";
 import { useAuth } from "../../Context/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Profile = () => {
   const { user, token } = useAuth();
@@ -48,9 +50,31 @@ const Profile = () => {
 
     if (!data.result)
       return setErrorMessage(data.message || "Failed to verify update Profile");
+      // toast.error("Updating profile failed. Please try again.", {
+      //   position: "top-right",
+      //   autoClose: 4000,
+      //   hideProgressBar: false,
+      //   closeOnClick: true,
+      //   pauseOnHover: true,
+      //   draggable: true,
+      //   progress: undefined,
+      //   theme: "light",
+      //   // transition: Bounce,
+      // })
 
     console.log(errorMessage);
     console.log("Profile Update successful");
+    // toast.success("You have successfully updated your profile!", {
+    //   position: "top-right",
+    //   autoClose: 4000,
+    //   hideProgressBar: false,
+    //   closeOnClick: true,
+    //   pauseOnHover: true,
+    //   draggable: true,
+    //   progress: undefined,
+    //   theme: "light",
+    //   // transition: Bounce,
+    // });
     console.log(data.result);
   };
 
