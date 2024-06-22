@@ -22,27 +22,27 @@ const orderSchema = new mongoose.Schema(
           type: Number,
           required: true,
         },
+        name: {
+          type: String,
+          required: true,
+        },
       },
     ],
     orderStatus: {
       type: String,
-      enum: orderStatusEnum,
-      default: "Pending",
+      enum: ["cancelled", "processing", "completed"],
+      default: "processing",
     },
     paymentStatus: {
       type: String,
-      enum: paymentStatusEnum,
-      default: "Pending",
+      enum: ["paid", "unpaid", "refunded"],
+      default: "unpaid",
     },
     totalAmount: {
       type: Number,
       required: true,
     },
-    shippingAddress: {
-      street: { type: String, required: true },
-      houseNumber: { type: String, required: true },
-      city: { type: String, required: true },
-    },
+
     createdAt: {
       type: Date,
       default: Date.now,

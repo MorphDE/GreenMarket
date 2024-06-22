@@ -25,6 +25,8 @@ import { addFavorite } from "./addFavorite.js";
 import { removeFavorite } from "./removeFavorite.js";
 import { getFavorites } from "./getFavorites.js";
 import { updateCartItemQuantity } from "./updateCartItemQuantity.js";
+import { addOrder } from "./addOrder.js";
+import { getOrdersByUser } from "./getOrdersByUsers.js";
 
 export const UserService = {
   registerUser,
@@ -64,4 +66,9 @@ export const FavoriteService = {
   addFavorite,
   removeFavorite,
   getFavorites,
+};
+
+export const OrderService = {
+  addOrder,
+  getOrdersByUser,
 };

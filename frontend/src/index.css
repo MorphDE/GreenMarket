@@ -12,6 +12,7 @@
   --grey: #777777;
   --rating: #ffc107;
   --bg: #f2f3f9;
+  --delete-red: #ff0000;
 }
 
 /* BUTTONS */
@@ -52,6 +53,10 @@ button {
   font-weight: 500;
   background-color: var(--main);
   border-radius: 0.5rem;
+}
+
+.fa-trash-can {
+  color: var(--delete-red);
 }
 
 /* INPUT STYLES */

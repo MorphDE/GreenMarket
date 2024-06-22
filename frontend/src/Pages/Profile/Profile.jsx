@@ -4,6 +4,7 @@ import React, { useContext, useState } from "react";
 import { TokenContext, UserContext } from "../../Context/Contexts";
 import { backendUrl } from "../../api/api";
 import { useAuth } from "../../Context/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const { user, token } = useAuth();
@@ -16,6 +17,8 @@ const Profile = () => {
   const [city, setCity] = useState(user?.address.city);
 
   const [errorMessage, setErrorMessage] = useState("");
+
+  const navigate = useNavigate();
 
   const updateProfile = async (e) => {
     console.log("updateProfile launched");
@@ -50,6 +53,25 @@ const Profile = () => {
     console.log("Profile Update successful");
     console.log(data.result);
   };
+
+  async function logout() {
+    try {
+      const response = await fetch(`${backendUrl}/api/v1/users/logout`, {
+        method: "POST",
+        credentials: "include",
+      });
+
+      if (response.ok) {
+        localStorage.removeItem("user");
+        localStorage.removeItem("token");
+        navigate("/login");
+      } else {
+        console.error("Logout failed");
+      }
+    } catch (error) {
+      console.error("An error occurred during logout:", error);
+    }
+  }
 
   return (
     <section className="profile-container">
@@ -122,6 +144,9 @@ const Profile = () => {
       <div className="profile-bottom">
         <button className="btn-light" onClick={updateProfile}>
           Update Profile
+        </button>
+        <button className="btn-light" onClick={logout}>
+          Logout
         </button>
       </div>
     </section>

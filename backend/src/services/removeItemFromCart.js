@@ -1,14 +1,14 @@
 import Cart from "../models/Cart.js";
 
 export async function removeItemFromCart({ userId, productId }) {
-  const cart = await Cart.findOne({ userId });
+  const cart = await Cart.findOne({ userId }).populate("items.productId");
 
   if (!cart) {
     throw new Error("Cart not found for this user");
   }
 
   const itemIndex = cart.items.findIndex(
-    (item) => item.productId.toString() === productId
+    (item) => item.productId._id.toString() === productId
   );
 
   if (itemIndex === -1) {
@@ -19,5 +19,9 @@ export async function removeItemFromCart({ userId, productId }) {
 
   await cart.save();
 
-  return cart;
+  const updatedCart = await Cart.findOne({ userId }).populate(
+    "items.productId"
+  );
+
+  return updatedCart;
 }
