@@ -16,6 +16,16 @@ export async function postAddToCartCtrl(req, res) {
     res.status(500).json({ err, message: err.message });
   }
 }
+export async function postAddMealOfTheDayCtrl(req, res) {
+  try {
+    const userId = req.authenticatedUserId;
+    const result = await CartService.addMealOfTheDay({ userId });
+    res.json({ result });
+  } catch (err) {
+    console.log("Error adding to cart:", err);
+    res.status(500).json({ err, message: err.message });
+  }
+}
 
 export async function postRemoveItemFromCartCtrl(req, res) {
   try {
@@ -78,4 +88,5 @@ export const CartController = {
   postRemoveItemFromCartCtrl,
   getCartCtrl,
   updateCartItemQuantityCtrl,
+  postAddMealOfTheDayCtrl,
 };

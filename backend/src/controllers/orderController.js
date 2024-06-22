@@ -13,9 +13,10 @@ async function postAddOrderCtrl(req, res) {
 
 async function getUserOrdersCtrl(req, res) {
   const userId = req.authenticatedUserId;
+
   try {
     const result = await OrderService.getOrdersByUser(userId);
-    res.status(200).json({ result });
+    res.status(200).json(result);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

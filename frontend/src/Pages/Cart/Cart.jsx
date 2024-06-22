@@ -38,6 +38,19 @@ const Cart = () => {
     if (!data.cart) return console.log("error   " + data.message);
     setCart(data.cart);
   }
+  async function addToOrder() {
+    const res = await fetch(`${backendUrl}/api/v1/order/addOrder`, {
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${token}`,
+      },
+      method: "POST",
+      credentials: "include",
+    });
+
+    const data = await res.json();
+    setCart();
+  }
 
   useEffect(() => {
     fetchCart();
@@ -67,6 +80,7 @@ const Cart = () => {
           <p>Loading...</p>
         )}
       </div>
+      <button onClick={addToOrder} className="btn-green-two">
       <button className="btn-green-two">
         Check Out - Total: {calculateTotalPrice(cart?.items)}€
       </button>

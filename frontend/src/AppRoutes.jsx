@@ -14,8 +14,10 @@ import { useContext, useEffect } from "react";
 import { FavouriteContext } from "./Context/Contexts";
 import AuthRequired from "./Components/AuthRequired";
 import SilentRefresh from "./Components/SilentRefresh";
+
 import { useAuth } from "./Context/AuthProvider";
 import { backendUrl } from "./api/api";
+import MealOfTheDay from "./Pages/MealOfTheDay/MealOfTheDay";
 
 const AppRoutes = () => {
 
@@ -56,6 +58,7 @@ const AppRoutes = () => {
           />
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/onboarding" element={<Onboarding />} />
+          <Route path="/mealOfTheDay" element={<MealOfTheDay />} />
           <Route
             path="/cart"
             element={
