@@ -80,8 +80,7 @@ const Cart = () => {
           <p>Loading...</p>
         )}
       </div>
-      <button onClick={addToOrder} className="btn-green-two">
-      <button className="btn-green-two">
+      <button className="btn-green-two" onClick={addToOrder}>
         Check Out - Total: {calculateTotalPrice(cart?.items)}€
       </button>
     </section>
