@@ -2,15 +2,12 @@ import { useContext, useEffect, useState } from "react";
 import "./ProductCard.css";
 import { backendUrl } from "../../api/api";
 import { Link } from "react-router-dom";
-import {
-  FavouritesContext,
-  ToggleFavouritesContext,
-} from "../../Context/Contexts";
+import { FavouriteContext } from "../../Context/Contexts";
 import { useAuth } from "../../Context/AuthProvider";
 
 const ProductCard = ({ imageUrl, productName, price, rating, id }) => {
-  const { toggle, setToggle } = useContext(ToggleFavouritesContext);
-  const { favourites, setFavourites } = useContext(FavouritesContext);
+
+  const { favourites, setFavourites } = useContext(FavouriteContext);
   const { token } = useAuth();
 
   async function addToFavourites() {
@@ -27,8 +24,8 @@ const ProductCard = ({ imageUrl, productName, price, rating, id }) => {
     });
 
     const data = await res.json();
-    if (!data.result) return console.log("error   " + data.message);
-    setFavourites(data.result);
+    if (!data) return console.log("error   " + data.message);
+    setFavourites(data.products);
   }
 
   async function removeFromFavourites() {
@@ -45,21 +42,20 @@ const ProductCard = ({ imageUrl, productName, price, rating, id }) => {
     });
 
     const data = await res.json();
-    if (!data.result) return console.log("error   " + data.message);
-    setFavourites(data.result);
+    if (!data) return console.log("error   " + data.message);
+    setFavourites(data.products);
+  }
+
+  const isFavourite = () => {
+    return favourites && favourites.includes(id);
   }
 
   return (
     <section className="productcard-container">
       <div className="product-card">
         <i
-          className={`fa-solid fa-heart ${toggle ? "fa-heart-true" : ""}`}
-          onClick={() => {
-            setToggle(!toggle);
-            {
-              toggle ? removeFromFavourites() : addToFavourites();
-            }
-          }}
+          className={`fa-solid fa-heart ${isFavourite() ? "fa-heart-true" : ""}`}
+          onClick={() => isFavourite() ? removeFromFavourites() : addToFavourites()}
         ></i>
         <Link to={`/product/${id}`}>
           <img
@@ -78,7 +74,7 @@ const ProductCard = ({ imageUrl, productName, price, rating, id }) => {
           </div>
         </div>
       </div>
-    </section>
+    </section >
   );
 };
 

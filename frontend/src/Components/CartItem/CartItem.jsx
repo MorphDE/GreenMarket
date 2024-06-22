@@ -1,11 +1,24 @@
 import { useAuth } from "../../Context/AuthProvider";
-import { CartContext, RefreshContext, TokenContext } from "../../Context/Contexts";
+import {
+  CartContext,
+  RefreshContext,
+  TokenContext,
+} from "../../Context/Contexts";
 
 import { backendUrl } from "../../api/api";
 import "./CartItem.css";
 import { useContext, useEffect, useState } from "react";
 
-const CartItem = ({ imageUrl, productName, unit, rating, price, amount, productId, fetchCart }) => {
+const CartItem = ({
+  imageUrl,
+  productName,
+  unit,
+  rating,
+  price,
+  amount,
+  productId,
+  fetchCart,
+}) => {
   const fullImageUrl = `${backendUrl}/api/v1/uploads/product-images/${imageUrl}`;
 
   const { cart, setCart } = useContext(CartContext);
@@ -18,45 +31,47 @@ const CartItem = ({ imageUrl, productName, unit, rating, price, amount, productI
   const addQuantity = () => {
     const newQuantity = amountProduct + 1;
     setAmountProduct(newQuantity);
-  };
-
-  const decreaseQuantity = () => {
-    if (amountProduct <= 1) {
-      console.log(`Error. current quantity: ${amountProduct}. Can't decrease from 1, otherwise quantity will reach 0`);
-    } else {
-      const newQuantity = amountProduct - 1;
-      setAmountProduct(newQuantity);
-    }
+    updateQuantity(newQuantity);
   };
 
   useEffect(() => {
-    async function updateQuantity() {
-      const res = await fetch(`${backendUrl}/api/v1/cart/updateQuantity/${productId}`, {
+    setAmountProduct(amount);
+  }, [amount])
+
+  const decreaseQuantity = () => {
+    if (amountProduct <= 1) {
+      console.log(
+        `Error. current quantity: ${amountProduct}. Can't decrease from 1, otherwise quantity will reach 0`
+      );
+    } else {
+      const newQuantity = amountProduct - 1;
+      setAmountProduct(newQuantity);
+      updateQuantity(newQuantity);
+    }
+  };
+
+  async function updateQuantity(newQuantity) {
+    const res = await fetch(
+      `${backendUrl}/api/v1/cart/updateQuantity/${productId}`,
+      {
         headers: {
           "Content-Type": "application/json",
           authorization: `Bearer ${token}`,
         },
         method: "PATCH",
-        body: JSON.stringify({ quantity: amountProduct }),
+        body: JSON.stringify({ quantity: newQuantity }),
         credentials: "include",
-      });
+      }
+    );
 
-      const data = await res.json();
-      console.log(data);
-      if (!data.result) return console.log("error   " + data.message);
-      /* //kaputt
-      console.log("new Quantity: " + data.result);
-      setCart(data.result);
-      console.log(cart);
+    const data = await res.json();
+    console.log(data);
+    if (!data.result) return console.log("error   " + data.message);
+    fetchCart();
+  }
 
-      console.log(errorMessage);
-      console.log("updating quantity successful");
-      */
-      // ! hier ist die weitergereichte funktion aus Cart.jsx
-      fetchCart();
-    }
-    updateQuantity();
-  }, [token, amountProduct]);
+  console.log("userId:  " + cart?.userId);
+  console.log("productId:  " + cart?.items?.productID);
 
   async function removeItemFromCart() {
     const res = await fetch(`${backendUrl}/api/v1/cart/removeItem`, {
@@ -73,7 +88,7 @@ const CartItem = ({ imageUrl, productName, unit, rating, price, amount, productI
 
     const data = await res.json();
     if (!data.result) return console.log("error   " + data.message);
-    setCart(data.result);
+    await fetchCart();
   }
 
   return (
@@ -92,7 +107,10 @@ const CartItem = ({ imageUrl, productName, unit, rating, price, amount, productI
         <div className="item-bottom">
           <p>{price}€ </p>
           <div className="plus-minus">
-            <i className="fa-solid fa-square-minus" onClick={decreaseQuantity}></i>
+            <i
+              className="fa-solid fa-square-minus"
+              onClick={decreaseQuantity}
+            ></i>
             <p className="item-amount">
               {amountProduct}
               {unit}
@@ -102,7 +120,7 @@ const CartItem = ({ imageUrl, productName, unit, rating, price, amount, productI
           </div>
         </div>
       </div>
-      <i className="fa-solid fa-trash-can" onClick={removeItemFromCart}></i>
+      <i className="fa-solid fa-trash-can" onClick={() => removeItemFromCart()}></i>
     </section>
   );
 };

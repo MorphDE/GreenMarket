@@ -5,7 +5,7 @@ export async function addFavoriteCtrl(req, res) {
   const userId = req.authenticatedUserId;
   try {
     const result = await FavoriteService.addFavorite(userId, productId);
-    res.status(200).json({ result });
+    res.status(200).json(result);
   } catch (error) {
     console.error("Error adding favorite:", error.message);
     res
@@ -19,10 +19,10 @@ export async function removeFavoriteCtrl(req, res) {
   const userId = req.authenticatedUserId;
 
   try {
-    await FavoriteService.removeFavorite(userId, productId);
+    const result = await FavoriteService.removeFavorite(userId, productId);
     res
       .status(200)
-      .json({ message: "Product removed from favorites successfully" });
+      .json(result);
   } catch (error) {
     console.error("Error removing favorite:", error.message);
     res.status(500).json({ error: "Failed to remove product from favorites" });
