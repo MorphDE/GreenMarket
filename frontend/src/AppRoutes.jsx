@@ -19,6 +19,7 @@ import {
 } from "./Context/Contexts";
 import AuthRequired from "./Components/AuthRequired";
 import SilentRefresh from "./Components/SilentRefresh";
+import MealOfTheDay from "./Pages/MealOfTheDay/MealOfTheDay";
 
 const AppRoutes = () => {
   const { products, setProducts } = useContext(ProductContext);
@@ -40,6 +41,7 @@ const AppRoutes = () => {
           />
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/onboarding" element={<Onboarding />} />
+          <Route path="/mealOfTheDay" element={<MealOfTheDay />} />
           <Route
             path="/cart"
             element={

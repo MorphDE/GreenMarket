@@ -61,3 +61,7 @@
 .order-date {
   color: var(--grey);
 }
+
+.hide-order-products {
+  display: none;
+}

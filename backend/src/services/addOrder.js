@@ -39,6 +39,8 @@ export async function addOrder(userId) {
       paymentStatus: "unpaid",
     });
 
+    await Cart.deleteOne({ userId });
+
     return {
       order: newOrder,
       totalAmount,
