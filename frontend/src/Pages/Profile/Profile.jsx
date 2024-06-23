@@ -145,7 +145,7 @@ const Profile = () => {
         <button className="btn-light" onClick={updateProfile}>
           Update Profile
         </button>
-        <button className="btn-light" onClick={logout}>
+        <button className="btn-light logout-btn" onClick={logout}>
           Logout
         </button>
       </div>
