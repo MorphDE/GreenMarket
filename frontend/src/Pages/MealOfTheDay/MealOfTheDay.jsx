@@ -3,6 +3,9 @@ import { CartContext } from "../../Context/Contexts";
 import { backendUrl } from "../../api/api";
 import { useAuth } from "../../Context/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import "./MealOfTheDay.css";
+import Footer from './../../Components/Footer/Footer';
+import GoBack from "../../Components/GoBack/GoBack";
 
 const MealOfTheDay = () => {
   const navigate = useNavigate();
@@ -46,67 +49,67 @@ const MealOfTheDay = () => {
   }
 
   return (
-    <section>
-      <h1>Meal of the Day</h1>
+    <>
+    <GoBack title={"Meal of the Day"}/>
+    <section className="mealoftheday">
       <div className="recipe">
         <h2>Veggie Casserole</h2>
-
         <div className="ingredient-list">
           <h3>Ingredients:</h3>
-          <ul>
+          <div>
             {ingredients.map((ingredient, index) => (
-              <li key={index}>
+              <p className="ingredient" key={index}>
                 {calculateIngredientQuantity(ingredient.quantity)}{" "}
                 {typeof ingredient.quantity === "number" ? "g" : ""}{" "}
                 {ingredient.name}
-              </li>
+              </p>
             ))}
-          </ul>
+          </div>
         </div>
 
         <div className="instruction-steps">
           <h3>Instructions:</h3>
           <ol>
             <li className="step">
-              <strong>Prepare vegetables:</strong> Thoroughly wash the
+              <p className="meal-title">Prepare vegetables:</p> Thoroughly wash the
               vegetables and cut them into bite-sized pieces, depending on the
               type.
             </li>
             <li className="step">
-              <strong>Preheat oven:</strong> Preheat the oven to 200°C (392°F)
+              <p className="meal-title">Preheat oven:</p> Preheat the oven to 200°C (392°F)
               conventional oven setting.
             </li>
             <li className="step">
-              <strong>Sauté:</strong> Heat olive oil in a pan and sauté the
+              <p className="meal-title">Sauté:</p> Heat olive oil in a pan and sauté the
               chopped onion and garlic until translucent.
             </li>
             <li className="step">
-              <strong>Add vegetables:</strong> Add the prepared vegetables and
+              <p className="meal-title">Add vegetables:</p> Add the prepared vegetables and
               sauté for about 5-7 minutes, stirring occasionally, until lightly
               browned. Season with salt and pepper.
             </li>
             <li className="step">
-              <strong>Layer:</strong> Grease a large casserole dish. Place a
+              <p className="meal-title">Layer:</p> Grease a large casserole dish. Place a
               layer of potato slices on the bottom of the dish. Top with a layer
               of the sautéed vegetables. Repeat this process alternately until
               all ingredients are used.
             </li>
             <li className="step">
-              <strong>Add cream:</strong> Pour the cream or milk over the
+              <p className="meal-title">Add cream:</p> Pour the cream or milk over the
               vegetable casserole.
             </li>
             <li className="step">
-              <strong>Sprinkle cheese:</strong> Evenly sprinkle the grated
+              <p className="meal-title">Sprinkle cheese:</p> Evenly sprinkle the grated
               cheese over the vegetable casserole.
             </li>
             <li className="step">
-              <strong>Bake:</strong> Place the casserole dish in the preheated
+              <p className="meal-title">Bake:</p> Place the casserole dish in the preheated
               oven and bake the vegetable casserole for about 30-35 minutes,
               until the potatoes are tender and the cheese is golden brown and
               crispy.
             </li>
             <li className="step">
-              <strong>Serve:</strong> Remove the vegetable casserole from the
+              <p className="meal-title">Serve:</p> Remove the vegetable casserole from the
               oven and let it rest for about 5 minutes before serving. Garnish
               with fresh herbs as desired and serve hot.
             </li>
@@ -120,21 +123,25 @@ const MealOfTheDay = () => {
         </p>
 
         <div className="person-selector">
-          <button
+          <button className="button-minus"
             onClick={() =>
               setPersons((prevPersons) => Math.max(prevPersons - 1, 1))
             }
           >
             -
           </button>
-          <span>{persons}</span>
-          <button onClick={() => setPersons((prevPersons) => prevPersons + 1)}>
+          <span className="persons">{persons}</span>
+          <button className="button-plus" onClick={() => setPersons((prevPersons) => prevPersons + 1)}>
             +
           </button>
         </div>
-        <button onClick={addToCart}>Add to Cart</button>
+        <div className="putcart-btn">
+        <button className="put-cart" onClick={addToCart}>Add to Cart</button>
+        </div>
       </div>
     </section>
+    <Footer/>
+    </>
   );
 };
 
