@@ -5,11 +5,11 @@ export async function addMealOfTheDay({ userId }) {
   try {
     console.log("UserId " + userId);
     const productsToAdd = [
-      { name: "Karotten", quantity: 1 },
-      { name: "Paprika", quantity: 1 },
+      { name: "Carrot", quantity: 1 },
+      { name: "Pepper", quantity: 1 },
       { name: "Zucchini", quantity: 1 },
-      { name: "Zwiebeln", quantity: 1 },
-      { name: "Vollmilch", quantity: 1 },
+      { name: "Onion", quantity: 1 },
+      { name: "Whole Milk", quantity: 1 },
       { name: "Gouda", quantity: 1 },
     ];
 
