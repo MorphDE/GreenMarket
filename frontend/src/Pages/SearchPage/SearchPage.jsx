@@ -13,6 +13,7 @@ const SearchPage = () => {
     const { search } = useParams();
     const [isFilterPageOpen, setIsFilterPageOpen] = useState(false);
     const [products, setProducts] = useState([]);
+    const [categories, setCategories] = useState([]);
 
     const { filters, setFilters } = useContext(FilterContext);
 
@@ -43,6 +44,17 @@ const SearchPage = () => {
         }
     }, [filters])
 
+    useEffect(() => {
+        fetch(`${backendUrl}/api/v1/categories/`)
+          .then((res) => res.json())
+          .then((data) => {
+            setCategories(data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }, []);
+
     const buildQuery = () => {
         const params = new URLSearchParams();
 
@@ -54,15 +66,22 @@ const SearchPage = () => {
         return params.toString();
     };
 
+    const getCategoryImage = () => {
+        const categoryFilter = categories.filter((category) => category.name === filters.categoryName)
+        return categoryFilter[0].icon;
+    }
+
     return (
         <section className="search-page">
             <div className="search-top">
                 <Searchbar onFilterButtonClick={openFilterPage} />
                 <FilterButtonsSmall filters={filters} setFilters={setFilters}/>
             </div>
-            <div className="thumbnail">
-                <img src="./bread.jpg" alt="Thumbnail" />
-            </div>
+            {filters && filters.categoryName && 
+                <div className="thumbnail">
+                    <img src={getCategoryImage()} alt="Thumbnail" />
+                </div>
+            }
             <div className="search-products">
                 {products.map((product, key) => (
                     <ProductCard

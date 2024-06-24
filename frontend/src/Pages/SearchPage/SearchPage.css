@@ -14,8 +14,15 @@
   margin-top: 3vh;
 }
 
+.thumbnail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .thumbnail img {
   margin-top: 3vh;
-  max-height: 150px;
+  max-height: 170px;
   min-width: 100vw;
 }
