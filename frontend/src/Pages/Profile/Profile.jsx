@@ -17,6 +17,7 @@ const Profile = () => {
   const [street, setStreet] = useState(user?.address.street);
   const [houseNumber, setHouseNumber] = useState(user?.address.houseNumber);
   const [city, setCity] = useState(user?.address.city);
+  const [zip, setZip] = useState(user?.address.zip);
 
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -41,6 +42,7 @@ const Profile = () => {
           street,
           houseNumber,
           city,
+          zip,
         },
       }),
       credentials: "include",
@@ -162,6 +164,14 @@ const Profile = () => {
             id="city"
             value={city}
             onChange={(e) => setCity(e.target.value)}
+          />
+          <p className="info-title">Zip-Code</p>
+          <input
+            type="text"
+            name="zip"
+            id="zip"
+            value={zip}
+            onChange={(e) => setZip(e.target.value)}
           />
         </div>
       </div>
