@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema(
       street: { type: String, required: true, trim: true },
       houseNumber: { type: String, required: true, trim: true },
       city: { type: String, required: true, trim: true },
+      zip: { type: String, required: true, trim: true },
     },
     pwHash: { type: String, required: true, trim: true },
     pwSalt: { type: String, required: true, trim: true },
