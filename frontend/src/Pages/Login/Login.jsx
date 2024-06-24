@@ -105,7 +105,9 @@ const Login = () => {
       </div>
       <div className="login-bottom">
         <Link to={"/register"}>
-          <p className="bottom-text">Don't have an Account? Register here.</p>
+          <p className="bottom-text">
+            Don't have an Account? <span>Register</span> here.
+          </p>
         </Link>
       </div>
     </section>

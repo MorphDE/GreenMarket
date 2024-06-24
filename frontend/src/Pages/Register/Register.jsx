@@ -110,7 +110,9 @@ const Register = () => {
       </div>
       <div className="register-bottom">
         <Link to={"/login"}>
-          <p className="bottom-text">Already have an Account? Login instead.</p>
+          <p className="bottom-text">
+            Already have an Account? <span>Login</span> instead.
+          </p>
         </Link>
       </div>
     </section>
