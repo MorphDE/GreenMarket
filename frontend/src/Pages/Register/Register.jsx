@@ -13,6 +13,7 @@ const Register = () => {
   const [street, setStreet] = useState("");
   const [houseNumber, setHouseNumber] = useState("");
   const [city, setCity] = useState("");
+  const [zip, setZip] = useState();
   const [errorMessage, setErrorMessage] = useState("");
 
   const { user, setUser } = useAuth();
@@ -34,6 +35,7 @@ const Register = () => {
           street,
           houseNumber,
           city,
+          zip,
         },
       }),
     });
@@ -100,6 +102,12 @@ const Register = () => {
             value={city}
             onChange={(e) => setCity(e.target.value)}
             placeholder="City"
+          />
+          <input
+            type="text"
+            value={zip}
+            onChange={(e) => setZip(e.target.value)}
+            placeholder="Zip-Code"
           />
         </form>
       </div>
