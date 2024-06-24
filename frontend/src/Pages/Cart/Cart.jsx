@@ -78,7 +78,7 @@ const Cart = () => {
         <GoBack title={"Cart"} />
       </div>
       <div className="cart-items">
-        {cart ? (
+        {cart?.length > 0 ? (
           cart?.items?.map((item, index) => (
             <CartItem
               key={index}
@@ -93,10 +93,16 @@ const Cart = () => {
             />
           ))
         ) : (
-          <p>Loading...</p>
+          <div className="empty-cart">
+            <img src="../../../public/emptyCart.svg" alt="emptycart" />
+            <h4>You haven't added anything to your Cart yet.</h4>
+          </div>
         )}
       </div>
-      <button className="btn-green-two" onClick={addToOrder}>
+      <button
+        className={cart?.length > 0 ? "btn-green-two" : "hide"}
+        onClick={addToOrder}
+      >
         Check Out - Total: {calculateTotalPrice(cart?.items)}€
       </button>
     </section>

@@ -34,7 +34,7 @@ const Favourites = () => {
           data.message || "Failed to verify fetch Favourites"
         );
       setBackendFavourites(data);
-      setFavourites(data.map(item => item._id));
+      setFavourites(data.map((item) => item._id));
       // console.log(cart);
 
       console.log(errorMessage);
@@ -52,7 +52,7 @@ const Favourites = () => {
         <i className="fa-solid fa-trash-can"></i>
       </div>
       <div className="favourite-items">
-        {backendFavourites.length > 0 ? (
+        {backendFavourites?.length > 0 ? (
           backendFavourites?.map((item, index) => (
             <FavouritesItem
               key={index}
@@ -64,10 +64,20 @@ const Favourites = () => {
             />
           ))
         ) : (
-          <p> You haven't added anything to your favourites yet. </p>
+          <div className="empty-favourites">
+            <img
+              src="../../../public/FavoritesEmptyIcon.svg"
+              alt="emptyfavourites"
+            />
+            <h4>You haven't added anything to your Favourites yet.</h4>
+          </div>
         )}
       </div>
-      <button className="btn-green-two">Add To Cart</button>
+      <button
+        className={backendFavourites?.length > 0 ? "btn-green-two" : "hide"}
+      >
+        Add To Cart
+      </button>
     </section>
   );
 };

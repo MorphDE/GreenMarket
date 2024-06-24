@@ -68,8 +68,25 @@
   display: none;
 }
 
-.order-product-item h3 {
+.showmoreless {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+}
+
+hr:first-of-type {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.order-product-item h4 {
   color: var(--main);
+}
+
+.order-product-item p,
+hr {
+  color: var(--grey);
+  font-size: 0.8rem;
 }
 
 .order-product-item p:nth-of-type(2) {
