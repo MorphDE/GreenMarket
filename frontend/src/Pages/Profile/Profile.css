@@ -49,6 +49,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  gap: 3vh;
 }
 
 input[type="file"] {
@@ -78,4 +79,8 @@ label {
   position: absolute;
   right: 30%;
   bottom: 30%;
+}
+
+.logout-btn {
+  margin-bottom: 3vh;
 }

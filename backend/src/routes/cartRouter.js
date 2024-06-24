@@ -5,6 +5,7 @@ import { doJwtAuth } from "../../middlewares/doJwtAuth.js";
 export const cartRouter = express
   .Router()
   .post("/addToCart", doJwtAuth, CartController.postAddToCartCtrl)
+  .post("/addMealOfTheDay", doJwtAuth, CartController.postAddMealOfTheDayCtrl)
   .delete("/removeItem", doJwtAuth, CartController.postRemoveItemFromCartCtrl)
   .patch(
     "/updateQuantity/:productId",
