@@ -20,12 +20,11 @@ import { backendUrl } from "./api/api";
 import MealOfTheDay from "./Pages/MealOfTheDay/MealOfTheDay";
 
 const AppRoutes = () => {
-
   const { favourites, setFavourites } = useContext(FavouriteContext);
   const { token } = useAuth();
 
   useEffect(() => {
-    if (!favourites) {
+    if (!favourites && token) {
       fetch(`${backendUrl}/api/v1/favorites/userFavorite`, {
         headers: {
           "Content-Type": "application/json",
@@ -34,12 +33,13 @@ const AppRoutes = () => {
         method: "GET",
         credentials: "include",
       })
-        .then(res => res.json())
-        .then(data => {
-          setFavourites(data.map(item => item._id));
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          setFavourites(data?.map((item) => item._id));
         });
     }
-  }, [])
+  }, []);
 
   return (
     <BrowserRouter>
