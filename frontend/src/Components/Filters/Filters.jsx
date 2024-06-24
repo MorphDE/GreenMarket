@@ -95,11 +95,12 @@ const Filters = ({ onClose }) => {
                     name="priceslider"
                     id="slider"
                     min={0}
-                    max={500}
+                    max={250}
+                    step={5}
                     value={priceRange}
                     onChange={handleRangeChange}
                 />
-                <span>{priceRange}</span>
+                <span style={{fontWeight:"900"}}>${priceRange}</span>
             </div>
             <div className="filter-bottom">
                 <div className="filter-bottom-text">
