@@ -1,7 +1,9 @@
 .singleorder-container {
-  font-size: 0.9rem;
-  padding-left: 5vw;
-  padding-right: 5vw;
+  font-size: var(--mobile-fontsize);
+  padding: 0 5vw;
+  display: grid;
+  grid-template-columns: repeat(1fr);
+  gap: 1rem;
 }
 
 .singleorder-card {
@@ -64,4 +66,12 @@
 
 .hide-order-products {
   display: none;
+}
+
+/* ! Desktop */
+@media only screen and (min-width: 768px) {
+  .singleorder-container {
+    font-size: var(--regular-fontsize);
+    padding: 0;
+  }
 }

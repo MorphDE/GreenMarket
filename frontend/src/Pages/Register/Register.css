@@ -1,7 +1,7 @@
 .register-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: screen;
 }
 
 .register-top {
@@ -44,4 +44,17 @@
   align-items: center;
   flex-direction: column;
   margin-bottom: 3vh;
+}
+
+/* * We're mobile first */
+
+/* ! Desktop */
+@media only screen and (min-width: 768px) {
+  .register-container {
+    margin: 0 30vw;
+  }
+
+  .register-inputs form {
+    gap: 3rem;
+  }
 }

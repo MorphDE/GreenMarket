@@ -1,7 +1,12 @@
+.categories-section {
+  display: flex;
+  flex-direction: column;
+}
+
 .filterbuttons-container {
   display: flex;
   overflow-x: auto;
-  padding: 0 15px;
+
   white-space: nowrap;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -38,4 +43,13 @@
 
 .single-filterbutton .active-categoryfont {
   color: var(--main);
+}
+
+/* * We're mobile first */
+
+/* ! Desktop */
+@media only screen and (min-width: 768px) {
+  .filterbuttons-container {
+    flex-direction: row;
+  }
 }

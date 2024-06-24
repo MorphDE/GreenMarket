@@ -14,10 +14,8 @@
   display: flex;
   align-items: center;
   margin-bottom: 2vh;
-  padding-top: 1vh;
-  padding-bottom: 1vh;
-  padding-left: 6vw;
-  border: solid 1px rgba(0, 0, 0, 0.1);
+  padding: 1vh 0 1vh 6vw;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.1);
 }
 
 .order-filter p {
@@ -25,4 +23,12 @@
   color: var(--font);
   padding-bottom: 0.1vh;
   border-bottom: solid 1px var(--main);
+}
+
+/* ! Desktop */
+@media (min-width: 768px) {
+  .order-filter,
+  .single-orders {
+    padding: 1vh 20vw 1vh 10vw;
+  }
 }

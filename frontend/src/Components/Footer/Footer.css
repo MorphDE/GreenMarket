@@ -55,3 +55,52 @@
 .single-content-right {
   padding-left: 8vw;
 }
+
+/* * We're mobile first */
+
+/* ! Desktop */
+@media only screen and (min-width: 768px) {
+  .footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: none;
+    top: 0;
+    height: 5vh;
+    min-width: 100vw;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+    border-radius: 0;
+    gap: 10vw;
+    background-color: white;
+  }
+
+  .single-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 1vw;
+  }
+
+  .footer-circle {
+    padding: 0.6rem;
+  }
+
+  .cartlink {
+    position: absolute;
+    bottom: 14%;
+    left: 95%;
+    transform: translateX(-50%);
+  }
+
+  .single-content-left {
+    padding-right: 0vw;
+  }
+
+  .single-content-right {
+    padding-left: 0vw;
+  }
+}

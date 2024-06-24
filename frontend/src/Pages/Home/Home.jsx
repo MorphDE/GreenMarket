@@ -6,12 +6,14 @@ import FilterButtons from "../../Components/FilterButtons/FilterButtons";
 import TopDeals from "./../../Components/TopDeals/TopDeals";
 import { useState } from "react";
 import AllOffers from "../../Components/AllOffers/AllOffers";
-import Filters from './../../Components/Filters/Filters';
+import Filters from "./../../Components/Filters/Filters";
 import ProductsByCategory from "../../Components/ProductsByCategory/ProductsByCategory";
+import SearchAndFilter from "../../Components/SearchAndFilter/SearchAndFilter";
 
 const Home = () => {
+  const [activeCategory, setActiveCategory] = useState();
+
   const [isFilterPageOpen, setIsFilterPageOpen] = useState(false);
-  const [ activeCategory, setActiveCategory] = useState();
 
   const openFilterPage = () => {
     setIsFilterPageOpen(true);
@@ -23,11 +25,10 @@ const Home = () => {
 
   return (
     <section className="home-container">
-      <Location />
-      <Searchbar onFilterButtonClick={openFilterPage} />
+      <SearchAndFilter onFilterButtonClick={openFilterPage} />
       <AllOffers />
-      <FilterButtons setActiveCategory={setActiveCategory} activeCategory={activeCategory}/>
-      {activeCategory ? <ProductsByCategory activeCategory={activeCategory}/> : <TopDeals />}
+      <FilterButtons setActiveCategory={setActiveCategory} activeCategory={activeCategory} />
+      {activeCategory ? <ProductsByCategory activeCategory={activeCategory} /> : <TopDeals />}
       <Footer />
       {isFilterPageOpen && <Filters onClose={closeFilterPage} />}
     </section>
