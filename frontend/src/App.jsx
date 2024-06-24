@@ -11,6 +11,8 @@ import {
 import Loadingscreen from "./Components/Loadingscreen/Loadingscreen";
 import "@fontsource/poppins";
 import { AuthProvider } from "./Context/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -33,6 +35,7 @@ function App() {
             </ProductContext.Provider>
           </FilterContext.Provider>
         </CartContext.Provider>
+        <ToastContainer />
       </AuthProvider>
     </>
   );
