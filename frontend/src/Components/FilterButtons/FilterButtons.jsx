@@ -18,21 +18,26 @@ const FilterButtons = ({ activeCategory, setActiveCategory }) => {
 
   const selectCategory = (category) => {
     if (category === activeCategory) {
-      setActiveCategory(null) 
+      setActiveCategory(null);
     } else {
-      setActiveCategory(category)
+      setActiveCategory(category);
     }
-  }
+  };
 
   return (
-    <article className="filterbuttons-container">
-      {categories?.map((item, index) => (
-          <div className="single-filterbutton" key={index} onClick={() => selectCategory(item)}>
-            <img src={item.icon} alt="" className={activeCategory === item ? `active-category` : ``}/>
-            <p className={activeCategory === item ? `active-categoryfont` : ``}>{item.name}</p>
-          </div>
-      ))}
-    </article>
+    <>
+      <article className="categories-section">
+        <h2>Categories</h2>
+        <div className="filterbuttons-container">
+          {categories?.map((item, index) => (
+            <div className="single-filterbutton" key={index} onClick={() => selectCategory(item)}>
+              <img src={item.icon} alt="" className={activeCategory === item ? `active-category` : ``} />
+              <p className={activeCategory === item ? `active-categoryfont` : ``}>{item.name}</p>
+            </div>
+          ))}
+        </div>
+      </article>
+    </>
   );
 };
 

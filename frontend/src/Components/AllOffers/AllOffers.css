@@ -5,15 +5,16 @@
   overflow-x: auto;
   white-space: nowrap;
   scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .scroll-container::-webkit-scrollbar {
   display: none;
 }
 
-.scroll-container {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+.alloffers-container {
+  overflow-x: hidden;
 }
 
 .scroll-content {

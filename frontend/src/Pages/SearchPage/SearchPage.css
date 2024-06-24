@@ -25,4 +25,5 @@
   margin-top: 3vh;
   max-height: 170px;
   min-width: 100vw;
+  object-fit: cover;
 }

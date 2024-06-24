@@ -4,6 +4,7 @@ import GoBack from "../../Components/GoBack/GoBack";
 import { useEffect, useState } from "react";
 import { backendUrl } from "../../api/api";
 import { useAuth } from "../../Context/AuthProvider";
+import Footer from "../../Components/Footer/Footer";
 const Orders = () => {
   const [order, setOrder] = useState([]);
   const { token } = useAuth();
@@ -20,8 +21,7 @@ const Orders = () => {
 
       const data = await res.json();
       console.log(data);
-      if (!data)
-        return setErrorMessage(data.message || "Failed to verify fetch Orders");
+      if (!data) return setErrorMessage(data.message || "Failed to verify fetch Orders");
       setOrder(data);
     }
     fetchOrders();
@@ -36,6 +36,7 @@ const Orders = () => {
         <SingleOrder order={order} />
         <SingleOrder />
       </div>
+      <Footer />
     </section>
   );
 };

@@ -6,6 +6,7 @@ import { useAuth } from "../../Context/AuthProvider";
 import FavouritesItem from "../../Components/FavouritesItem/FavouritesItem";
 import { FavouriteContext } from "../../Context/Contexts";
 import { useContext } from "react";
+import Footer from "../../Components/Footer/Footer";
 
 const Favourites = () => {
   const [backendFavourites, setBackendFavourites] = useState([]);
@@ -29,12 +30,9 @@ const Favourites = () => {
 
       const data = await res.json();
       console.log(data);
-      if (!data)
-        return setErrorMessage(
-          data.message || "Failed to verify fetch Favourites"
-        );
+      if (!data) return setErrorMessage(data.message || "Failed to verify fetch Favourites");
       setBackendFavourites(data);
-      setFavourites(data.map(item => item._id));
+      setFavourites(data.map((item) => item._id));
       // console.log(cart);
 
       console.log(errorMessage);
@@ -54,20 +52,14 @@ const Favourites = () => {
       <div className="favourite-items">
         {backendFavourites.length > 0 ? (
           backendFavourites?.map((item, index) => (
-            <FavouritesItem
-              key={index}
-              imageUrl={item?.image}
-              productName={item?.name}
-              unit={item?.unit}
-              rating={item?.rating}
-              price={item?.price}
-            />
+            <FavouritesItem key={index} imageUrl={item?.image} productName={item?.name} unit={item?.unit} rating={item?.rating} price={item?.price} />
           ))
         ) : (
           <p> You haven't added anything to your favourites yet. </p>
         )}
       </div>
       <button className="btn-green-two">Add To Cart</button>
+      <Footer />
     </section>
   );
 };

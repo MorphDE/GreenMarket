@@ -1,3 +1,9 @@
 .singleoffer-container h1 {
   padding-left: 4vw;
 }
+
+.singleoffer-container {
+  width: 100vw;
+}
+
+

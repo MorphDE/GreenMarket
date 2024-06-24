@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5vw;
+  gap: 1rem;
   margin-top: 1vh;
   margin-bottom: 1vh;
 }
@@ -28,4 +28,16 @@
   left: 0%;
   transform: translate(0, -50%);
   margin-left: 2vw;
+}
+
+/* * We're mobile first */
+
+/* ! Desktop */
+@media only screen and (min-width: 768px) {
+  .searchbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-left: 1rem;
+  }
 }
