@@ -47,7 +47,7 @@ const Verify = () => {
     console.log(data);
 
     navigate("/login");
-    toast.success("Great, you have been registered! You can now log in!", {
+    toast.success("You have been registered! You can now log in!", {
       position: "top-right",
       autoClose: 4000,
       hideProgressBar: false,

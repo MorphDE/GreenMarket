@@ -17,6 +17,7 @@ const Profile = () => {
   const [street, setStreet] = useState(user?.address.street);
   const [houseNumber, setHouseNumber] = useState(user?.address.houseNumber);
   const [city, setCity] = useState(user?.address.city);
+  const [zip, setZip] = useState(user?.address.zip);
 
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -41,40 +42,42 @@ const Profile = () => {
           street,
           houseNumber,
           city,
+          zip,
         },
       }),
       credentials: "include",
     });
 
     const data = await res.json();
+    toast.success("You have successfully updated your profile!", {
+      position: "top-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      // transition: Bounce,
+    });
 
     if (!data.result)
       return setErrorMessage(data.message || "Failed to verify update Profile");
-      // toast.error("Updating profile failed. Please try again.", {
-      //   position: "top-right",
-      //   autoClose: 4000,
-      //   hideProgressBar: false,
-      //   closeOnClick: true,
-      //   pauseOnHover: true,
-      //   draggable: true,
-      //   progress: undefined,
-      //   theme: "light",
-      //   // transition: Bounce,
-      // })
+    toast.error("Updating profile failed. Please try again.", {
+      position: "top-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      // transition: Bounce,
+    });
 
     console.log(errorMessage);
     console.log("Profile Update successful");
-    // toast.success("You have successfully updated your profile!", {
-    //   position: "top-right",
-    //   autoClose: 4000,
-    //   hideProgressBar: false,
-    //   closeOnClick: true,
-    //   pauseOnHover: true,
-    //   draggable: true,
-    //   progress: undefined,
-    //   theme: "light",
-    //   // transition: Bounce,
-    // });
+
     console.log(data.result);
   };
 
@@ -162,6 +165,14 @@ const Profile = () => {
             id="city"
             value={city}
             onChange={(e) => setCity(e.target.value)}
+          />
+          <p className="info-title">Zip-Code</p>
+          <input
+            type="text"
+            name="zip"
+            id="zip"
+            value={zip}
+            onChange={(e) => setZip(e.target.value)}
           />
         </div>
       </div>

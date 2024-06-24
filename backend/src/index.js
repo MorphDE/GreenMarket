@@ -13,11 +13,11 @@ import { orderRouter } from "./routes/orderRouter.js";
 
 // DEPLOY
 
-import { createRequire } from 'module';
+import { createRequire } from "module";
 const require = createRequire(import.meta.url);
-const path = require('path');
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+const path = require("path");
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -31,7 +31,6 @@ const twoWeeksInMs = 14 * 24 * 60 * 60 * 1000;
 const isFrontendLocalhost =
   process.env.FRONTEND_URL.startsWith("http://localhost");
 const cookieSessionSecret = process.env.COOKIE_SESSION_SECRET;
-
 
 console.log(process.env.FRONTEND_URL);
 
@@ -66,17 +65,19 @@ app.use("/api/v1/order", orderRouter);
 app.use("/api/v1/uploads", express.static("uploads"));
 
 app.use((req, res, next) => {
-  if (/(.ico|.js|.css|.jpg|.jpeg|.png|.svg|.map|.woff|.woff2)$/i.test(req.path)) {
+  if (
+    /(.ico|.js|.css|.jpg|.jpeg|.png|.svg|.map|.woff|.woff2)$/i.test(req.path)
+  ) {
     next();
   } else {
-    res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
-    res.header('Expires', '-1');
-    res.header('Pragma', 'no-cache');
-    res.sendFile(path.join(__dirname, '../', 'frontend', 'index.html'));
+    res.header("Cache-Control", "private, no-cache, no-store, must-revalidate");
+    res.header("Expires", "-1");
+    res.header("Pragma", "no-cache");
+    res.sendFile(path.join(__dirname, "../", "frontend", "index.html"));
   }
 });
 
-app.use(express.static('frontend'));
+app.use(express.static("frontend"));
 
 try {
   await connectToDatabase();
