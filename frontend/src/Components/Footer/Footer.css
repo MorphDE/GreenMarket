@@ -49,11 +49,11 @@
 }
 
 .single-content-left {
-  padding-right: 8vw;
+  margin-right: 8vw;
 }
 
 .single-content-right {
-  padding-left: 8vw;
+  margin-left: 8vw;
 }
 
 /* * We're mobile first */
@@ -97,10 +97,10 @@
   }
 
   .single-content-left {
-    padding-right: 0vw;
+    margin-right: 0vw;
   }
 
   .single-content-right {
-    padding-left: 0vw;
+    margin-left: 0vw;
   }
 }

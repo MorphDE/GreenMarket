@@ -9,6 +9,7 @@ import { backendUrl } from "../../api/api";
 import { useAuth } from "../../Context/AuthProvider";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Footer from "../../Components/Footer/Footer";
 
 const Cart = () => {
   const { user, token } = useAuth();
@@ -51,20 +52,17 @@ const Cart = () => {
     });
 
     const data = await res.json();
-    toast.success(
-      "Order confirmed! Check your order status under 'Orders' at any time.",
-      {
-        position: "top-right",
-        autoClose: 6000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        // transition: Bounce,
-      }
-    );
+    toast.success("Order confirmed! Check your order status under 'Orders' at any time.", {
+      position: "top-right",
+      autoClose: 6000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      // transition: Bounce,
+    });
     setCart();
   }
 
@@ -73,33 +71,35 @@ const Cart = () => {
   }, []);
 
   return (
-    <section className="cart-container">
-      <div className="cart-head">
+    <>
+      <Footer />
+      <section className="cart-container">
         <GoBack title={"Cart"} />
-      </div>
-      <div className="cart-items">
-        {cart ? (
-          cart?.items?.map((item, index) => (
-            <CartItem
-              key={index}
-              imageUrl={item?.productId.image}
-              productName={item?.productId.name}
-              unit={item?.productId.unit}
-              rating={item?.productId.rating}
-              price={item?.productId.price}
-              amount={item?.quantity}
-              productId={item?.productId._id}
-              fetchCart={fetchCart}
-            />
-          ))
-        ) : (
-          <p>Your cart is empty...</p>
-        )}
-      </div>
-      <button className="btn-green-two" onClick={addToOrder}>
-        Check Out - Total: {calculateTotalPrice(cart?.items)}€
-      </button>
-    </section>
+        <div className="cart-head"></div>
+        <div className="cart-items">
+          {cart ? (
+            cart?.items?.map((item, index) => (
+              <CartItem
+                key={index}
+                imageUrl={item?.productId.image}
+                productName={item?.productId.name}
+                unit={item?.productId.unit}
+                rating={item?.productId.rating}
+                price={item?.productId.price}
+                amount={item?.quantity}
+                productId={item?.productId._id}
+                fetchCart={fetchCart}
+              />
+            ))
+          ) : (
+            <p>Your cart is empty...</p>
+          )}
+        </div>
+        <button className="btn-green-two" onClick={addToOrder}>
+          Check Out - Total: {calculateTotalPrice(cart?.items)}€
+        </button>
+      </section>
+    </>
   );
 };
 

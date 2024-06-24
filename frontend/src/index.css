@@ -98,7 +98,7 @@ input[type="search"] {
   border: none;
   border: solid 1px var(--grey);
   border-radius: 0.5rem;
-  padding: 1vw 1vw 1vw 1vw;
+  padding: 0.8rem;
   min-width: 70%;
   padding-bottom: 0.5vh;
   outline: none;
@@ -114,6 +114,11 @@ input[type="search"] {
 a {
   color: var(--font);
   text-decoration: none;
+}
+
+.active {
+  color: var(--main);
+  fill: var(--main);
 }
 
 /* * We're mobile first */
