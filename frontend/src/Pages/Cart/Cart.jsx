@@ -93,7 +93,7 @@ const Cart = () => {
             />
           ))
         ) : (
-          <p>Loading...</p>
+          <p>Your cart is empty...</p>
         )}
       </div>
       <button className="btn-green-two" onClick={addToOrder}>
