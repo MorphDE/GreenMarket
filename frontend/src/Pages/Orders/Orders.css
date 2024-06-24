@@ -6,7 +6,7 @@
 .single-orders {
   display: flex;
   flex-direction: column;
-  gap: 1vh;
+  gap: 10vh;
 }
 
 .order-filter {

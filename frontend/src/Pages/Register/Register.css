@@ -46,6 +46,11 @@
   margin-bottom: 3vh;
 }
 
+
+.bottom-text span {
+  color: var(--main);
+}
+
 /* * We're mobile first */
 
 /* ! Desktop */
@@ -57,4 +62,3 @@
   .register-inputs form {
     gap: 3rem;
   }
-}

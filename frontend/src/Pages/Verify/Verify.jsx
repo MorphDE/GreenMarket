@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { backendUrl } from "../../api/api";
 import { TokenContext, UserContext } from "../../Context/Contexts";
 import { useAuth } from "../../Context/AuthProvider";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Verify = () => {
   const [sixDigitCode, setSixDigitCode] = useState("");
@@ -26,12 +28,36 @@ const Verify = () => {
     const data = await res.json();
 
     if (!data.result)
-      return setErrorMessage(data.message || "Failed to verify email");
+      return (
+        setErrorMessage(data.message || "Failed to verify email"),
+        toast.error("Please enter the correct six digit code.", {
+          position: "top-right",
+          autoClose: 4000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          // transition: Bounce,
+        })
+      );
 
     setErrorMessage("");
     console.log(data);
 
     navigate("/login");
+    toast.success("You have been registered! You can now log in!", {
+      position: "top-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      // transition: Bounce,
+    });
   };
 
   return (

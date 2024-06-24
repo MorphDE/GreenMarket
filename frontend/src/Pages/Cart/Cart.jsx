@@ -7,6 +7,8 @@ import { CartContext, ProductContext } from "../../Context/Contexts";
 import { useContext, useEffect, useState } from "react";
 import { backendUrl } from "../../api/api";
 import { useAuth } from "../../Context/AuthProvider";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Cart = () => {
   const { user, token } = useAuth();
@@ -49,6 +51,20 @@ const Cart = () => {
     });
 
     const data = await res.json();
+    toast.success(
+      "Order confirmed! Check your order status under 'Orders' at any time.",
+      {
+        position: "top-right",
+        autoClose: 6000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        // transition: Bounce,
+      }
+    );
     setCart();
   }
 
@@ -77,7 +93,7 @@ const Cart = () => {
             />
           ))
         ) : (
-          <p>Loading...</p>
+          <p>Your cart is empty...</p>
         )}
       </div>
       <button className="btn-green-two" onClick={addToOrder}>
