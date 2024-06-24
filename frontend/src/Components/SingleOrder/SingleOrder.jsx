@@ -4,6 +4,15 @@ import "./SingleOrder.css";
 const SingleOrder = ({ order }) => {
   const [toggle, setToggel] = useState(false);
 
+  const [expandedOrderId, setExpandedOrderId] = useState(null);
+
+  const handleToggle = (orderId) => {
+    if (expandedOrderId === orderId) {
+      setExpandedOrderId(null);
+    } else {
+      setExpandedOrderId(orderId);
+    }
+  };
 
   return (
     <section className="singleorder-container">
@@ -23,10 +32,17 @@ const SingleOrder = ({ order }) => {
             </p>
           </div>
 
-          <p onClick={() => setToggel(!toggle)}>
-            {toggle ? "show less" : "show more"}
+          <p onClick={() => handleToggle(singleOrder?._id)}>
+            {expandedOrderId === singleOrder?._id ? "show less" : "show more"}
           </p>
-          <div className={toggle ? "order-products" : "hide-order-products"}>
+
+          <div
+            className={
+              expandedOrderId === singleOrder?._id
+                ? "order-products"
+                : "hide-order-products"
+            }
+          >
             <hr />
             {singleOrder?.products?.map((productItem) => (
               <div key={productItem?._id} className="order-product-item">
