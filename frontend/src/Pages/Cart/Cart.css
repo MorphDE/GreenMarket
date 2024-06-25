@@ -44,7 +44,7 @@
 
 .hide {
   display: none;
-
+}
 /* * We're mobile first */
 
 /* ! Desktop */
@@ -52,5 +52,4 @@
   .cart-container {
     padding-top: 5vh;
   }
-
 }
