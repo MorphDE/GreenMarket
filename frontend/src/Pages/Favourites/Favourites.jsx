@@ -6,19 +6,15 @@ import { useAuth } from "../../Context/AuthProvider";
 import FavouritesItem from "../../Components/FavouritesItem/FavouritesItem";
 import { FavouriteContext } from "../../Context/Contexts";
 import { useContext } from "react";
-import Footer from "../../Components/Footer/Footer";
 
 const Favourites = () => {
   const [backendFavourites, setBackendFavourites] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const { token } = useAuth();
-
   const { favourites, setFavourites } = useContext(FavouriteContext);
 
   useEffect(() => {
-    console.log("fetch Favourites launched");
     async function fetchFavourites() {
-      //! der user wird aus dem userToken ausgelesen
       const res = await fetch(`${backendUrl}/api/v1/favorites/userFavorite`, {
         headers: {
           "Content-Type": "application/json",
@@ -29,37 +25,64 @@ const Favourites = () => {
       });
 
       const data = await res.json();
-      console.log(data);
-      if (!data) return setErrorMessage(data.message || "Failed to verify fetch Favourites");
+      if (!data)
+        return setErrorMessage(
+          data.message || "Fehler beim Abrufen der Favoriten"
+        );
       setBackendFavourites(data);
       setFavourites(data.map((item) => item._id));
-      // console.log(cart);
-
-      console.log(errorMessage);
-      console.log("Favourites fetch successful");
     }
     fetchFavourites();
-  }, []);
+  }, [token]);
 
-  console.log(backendFavourites);
-  console.log(token);
+  const handleDelete = async (id) => {
+    try {
+      const res = await fetch(`${backendUrl}/api/v1/favorites/removeFavorite`, {
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
+        method: "DELETE",
+        credentials: "include",
+        body: JSON.stringify({ productId:id }),
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        setBackendFavourites((prev) => prev.filter((item) => item._id !== id));
+        setFavourites((prev) => prev.filter((favouriteId) => favouriteId !== id));
+      } else {
+        setErrorMessage(data.message || "Fehler beim Löschen des Favoriten");
+      }
+    } catch (error) {
+      setErrorMessage(error.message || "Ein Fehler ist aufgetreten");
+    }
+  };
+
   return (
     <section className="favourites-container">
       <div className="favourites-head">
-        <GoBack title={"Favourites"} />
-        <i className="fa-solid fa-trash-can"></i>
+        <GoBack title={"Favoriten"} />
       </div>
       <div className="favourite-items">
         {backendFavourites.length > 0 ? (
-          backendFavourites?.map((item, index) => (
-            <FavouritesItem key={index} imageUrl={item?.image} productName={item?.name} unit={item?.unit} rating={item?.rating} price={item?.price} />
+          backendFavourites.map((item, index) => (
+            <FavouritesItem
+              key={index}
+              id={item._id}
+              imageUrl={item.image}
+              productName={item.name}
+              unit={item.unit}
+              rating={item.rating}
+              price={item.price}
+              handleDelete={handleDelete}
+            />
           ))
         ) : (
-          <p> You haven't added anything to your favourites yet. </p>
+          <p> Du hast noch keine Favoriten hinzugefügt. </p>
         )}
       </div>
-      <button className="btn-green-two">Add To Cart</button>
-      <Footer />
+      <button className="btn-green-two">In den Warenkorb</button>
     </section>
   );
 };
