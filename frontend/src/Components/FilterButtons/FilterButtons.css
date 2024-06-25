@@ -2,6 +2,10 @@
   display: flex;
   flex-direction: column;
 }
+.categories-section h2 {
+  margin-left: 4vw;
+  margin-top: 2vh;
+}
 
 .filterbuttons-container {
   display: flex;
@@ -49,7 +53,10 @@
 
 /* ! Desktop */
 @media only screen and (min-width: 768px) {
-  .filterbuttons-container {
-    flex-direction: row;
+  .categories-section {
+    align-items: center;
+  }
+  .categories-section h2 {
+    margin-left: 0;
   }
 }

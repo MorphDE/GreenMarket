@@ -7,12 +7,13 @@
   padding: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1;
-  width: 90%;
-  height: 95%;
+  width: 100%;
+  height: 100%;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: var(--bg);
 }
 
 .hide-offer {
@@ -38,6 +39,7 @@
   padding: 10px;
   margin-bottom: 15px;
   border-radius: 15px;
+  background-color: white;
 }
 .offer-daily-content {
   display: flex;
