@@ -28,6 +28,27 @@
   margin: auto;
 }
 
+.empty-favourites {
+  margin: 30vh 10vw 0 10vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.empty-favourites img {
+  width: 10rem;
+  margin-bottom: 3vh;
+}
+
+.empty-favourites h4 {
+  text-align: center;
+  color: var(--grey);
+}
+
+.hide {
+  display: none;
+
 /* * We're mobile first */
 
 /* ! Desktop */
@@ -35,4 +56,5 @@
   .favourites-container {
     margin-top: 4vh;
   }
+
 }

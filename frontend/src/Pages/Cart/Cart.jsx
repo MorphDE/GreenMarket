@@ -75,31 +75,37 @@ const Cart = () => {
       <Footer />
       <section className="cart-container">
         <GoBack title={"Cart"} />
-        <div className="cart-head"></div>
-        <div className="cart-items">
-          {cart ? (
-            cart?.items?.map((item, index) => (
-              <CartItem
-                key={index}
-                imageUrl={item?.productId.image}
-                productName={item?.productId.name}
-                unit={item?.productId.unit}
-                rating={item?.productId.rating}
-                price={item?.productId.price}
-                amount={item?.quantity}
-                productId={item?.productId._id}
-                fetchCart={fetchCart}
-              />
-            ))
-          ) : (
-            <p>Your cart is empty...</p>
-          )}
-        </div>
-        <button className="btn-green-two" onClick={addToOrder}>
-          Check Out - Total: {calculateTotalPrice(cart?.items)}€
-        </button>
-      </section>
-    </>
+
+      </div>
+      <div className="cart-items">
+        {cart?.length > 0 ? (
+          cart?.items?.map((item, index) => (
+            <CartItem
+              key={index}
+              imageUrl={item?.productId.image}
+              productName={item?.productId.name}
+              unit={item?.productId.unit}
+              rating={item?.productId.rating}
+              price={item?.productId.price}
+              amount={item?.quantity}
+              productId={item?.productId._id}
+              fetchCart={fetchCart}
+            />
+          ))
+        ) : (
+          <div className="empty-cart">
+            <img src="../../../public/emptyCart.svg" alt="emptycart" />
+            <h4>You haven't added anything to your Cart yet.</h4>
+          </div>
+        )}
+      </div>
+      <button
+        className={cart?.length > 0 ? "btn-green-two" : "hide"}
+        onClick={addToOrder}
+      >
+        Check Out - Total: {calculateTotalPrice(cart?.items)}€
+      </button>
+    </section>
   );
 };
 

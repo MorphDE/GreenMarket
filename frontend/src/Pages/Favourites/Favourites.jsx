@@ -31,6 +31,12 @@ const Favourites = () => {
         );
       setBackendFavourites(data);
       setFavourites(data.map((item) => item._id));
+
+      // console.log(cart);
+
+      console.log(errorMessage);
+      console.log("Favourites fetch successful");
+
     }
     fetchFavourites();
   }, [token]);
@@ -65,8 +71,8 @@ const Favourites = () => {
         <GoBack title={"Favoriten"} />
       </div>
       <div className="favourite-items">
-        {backendFavourites.length > 0 ? (
-          backendFavourites.map((item, index) => (
+        {backendFavourites?.length > 0 ? (
+          backendFavourites?.map((item, index) => (
             <FavouritesItem
               key={index}
               id={item._id}
@@ -79,10 +85,20 @@ const Favourites = () => {
             />
           ))
         ) : (
-          <p> Du hast noch keine Favoriten hinzugefügt. </p>
+          <div className="empty-favourites">
+            <img
+              src="../../../public/FavoritesEmptyIcon.svg"
+              alt="emptyfavourites"
+            />
+            <h4>You haven't added anything to your Favourites yet.</h4>
+          </div>
         )}
       </div>
-      <button className="btn-green-two">In den Warenkorb</button>
+      <button
+        className={backendFavourites?.length > 0 ? "btn-green-two" : "hide"}
+      >
+        Add To Cart
+      </button>
     </section>
   );
 };

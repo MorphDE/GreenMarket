@@ -24,6 +24,27 @@
   margin: auto;
 }
 
+.empty-cart {
+  margin: 30vh 10vw 0 10vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.empty-cart img {
+  width: 10rem;
+  margin-bottom: 3vh;
+}
+
+.empty-cart h4 {
+  text-align: center;
+  color: var(--grey);
+}
+
+.hide {
+  display: none;
+
 /* * We're mobile first */
 
 /* ! Desktop */
@@ -31,4 +52,5 @@
   .cart-container {
     padding-top: 5vh;
   }
+
 }

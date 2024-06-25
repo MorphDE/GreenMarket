@@ -31,31 +31,44 @@ const SingleOrder = ({ order }) => {
               {new Date(singleOrder?.createdAt).toLocaleString()}
             </p>
           </div>
+          <div>
+            <div className="showmoreless">
+              <p onClick={() => handleToggle(singleOrder?._id)}>
+                {expandedOrderId === singleOrder?._id
+                  ? "show less"
+                  : "show more"}
+              </p>
+              <i
+                className={
+                  expandedOrderId === singleOrder?._id
+                    ? "fa-solid fa-angle-up"
+                    : "fa-solid fa-angle-down"
+                }
+                onClick={() => handleToggle(singleOrder?._id)}
+              ></i>
+            </div>
 
-          <p onClick={() => handleToggle(singleOrder?._id)}>
-            {expandedOrderId === singleOrder?._id ? "show less" : "show more"}
-          </p>
-
-          <div
-            className={
-              expandedOrderId === singleOrder?._id
-                ? "order-products"
-                : "hide-order-products"
-            }
-          >
-            <hr />
-            {singleOrder?.products?.map((productItem) => (
-              <div key={productItem?._id} className="order-product-item">
-                <h3>{productItem?.name}</h3>
-                <p>Price: {productItem?.price}€</p>
-                <p>Quantity: {productItem?.quantity}</p>
-                <p>
-                  Total Product Price:{" "}
-                  {productItem?.price * productItem?.quantity}€
-                </p>
-              </div>
-            ))}
-            <hr />
+            <div
+              className={
+                expandedOrderId === singleOrder?._id
+                  ? "order-products"
+                  : "hide-order-products"
+              }
+            >
+              <hr />
+              {singleOrder?.products?.map((productItem) => (
+                <div key={productItem?._id} className="order-product-item">
+                  <h4>{productItem?.name}</h4>
+                  <p>Price: {productItem?.price}€</p>
+                  <p>Quantity: {productItem?.quantity}</p>
+                  <p>
+                    Total Product Price:{" "}
+                    {productItem?.price * productItem?.quantity}€
+                  </p>
+                </div>
+              ))}
+              <hr />
+            </div>
           </div>
         </div>
       ))}
