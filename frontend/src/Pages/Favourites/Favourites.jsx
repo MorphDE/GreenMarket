@@ -36,7 +36,6 @@ const Favourites = () => {
 
       console.log(errorMessage);
       console.log("Favourites fetch successful");
-
     }
     fetchFavourites();
   }, [token]);
@@ -50,13 +49,15 @@ const Favourites = () => {
         },
         method: "DELETE",
         credentials: "include",
-        body: JSON.stringify({ productId:id }),
+        body: JSON.stringify({ productId: id }),
       });
 
       const data = await res.json();
       if (res.ok) {
         setBackendFavourites((prev) => prev.filter((item) => item._id !== id));
-        setFavourites((prev) => prev.filter((favouriteId) => favouriteId !== id));
+        setFavourites((prev) =>
+          prev.filter((favouriteId) => favouriteId !== id)
+        );
       } else {
         setErrorMessage(data.message || "Fehler beim Löschen des Favoriten");
       }
@@ -68,7 +69,7 @@ const Favourites = () => {
   return (
     <section className="favourites-container">
       <div className="favourites-head">
-        <GoBack title={"Favoriten"} />
+        <GoBack title={"Favourites"} />
       </div>
       <div className="favourite-items">
         {backendFavourites?.length > 0 ? (
