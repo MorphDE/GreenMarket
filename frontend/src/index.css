@@ -13,6 +13,13 @@
   --rating: #ffc107;
   --bg: #f2f3f9;
   --delete-red: #ff0000;
+  --regular-fontsize: 1rem;
+  --mobile-fontsize: 0.9rem;
+}
+
+h2 {
+  font-size: 1.2rem;
+  margin-left: 4vw;
 }
 
 /* BUTTONS */
@@ -24,7 +31,7 @@ button {
 }
 
 .btn-light {
-  font-size: 1rem;
+  font-size: var(--regular-fontsize);
   font-weight: 500;
   color: var(--font);
   background-color: var(--secondary);
@@ -32,7 +39,7 @@ button {
 }
 
 .btn-grey {
-  font-size: 1rem;
+  font-size: var(--regular-fontsize);
   color: white;
   font-weight: 500;
   background-color: var(--grey);
@@ -40,7 +47,7 @@ button {
 }
 
 .btn-green {
-  font-size: 1rem;
+  font-size: var(--regular-fontsize);
   color: white;
   font-weight: 500;
   background-color: var(--main);
@@ -48,7 +55,7 @@ button {
 }
 
 .btn-green-two {
-  font-size: 1rem;
+  font-size: var(--regular-fontsize);
   color: white;
   font-weight: 500;
   background-color: var(--main);
@@ -56,7 +63,7 @@ button {
 }
 
 .fa-trash-can {
-  color: var(--delete-red);
+  color: var(--main);
 }
 
 /* INPUT STYLES */
@@ -68,7 +75,7 @@ input[type="password"] {
   border-bottom: solid 1px var(--grey);
   padding-left: 1vw;
   padding-right: 1vw;
-  min-width: 85vw;
+  min-width: 80%;
   padding-bottom: 0.5vh;
   outline: none;
   color: black;
@@ -80,7 +87,7 @@ input[type="number"] {
   border-bottom: solid 1px var(--grey);
   padding-left: 1vw;
   padding-right: 1vw;
-  max-width: 80vw;
+  max-width: 80%;
   padding-bottom: 0.5vh;
   outline: none;
   color: black;
@@ -91,8 +98,8 @@ input[type="search"] {
   border: none;
   border: solid 1px var(--grey);
   border-radius: 0.5rem;
-  padding: 1vw 1vw 1vw 1vw;
-  min-width: 70vw;
+  padding: 0.8rem;
+  min-width: 70%;
   padding-bottom: 0.5vh;
   outline: none;
   color: black;
@@ -107,4 +114,28 @@ input[type="search"] {
 a {
   color: var(--font);
   text-decoration: none;
+}
+
+.active {
+  color: var(--main);
+  fill: var(--main);
+}
+
+/* * We're mobile first */
+
+/* ! Desktop */
+@media only screen and (min-width: 768px) {
+  .register-container {
+    margin: 0 20vw;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    min-width: 50%;
+  }
+}
+
+/* ! Tablet */
+@media (min-width: 560px) and (max-width: 767px) {
 }

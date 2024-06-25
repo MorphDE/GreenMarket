@@ -53,77 +53,39 @@ const Register = () => {
   };
 
   return (
-    <section className="register-container">
+    <>
       <GoBack />
-      <div className="register-top">
-        <h1>Create New Account</h1>
-        <p>Enter your details to create an account</p>
-      </div>
-      <div className="register-inputs">
-        <form>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="E-Mail"
-          />
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-          />
-          <input
-            type="text"
-            value={firstName}
-            onChange={(e) => setFirstname(e.target.value)}
-            placeholder="Firstname"
-          />
-          <input
-            type="text"
-            value={lastName}
-            onChange={(e) => setLastname(e.target.value)}
-            placeholder="Lastname"
-          />
-          <input
-            type="text"
-            value={street}
-            onChange={(e) => setStreet(e.target.value)}
-            placeholder="Street"
-          />
-          <input
-            type="text"
-            value={houseNumber}
-            onChange={(e) => setHouseNumber(e.target.value)}
-            placeholder="House Number"
-          />
-          <input
-            type="text"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            placeholder="City"
-          />
-          <input
-            type="text"
-            value={zip}
-            onChange={(e) => setZip(e.target.value)}
-            placeholder="Zip-Code"
-          />
-        </form>
-      </div>
-      <div className="register-button">
-        <button className="btn-green" onClick={registerUser}>
-          Sign Up
-        </button>
-      </div>
-      <div className="register-bottom">
-        <Link to={"/login"}>
-          <p className="bottom-text">
-            Already have an Account? <span>Login</span> instead.
-          </p>
-        </Link>
-      </div>
-    </section>
+      <section className="register-container">
+        <div className="register-top">
+          <h1>Create New Account</h1>
+          <p>Enter your details to create an account</p>
+        </div>
+        <div className="register-inputs">
+          <form>
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="E-Mail" />
+            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+            <input type="text" value={firstName} onChange={(e) => setFirstname(e.target.value)} placeholder="Firstname" />
+            <input type="text" value={lastName} onChange={(e) => setLastname(e.target.value)} placeholder="Lastname" />
+            <input type="text" value={street} onChange={(e) => setStreet(e.target.value)} placeholder="Street" />
+            <input type="text" value={houseNumber} onChange={(e) => setHouseNumber(e.target.value)} placeholder="House Number" />
+            <input type="text" value={city} onChange={(e) => setCity(e.target.value)} placeholder="City" />
+            <input type="text" value={zip} onChange={(e) => setZip(e.target.value)} placeholder="Zip-Code" />
+          </form>
+        </div>
+        <div className="register-button">
+          <button className="btn-green" onClick={registerUser}>
+            Sign Up
+          </button>
+        </div>
+        <div className="register-bottom">
+          <Link to={"/login"}>
+            <p className="bottom-text">
+              Already have an Account? <span>Login</span> instead.
+            </p>
+          </Link>
+        </div>
+      </section>
+    </>
   );
 };
 

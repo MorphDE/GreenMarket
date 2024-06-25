@@ -9,6 +9,7 @@ import { backendUrl } from "../../api/api";
 import { useAuth } from "../../Context/AuthProvider";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Footer from "../../Components/Footer/Footer";
 
 const Cart = () => {
   const { user, token } = useAuth();
@@ -51,20 +52,17 @@ const Cart = () => {
     });
 
     const data = await res.json();
-    toast.success(
-      "Order confirmed! Check your order status under 'Orders' at any time.",
-      {
-        position: "top-right",
-        autoClose: 6000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        // transition: Bounce,
-      }
-    );
+    toast.success("Order confirmed! Check your order status under 'Orders' at any time.", {
+      position: "top-right",
+      autoClose: 6000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      // transition: Bounce,
+    });
     setCart();
   }
 
@@ -73,9 +71,11 @@ const Cart = () => {
   }, []);
 
   return (
-    <section className="cart-container">
-      <div className="cart-head">
+    <>
+      <Footer />
+      <section className="cart-container">
         <GoBack title={"Cart"} />
+
       </div>
       <div className="cart-items">
         {cart?.length > 0 ? (
