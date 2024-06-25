@@ -9,6 +9,7 @@ import AllOffers from "../../Components/AllOffers/AllOffers";
 import Filters from "./../../Components/Filters/Filters";
 import ProductsByCategory from "../../Components/ProductsByCategory/ProductsByCategory";
 import SearchAndFilter from "../../Components/SearchAndFilter/SearchAndFilter";
+import OfferTwenty from "../../Components/OfferDaily/OfferDaily";
 
 const Home = () => {
   const [activeCategory, setActiveCategory] = useState();
@@ -27,10 +28,18 @@ const Home = () => {
     <section className="home-container">
       <SearchAndFilter onFilterButtonClick={openFilterPage} />
       <AllOffers />
-      <FilterButtons setActiveCategory={setActiveCategory} activeCategory={activeCategory} />
-      {activeCategory ? <ProductsByCategory activeCategory={activeCategory} /> : <TopDeals />}
+      <FilterButtons
+        setActiveCategory={setActiveCategory}
+        activeCategory={activeCategory}
+      />
+      {activeCategory ? (
+        <ProductsByCategory activeCategory={activeCategory} />
+      ) : (
+        <TopDeals />
+      )}
       <Footer />
       {isFilterPageOpen && <Filters onClose={closeFilterPage} />}
+      <OfferTwenty />
     </section>
   );
 };

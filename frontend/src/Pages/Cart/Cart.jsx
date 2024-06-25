@@ -80,7 +80,7 @@ const Cart = () => {
         <GoBack title={"Cart"} />
 
         <div className="cart-items">
-          {cart?.items.length > 0 ? (
+          {cart?.items?.length > 0 ? (
             cart?.items?.map((item, index) => (
               <CartItem
                 key={index}
