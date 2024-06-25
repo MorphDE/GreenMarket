@@ -105,7 +105,7 @@ const CartItem = ({
             <p className="item-rate">{rating}</p>
           </div>
           <div className="item-bottom">
-            <p>{price}€ </p>
+            <p>${price.toFixed(2)} </p>
             <div className="plus-minus">
               <i className="fa-solid fa-square-minus" onClick={decreaseQuantity}></i>
               <p className="item-amount">
