@@ -62,5 +62,13 @@
 /* ! Desktop */
 @media only screen and (min-width: 768px) {
   .footer-container {
+    top: 0;
+    height: 10vh;
+  }
+  .cartlink {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
