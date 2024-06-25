@@ -80,7 +80,7 @@ const Cart = () => {
         <GoBack title={"Cart"} />
 
         <div className="cart-items">
-          {cart?.length > 0 ? (
+          {cart?.items.length > 0 ? (
             cart?.items?.map((item, index) => (
               <CartItem
                 key={index}
@@ -102,7 +102,7 @@ const Cart = () => {
           )}
         </div>
         <button
-          className={cart?.length > 0 ? "btn-green-two" : "hide"}
+          className={cart?.items.length > 0 ? "btn-green-two" : "hide"}
           onClick={addToOrder}
         >
           Check Out - Total: {calculateTotalPrice(cart?.items)}€
