@@ -8,6 +8,7 @@ import { FilterContext } from "../../Context/Contexts";
 import Searchbar from './../../Components/Searchbar/Searchbar';
 import FilterButtonsSmall from './../../Components/FilterButtonsSmall/FilterButtonsSmall';
 import "./SearchPage.css";
+import GoBack from '../../Components/GoBack/GoBack';
 
 const SearchPage = () => {
     const { search } = useParams();
@@ -73,6 +74,7 @@ const SearchPage = () => {
 
     return (
         <section className="search-page">
+            <GoBack title={"Search Page"}/>
             <div className="search-top">
                 <Searchbar onFilterButtonClick={openFilterPage} />
                 <FilterButtonsSmall filters={filters} setFilters={setFilters}/>
