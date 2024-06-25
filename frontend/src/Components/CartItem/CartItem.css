@@ -10,13 +10,15 @@
 
 .item-container {
   display: flex;
+  align-items: center;
   gap: 6vw;
 }
 
 .item-img img {
   display: flex;
   align-items: center;
-  min-width: 100;
+  min-width: 30vw;
+  min-height: 80px;
   object-fit: cover;
   border-radius: 1rem;
 }

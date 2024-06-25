@@ -7,7 +7,9 @@ const SearchAndFilter = ({ onFilterButtonClick }) => {
   return (
     <div className="searchfilter-container">
       <Location />
-      <Searchbar onFilterButtonClick={onFilterButtonClick} />
+      <div className="search-bar-container">
+        <Searchbar onFilterButtonClick={onFilterButtonClick} />
+      </div>
     </div>
   );
 };

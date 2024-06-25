@@ -1,15 +1,14 @@
-.searchfilter-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 2rem;
-}
-
 /* * We're mobile first */
+
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 /* ! Desktop */
 @media only screen and (min-width: 768px) {
   .searchfilter-container {
-    margin-top: 5vh;
+    margin-top: 3vh;
   }
 }
