@@ -3,6 +3,7 @@
   flex-direction: column;
   min-height: 100vh;
   background-color: var(--bg);
+  padding-bottom: 13vh;
 }
 
 .cart-head {
@@ -51,5 +52,6 @@
 @media only screen and (min-width: 768px) {
   .cart-container {
     padding-top: 5vh;
+    padding-bottom: 4vh;
   }
 }

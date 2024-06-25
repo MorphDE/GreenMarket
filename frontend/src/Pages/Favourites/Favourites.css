@@ -48,13 +48,14 @@
 
 .hide {
   display: none;
+}
 
 /* * We're mobile first */
 
 /* ! Desktop */
+
 @media only screen and (min-width: 768px) {
   .favourites-container {
-    margin-top: 4vh;
+    padding-top: 5vh;
   }
-
 }

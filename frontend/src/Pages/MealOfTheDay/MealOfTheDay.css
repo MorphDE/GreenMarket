@@ -95,3 +95,13 @@
   background-color: var(--main);
   border-radius: 0.5rem;
 }
+
+/* * We're mobile first */
+
+/* ! Desktop */
+@media only screen and (min-width: 768px) {
+  .mealoftheday {
+    padding-top: 7vh;
+    padding-bottom: 8vh;
+  }
+}

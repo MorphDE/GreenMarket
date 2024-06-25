@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   position: relative;
-  row-gap: 0;
+  gap: 0.3rem;
   margin-bottom: 10vh;
 }
 .topdeals-container h1 {
@@ -11,4 +11,13 @@
   margin-top: 2vh;
   margin-left: 4vw;
   margin-bottom: 2vh;
+}
+
+/* * We're mobile first */
+
+/* ! Desktop */
+@media only screen and (min-width: 768px) {
+  .product-cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }

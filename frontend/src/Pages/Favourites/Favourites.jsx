@@ -6,6 +6,7 @@ import { useAuth } from "../../Context/AuthProvider";
 import FavouritesItem from "../../Components/FavouritesItem/FavouritesItem";
 import { FavouriteContext } from "../../Context/Contexts";
 import { useContext } from "react";
+import Footer from "../../Components/Footer/Footer";
 
 const Favourites = () => {
   const [backendFavourites, setBackendFavourites] = useState([]);
@@ -25,10 +26,7 @@ const Favourites = () => {
       });
 
       const data = await res.json();
-      if (!data)
-        return setErrorMessage(
-          data.message || "Fehler beim Abrufen der Favoriten"
-        );
+      if (!data) return setErrorMessage(data.message || "Fehler beim Abrufen der Favoriten");
       setBackendFavourites(data);
       setFavourites(data.map((item) => item._id));
 
@@ -36,7 +34,6 @@ const Favourites = () => {
 
       console.log(errorMessage);
       console.log("Favourites fetch successful");
-
     }
     fetchFavourites();
   }, [token]);
@@ -50,7 +47,7 @@ const Favourites = () => {
         },
         method: "DELETE",
         credentials: "include",
-        body: JSON.stringify({ productId:id }),
+        body: JSON.stringify({ productId: id }),
       });
 
       const data = await res.json();
@@ -67,6 +64,7 @@ const Favourites = () => {
 
   return (
     <section className="favourites-container">
+      <Footer />
       <div className="favourites-head">
         <GoBack title={"Favoriten"} />
       </div>
@@ -86,19 +84,12 @@ const Favourites = () => {
           ))
         ) : (
           <div className="empty-favourites">
-            <img
-              src="../../../public/FavoritesEmptyIcon.svg"
-              alt="emptyfavourites"
-            />
+            <img src="../../../public/FavoritesEmptyIcon.svg" alt="emptyfavourites" />
             <h4>You haven't added anything to your Favourites yet.</h4>
           </div>
         )}
       </div>
-      <button
-        className={backendFavourites?.length > 0 ? "btn-green-two" : "hide"}
-      >
-        Add To Cart
-      </button>
+      <button className={backendFavourites?.length > 0 ? "btn-green-two" : "hide"}>Add To Cart</button>
     </section>
   );
 };
