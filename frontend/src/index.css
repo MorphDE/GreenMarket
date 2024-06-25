@@ -99,8 +99,7 @@ input[type="search"] {
   border: solid 1px var(--grey);
   border-radius: 0.5rem;
   padding: 0.8rem;
-  min-width: 70%;
-  padding-bottom: 0.5vh;
+  min-width: 70vw;
   outline: none;
   color: black;
   font-weight: 600;
