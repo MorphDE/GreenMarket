@@ -53,7 +53,9 @@ const Favourites = () => {
       const data = await res.json();
       if (res.ok) {
         setBackendFavourites((prev) => prev.filter((item) => item._id !== id));
-        setFavourites((prev) => prev.filter((favouriteId) => favouriteId !== id));
+        setFavourites((prev) =>
+          prev.filter((favouriteId) => favouriteId !== id)
+        );
       } else {
         setErrorMessage(data.message || "Fehler beim Löschen des Favoriten");
       }
@@ -66,7 +68,7 @@ const Favourites = () => {
     <section className="favourites-container">
       <Footer />
       <div className="favourites-head">
-        <GoBack title={"Favoriten"} />
+        <GoBack title={"Favourites"} />
       </div>
       <div className="favourite-items">
         {backendFavourites?.length > 0 ? (
