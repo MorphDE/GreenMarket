@@ -102,7 +102,7 @@ const Cart = () => {
           )}
         </div>
         <button
-          className={cart?.items.length > 0 ? "btn-green-two" : "hide"}
+          className={cart?.items?.length > 0 ? "btn-green-two" : "hide"}
           onClick={addToOrder}
         >
           Check Out - Total: ${calculateTotalPrice(cart?.items).toFixed(2)}

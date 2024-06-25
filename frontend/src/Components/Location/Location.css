@@ -19,5 +19,7 @@
 @media only screen and (min-width: 768px) {
   .location-container {
     font-weight: 600;
+    margin-top: 15vh;
+    display: flex;
   }
 }

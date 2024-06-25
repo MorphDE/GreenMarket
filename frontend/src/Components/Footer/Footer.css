@@ -64,6 +64,7 @@
   .footer-container {
     top: 0;
     height: 10vh;
+    border-radius: 0 0;
   }
   .cartlink {
     position: absolute;

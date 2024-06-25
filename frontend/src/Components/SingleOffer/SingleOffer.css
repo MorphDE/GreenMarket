@@ -6,4 +6,13 @@
   width: 100vw;
 }
 
+/* * We're mobile first */
 
+/* ! Desktop */
+
+@media only screen and (min-width: 768px) {
+  .singleoffer-container {
+    display: flex;
+    justify-content: center;
+  }
+}
