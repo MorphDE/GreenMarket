@@ -5,15 +5,16 @@
   overflow-x: auto;
   white-space: nowrap;
   scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .scroll-container::-webkit-scrollbar {
   display: none;
 }
 
-.scroll-container {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+.alloffers-container {
+  overflow-x: hidden;
 }
 
 .scroll-content {
@@ -43,7 +44,7 @@
   text-align: left;
   border-radius: 0 0 1rem 1rem;
   padding: 10px 0;
-  padding-left: 4vw;
+  padding-left: 1.6rem;
   font-weight: 500;
   font-size: 1.1rem;
 }

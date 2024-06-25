@@ -1,10 +1,11 @@
 .location-container {
   display: flex;
   align-items: center;
-  gap: 3vw;
-  margin-left: 5vw;
+  gap: 1rem;
+  margin-left: 1.2rem;
   margin-top: 2vh;
   margin-bottom: 2vh;
+  font-weight: 600;
 }
 
 .fa-location-dot {
@@ -12,6 +13,11 @@
   color: var(--font);
 }
 
-.location-container {
-  font-weight: 600;
+/* * We're mobile first */
+
+/* ! Desktop */
+@media only screen and (min-width: 768px) {
+  .location-container {
+    font-weight: 600;
+  }
 }

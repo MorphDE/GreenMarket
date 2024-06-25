@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import "./TopDeals.css";
 import { ProductContext } from "../../Context/Contexts";
-import { backendUrl } from './../../api/api';
+import { backendUrl } from "./../../api/api";
 
 const TopDeals = () => {
   const { products, setProducts } = useContext(ProductContext);
@@ -23,16 +23,9 @@ const TopDeals = () => {
   return (
     <section className="topdeals-container">
       <h1>All Products</h1>
-      <div className="product-cards">
+      <div className="topdeals-feed">
         {products?.map((item, index) => (
-          <ProductCard
-            key={index}
-            imageUrl={item.image}
-            productName={item.name}
-            price={item.price}
-            rating={item.rating}
-            id={item._id}
-          />
+          <ProductCard key={index} imageUrl={item.image} productName={item.name} price={item.price} rating={item.rating} id={item._id} />
         ))}
       </div>
     </section>

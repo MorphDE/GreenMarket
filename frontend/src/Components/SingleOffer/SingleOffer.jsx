@@ -12,11 +12,7 @@ const SingleOffer = () => {
     <section className="singleoffer-container">
       <div className="scroll-content">
         <div className="image-container">
-          <img
-            onClick={redirectToMealOfTheDay}
-            src="offer1.jpg"
-            alt="Offer Image"
-          />
+          <img onClick={redirectToMealOfTheDay} src="offer1.jpg" alt="Offer Image" />
           <p className="overlay">Meal of the Day</p>
         </div>
         <div className="image-container">
