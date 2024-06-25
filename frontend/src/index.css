@@ -56,7 +56,7 @@ button {
 }
 
 .fa-trash-can {
-  color: var(--delete-red);
+  color: var(--main);
 }
 
 /* INPUT STYLES */

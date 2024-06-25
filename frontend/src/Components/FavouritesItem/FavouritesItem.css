@@ -2,9 +2,10 @@
   position: relative;
   display: flex;
   align-items: center;
-  gap: 6vw;
+  justify-content: start;
   background-color: white;
   padding: 1rem;
+  gap: 3vw;
   border-radius: 1rem;
 }
 
@@ -28,26 +29,15 @@
   margin-right: 3vw;
 }
 
-.product-bottom {
-  display: flex;
-  gap: 2vw;
-}
-
 .product-rating .fa-heart {
   font-size: 0.9rem;
   margin-left: 5vw;
 }
 
-.item-bottom {
+.item-content {
   display: flex;
   align-items: center;
-  gap: 5vw;
-}
-
-input[type="checkbox"] {
-  width: 1em;
-  height: 1rem;
-  accent-color: var(--main);
+  gap: 3vw;
 }
 
 .item-content h1 {
@@ -82,7 +72,13 @@ input[type="checkbox"] {
 
 .fa-square-minus,
 .fa-star,
-.fa-square-plus,
+.fa-square-plus {
+  font-size: 1.2rem;
+}
+
 .fa-trash-can {
-  font-size: 1.75rem;
+  position: absolute;
+  top: 15%;
+  right: 5%;
+  font-size: 1.2rem;
 }
