@@ -18,7 +18,7 @@ const FavouritesItem = ({ id, imageUrl, productName, unit, rating, price, handle
           <i className="fa-solid fa-star"></i>
           <p className="item-rate">{rating}</p>
         </div>
-          <p>Price: {price}€ </p>
+          <p>Price: ${price.toFixed(2)} </p>
       </div>
     </section>
   );
