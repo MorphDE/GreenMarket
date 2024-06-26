@@ -104,5 +104,13 @@ hr {
   .singleorder-container {
     font-size: var(--regular-fontsize);
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .singleorder-card {
+    border-radius: 0.5rem;
+    padding: 1rem 3.5rem;
+    margin-bottom: 1rem;
   }
 }

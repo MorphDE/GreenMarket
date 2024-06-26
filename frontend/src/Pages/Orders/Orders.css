@@ -27,11 +27,7 @@
 
 /* ! Desktop */
 @media (min-width: 768px) {
-  .order-filter,
-  .single-orders {
-    padding: 1vh 20vw 1vh 10vw;
-  }
   .orders-container {
-    padding-top: 5vh;
+    padding-top: 12vh;
   }
 }

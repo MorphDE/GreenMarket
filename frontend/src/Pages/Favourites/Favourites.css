@@ -56,6 +56,15 @@
 
 @media only screen and (min-width: 768px) {
   .favourites-container {
-    padding-top: 5vh;
+    padding-top: 10vh;
+  }
+  .favourite-items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    row-gap: 2vw;
+    margin-left: 0vw;
+    margin-right: 0vw;
+    padding: 0 18vw;
   }
 }

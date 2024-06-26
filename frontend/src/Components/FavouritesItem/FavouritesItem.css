@@ -88,3 +88,11 @@
   right: 5%;
   font-size: 1.2rem;
 }
+
+/* ! Desktop */
+@media (min-width: 768px) {
+  .single-item {
+    width: 30vw;
+    gap: 0.5vw;
+  }
+}

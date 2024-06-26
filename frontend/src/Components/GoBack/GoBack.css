@@ -13,3 +13,14 @@
   font-weight: 600;
   color: var(--font);
 }
+
+/* * We're mobile first */
+
+/* ! Desktop */
+@media only screen and (min-width: 768px) {
+  .go-back {
+    display: flex;
+    padding: 2vw;
+    gap: 1vw;
+  }
+}

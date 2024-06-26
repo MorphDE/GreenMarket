@@ -89,3 +89,21 @@
   margin-top: 3vh;
   margin-bottom: 3vh;
 }
+
+/* * We're mobile first */
+
+/* ! Desktop */
+@media only screen and (min-width: 768px) {
+  .details-amount {
+    gap: 2vw;
+    margin-top: 1.5vh;
+  }
+  .productdetails-container button {
+    margin: auto;
+    margin-top: 2vh;
+  }
+  .balken {
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+  }
+}
