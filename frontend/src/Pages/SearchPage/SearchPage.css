@@ -43,6 +43,10 @@
   .search-page {
     margin-top: 3vw;
   }
+  .search-products {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
   .thumbnail {
     display: none;
   }
