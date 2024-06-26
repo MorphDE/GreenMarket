@@ -16,7 +16,7 @@ const Loadingscreen = () => {
     <section className="loading-bg">
       <img src={LoadingImage} alt="Loadingscreen Image" />
       <h1 className="loading-title">GreenMarket</h1>
-      <p className="loading-slogan">EASY VEGGIE SHOPPING</p>
+      <p className="loading-slogan">JUST ORDER FOOD</p>
       <div className="loading-container">
         <div className="loader"></div>
       </div>
