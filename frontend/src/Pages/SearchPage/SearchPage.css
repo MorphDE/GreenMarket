@@ -43,4 +43,7 @@
   .search-page {
     margin-top: 3vw;
   }
+  .thumbnail {
+    display: none;
+  }
 }
