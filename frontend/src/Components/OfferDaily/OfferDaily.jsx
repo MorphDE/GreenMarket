@@ -71,7 +71,7 @@ const OfferDaily = ({ toggle, setToggle }) => {
                     </h4>
                     <i
                       onClick={() => addToCart(item._id)}
-                      class="fa-regular fa-basket-shopping-simple"
+                      className="fa-regular fa-basket-shopping-simple"
                     ></i>
                   </div>
                   <div className="offer-price">

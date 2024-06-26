@@ -67,4 +67,11 @@
     margin-right: 0vw;
     padding: 0 18vw;
   }
+  .empty-favourites {
+    margin: 10vh 10vw 10vw 18vw;
+  }
+
+  .empty-favourites h4 {
+    width: 30vw;
+  }
 }

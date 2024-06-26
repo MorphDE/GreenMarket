@@ -26,7 +26,10 @@ const Favourites = () => {
       });
 
       const data = await res.json();
-      if (!data) return setErrorMessage(data.message || "Fehler beim Abrufen der Favoriten");
+      if (!data)
+        return setErrorMessage(
+          data.message || "Fehler beim Abrufen der Favoriten"
+        );
       setBackendFavourites(data);
       setFavourites(data.map((item) => item._id));
 
@@ -86,12 +89,14 @@ const Favourites = () => {
           ))
         ) : (
           <div className="empty-favourites">
-            <img src="../../../public/FavoritesEmptyIcon.svg" alt="emptyfavourites" />
+            <img
+              src="../../../public/FavoritesEmptyIcon.svg"
+              alt="emptyfavourites"
+            />
             <h4>You haven't added anything to your Favourites yet.</h4>
           </div>
         )}
       </div>
-      <button className={backendFavourites?.length > 0 ? "btn-green-two" : "hide"}>Add To Cart</button>
     </section>
   );
 };

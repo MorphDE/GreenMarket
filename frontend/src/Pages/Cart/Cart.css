@@ -65,4 +65,16 @@
     margin-right: 0vw;
     margin-bottom: 3vh;
   }
+  .empty-cart {
+    margin: 10vh 10vw 10vw 20vw;
+  }
+
+  .empty-cart img {
+    width: 10rem;
+    margin-bottom: 3vh;
+  }
+
+  .empty-cart h4 {
+    width: 30vw;
+  }
 }
