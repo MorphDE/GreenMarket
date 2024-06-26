@@ -2,7 +2,7 @@ import "./ProductDetails.css";
 import GoBack from "./../../Components/GoBack/GoBack";
 import CartIcon from "../../../public/cart.png";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { backendUrl } from "../../api/api";
 import { useAuth } from "../../Context/AuthProvider";
 import { toast } from "react-toastify";
@@ -13,7 +13,7 @@ const ProductDetails = () => {
   const [quantity, setQuantity] = useState(1);
 
   const { id } = useParams();
-
+  const navigate = useNavigate();
   const { token } = useAuth();
 
   useEffect(() => {
@@ -38,6 +38,10 @@ const ProductDetails = () => {
   };
 
   const addToCart = () => {
+    if (!token) {
+      navigate("/login");
+      retrun;
+    }
     fetch(`${backendUrl}/api/v1/cart/addToCart`, {
       headers: {
         "Content-Type": "application/json",

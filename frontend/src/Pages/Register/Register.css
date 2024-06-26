@@ -57,4 +57,14 @@
   .register-inputs form {
     gap: 2rem;
   }
+  .register-top {
+    margin-bottom: 4vh;
+  }
+  .register-top h1 {
+    color: var(--font);
+    margin-top: -4vh;
+  }
+  .register-button {
+    margin: 0.5vw auto;
+  }
 }
