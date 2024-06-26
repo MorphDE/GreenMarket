@@ -101,7 +101,7 @@
 /* ! Desktop */
 @media only screen and (min-width: 768px) {
   .mealoftheday {
-    padding-top: 7vh;
+    padding-top: 10vh;
     padding-bottom: 8vh;
   }
 }

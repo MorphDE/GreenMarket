@@ -24,6 +24,15 @@
   color: var(--font);
 }
 
+.filter-top-text p {
+  cursor: pointer;
+}
+
+.filter-top-text h1 {
+  font-size: 1.4rem;
+  color: var(--font);
+}
+
 .filter-top-text {
   display: flex;
   align-items: center;
@@ -170,4 +179,17 @@ input[type="range"]:focus::-ms-fill-lower {
 }
 input[type="range"]:focus::-ms-fill-upper {
   background: #b9b9b9;
+}
+
+/* * We're mobile first */
+
+/* ! Desktop */
+@media only screen and (min-width: 768px) {
+  .filter-top-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4vw;
+    padding-left: 5vw;
+  }
 }

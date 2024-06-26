@@ -31,7 +31,7 @@ const SingleOffer = () => {
             src="offer1.jpg"
             alt="Offer Image"
           />
-          <p className="overlay">Get 20% Off</p>
+          <p className="overlay">Daily Offer</p>
           <OfferDaily toggle={toggle} setToggle={setToggle} />
         </div>
         <div className="image-container">
@@ -40,15 +40,11 @@ const SingleOffer = () => {
             alt="Offer Image"
             onClick={() => setToggleWeekly(!toggleWeekly)}
           />
-          <p className="overlay">50% Discount</p>
+          <p className="overlay">Weekly Offer</p>
           <OfferWeekly
             toggleWeekly={toggleWeekly}
             setToggleWeekly={setToggleWeekly}
           />
-        </div>
-        <div className="image-container">
-          <img src="offer3.jpg" alt="Offer Image" />
-          <p className="overlay">Weekly Offer</p>
         </div>
       </div>
     </section>
